@@ -1,0 +1,27 @@
+#include <windows.h>
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName",      "BladeMight"
+            VALUE "FileDescription",  "JKL - Just Keyboard Layout Monitor"
+            VALUE "FileVersion",      "1.0"
+            VALUE "InternalName",     "JKL"
+            VALUE "OriginalFilename", "jkl(arch).(ext)"
+			VALUE "LegalCopyright",   "BladeMight"
+            VALUE "ProductName",      "Mahou - Magical layout switcher"
+            VALUE "ProductVersion",   "various"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1
+    END
+END

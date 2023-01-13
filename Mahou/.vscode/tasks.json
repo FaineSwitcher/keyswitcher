@@ -1,0 +1,12 @@
+{
+    "version": "0.1.0",
+    "command": "build.cmd",
+    "args": [],
+    "showOutput": "always",
+    "tasks": [
+        {
+            "taskName": "debug",
+            "args": ["x86_x64", "VSCDEBUG"]
+        }
+    ]
+}
