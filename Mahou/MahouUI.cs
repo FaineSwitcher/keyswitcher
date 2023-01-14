@@ -4310,6 +4310,10 @@ DEL /Q /F /A ""%TEMP%\UpdateMahou.cmd""";
 			
 		}
 		void btn_UpdateAutoSwitchDictionary_Click(object sender, EventArgs e) {
+
+			Logging.Log("btn_UpdateAutoSwitchDictionary_Click(): Not Allow");
+			
+			return;
 			var resp = "";
 			if (check_ASD_size) {
 				var size = getASD_RemoteSize(Dowload_ASD_InZip);
@@ -4408,6 +4412,11 @@ DEL ""ExtractASD.cmd""";
 		/// Gets update info, and sets it to static [UpdInfo] string.
 		/// </summary>
 		void GetUpdateInfo() {
+
+			Logging.Log("GetUpdateInfo(): Not Allow");
+			UpdInfo = new string[5] { "Not Allow", "Not Allow", "Not Allow", "Not Allow", "Not Allow" };
+			return;
+
 			var Info = new string[5] {"","","","",""} ; // Update info
 			var api = "https://api.github.com/repos/BladeMight/Mahou/releases";
 			var url = api+"/latest";
