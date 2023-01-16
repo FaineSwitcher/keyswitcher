@@ -2764,11 +2764,12 @@ namespace Mahou
             // chk_TrEnable
             // 
             this.chk_TrEnable.AutoSize = true;
+            this.chk_TrEnable.Enabled = false;
             this.chk_TrEnable.Location = new System.Drawing.Point(8, 3);
             this.chk_TrEnable.Name = "chk_TrEnable";
-            this.chk_TrEnable.Size = new System.Drawing.Size(146, 24);
+            this.chk_TrEnable.Size = new System.Drawing.Size(172, 24);
             this.chk_TrEnable.TabIndex = 1;
-            this.chk_TrEnable.Text = "Enable translator.";
+            this.chk_TrEnable.Text = "Disable by developer";
             this.chk_TrEnable.UseVisualStyleBackColor = true;
             this.chk_TrEnable.CheckedChanged += new System.EventHandler(this.Chk_CheckedChanged);
             // 

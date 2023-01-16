@@ -2031,7 +2031,9 @@ namespace Mahou
             LangPanelUpperArrow = chk_LPUpperArrow.Checked = MMain.MyConfs.ReadBool("LangPanel", "UpperArrow");
             #endregion
             #region Translate Panel
-            TrEnabled = chk_TrEnable.Checked = MMain.MyConfs.ReadBool("TranslatePanel", "Enabled");
+            //TrEnabled = chk_TrEnable.Checked = MMain.MyConfs.ReadBool("TranslatePanel", "Enabled");
+            chk_TrEnable.Enabled = false;
+            TrEnabled = chk_TrEnable.Checked = false;
             TranslatePanel.useGS = MMain.MyConfs.ReadBool("TranslatePanel", "UseGS");
             TranslatePanel.useNA = MMain.MyConfs.ReadBool("TranslatePanel", "UseNA");
             TrOnDoubleClick = chk_TrOnDoubleClick.Checked = MMain.MyConfs.ReadBool("TranslatePanel", "OnDoubleClick");
@@ -5358,7 +5360,7 @@ DEL ""ExtractASD.cmd""";
             lbl_TrMethod.Text = MMain.Lang[Languages.Element.Method] + ":";
             #endregion
             #region TranslatePanel
-            chk_TrEnable.Text = MMain.Lang[Languages.Element.EnableTranslatePanel];
+            chk_TrEnable.Text = "Disable by developer"; //MMain.Lang[Languages.Element.EnableTranslatePanel];
             chk_TrOnDoubleClick.Text = MMain.Lang[Languages.Element.ShowTranslationOnDoubleClick];
             lbl_TrLanguages.Text = MMain.Lang[Languages.Element.TranslateLanguages];
             lbl_TrTextFont.Text = MMain.Lang[Languages.Element.TextFont];
@@ -5698,27 +5700,27 @@ DEL ""ExtractASD.cmd""";
         }
         void Lnk_RepositoryLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("http://github.com/BladeMight/Mahou", "http", false, e.Button == MouseButtons.Right);
+          //  __lopen("http://github.com/BladeMight/Mahou", "http", false, e.Button == MouseButtons.Right);
         }
         void Lnk_SiteLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("http://blademight.github.io/Mahou/", "http", false, e.Button == MouseButtons.Right);
+           // __lopen("http://blademight.github.io/Mahou/", "http", false, e.Button == MouseButtons.Right);
         }
         void Lnk_WikiLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("http://github.com/BladeMight/Mahou/wiki", "http", false, e.Button == MouseButtons.Right);
+          //  __lopen("http://github.com/BladeMight/Mahou/wiki", "http", false, e.Button == MouseButtons.Right);
         }
         void Lnk_ReleasesLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("http://github.com/BladeMight/Mahou/releases", "http", false, e.Button == MouseButtons.Right);
+          //  __lopen("http://github.com/BladeMight/Mahou/releases", "http", false, e.Button == MouseButtons.Right);
         }
         void Lnk_EmailLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("mailto:BladeMight@gmail.com", "mailto", false, e.Button == MouseButtons.Right);
+           // __lopen("mailto:BladeMight@gmail.com", "mailto", false, e.Button == MouseButtons.Right);
         }
         void Lnk_pluginLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("http://github.com/BladeMight/MahouCaretDisplayServer", "http", false, e.Button == MouseButtons.Right);
+           // __lopen("http://github.com/BladeMight/MahouCaretDisplayServer", "http", false, e.Button == MouseButtons.Right);
         }
         void Lnk_SnipOpenLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -7296,9 +7298,6 @@ DEL ""ExtractASD.cmd""";
         {
             try
             {
-
-                return "";
-
                 var fname = "Mahou-Sync." + GetRandomString(8) + ".txt";
                 Console.WriteLine("fname:" + fname);
                 string boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");

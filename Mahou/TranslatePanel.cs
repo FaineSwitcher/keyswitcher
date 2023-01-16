@@ -25,13 +25,19 @@ namespace Mahou
         //		public static List<string> SPUs = new List<string>();
         public static bool running, useGS = true, useNA = false;
         public static readonly WebClient client = new WebClient();
-        public static readonly string GTSpeechLink = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob"; // tl & q
-        public static readonly string GTLink = "https://translate.googleapis.com/translate_a/single?client=gtx&dt=t"; // q, sl, & tl
-        public static readonly string GTNALink = "https://translate.google.com/translate_a/single?client=at&dt=t&dt=ld&dt=qca&dt=rm&dt=bd&dj=1&hl=en-US&ie=UTF-8&oe=UTF-8&inputm=2&otf=2&iid=1dd3b944-fa62-4b55-b330-74909a99969e"; // q, sl, & tl
-        public static readonly string GSLink = "https://script.google.com/macros/s/AKfycbz0CSalG4GlyRKRIfLFoC2N4GMAet2PNVaxQBEnRX_EUx2nlvsu/exec"; // [q, sl, tl] or multi 
+        //public static readonly string GTSpeechLink = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob"; // tl & q
+        //public static readonly string GTLink = "https://translate.googleapis.com/translate_a/single?client=gtx&dt=t"; // q, sl, & tl
+        //public static readonly string GTNALink = "https://translate.google.com/translate_a/single?client=at&dt=t&dt=ld&dt=qca&dt=rm&dt=bd&dj=1&hl=en-US&ie=UTF-8&oe=UTF-8&inputm=2&otf=2&iid=1dd3b944-fa62-4b55-b330-74909a99969e"; // q, sl, & tl
+        //public static readonly string GSLink = "https://script.google.com/macros/s/AKfycbz0CSalG4GlyRKRIfLFoC2N4GMAet2PNVaxQBEnRX_EUx2nlvsu/exec"; // [q, sl, tl] or multi 
+        public static readonly string GTSpeechLink = ""; // tl & q
+        public static readonly string GTLink = ""; // q, sl, & tl
+        public static readonly string GTNALink = ""; // q, sl, & tl
+        public static readonly string GSLink = "";
         public static object _LOCK = new object();
         public TranslatePanel()
         {
+            this.Close();
+
             InitializeComponent();
             this.FormClosing += (s, e) => { e.Cancel = true; this.Hide(); };
             X.Width = 23;
