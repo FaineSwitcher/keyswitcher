@@ -24,7 +24,9 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>False</RunCodeAnalysis>
     <SourceAnalysisOverrideSettingsFile>C:\Users\BladeMight\AppData\Roaming\ICSharpCode\SharpDevelop5\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
-    <PublishUrl>опубликовать\</PublishUrl>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <DebugType>Full</DebugType>
+    <PublishUrl>C:\Users\maxma_wy6t0yw\OneDrive\Рабочий стол\mohuo\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -34,12 +36,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NoWin32Manifest>False</NoWin32Manifest>
-    <DebugType>Full</DebugType>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Mahou.ico</ApplicationIcon>
@@ -48,7 +49,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
@@ -87,6 +88,7 @@
     <OutputPath>bin\Debug_x86_x64\</OutputPath>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>MixedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\Release_x64\</OutputPath>
@@ -115,6 +117,15 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C33EE024850577B319C4150B39ECC6C5B57B93C3</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Mahou_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -188,6 +199,9 @@
       <DependentUpon>TranslatePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="____commit.cs" />
+    <EmbeddedResource Include="MahouUI.resx">
+      <DependentUpon>MahouUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -201,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Mahou_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

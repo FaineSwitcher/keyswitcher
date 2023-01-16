@@ -1,1 +1,1 @@
-static class ____ { public static string commit=""; } 
+static class ____ { public static string commit = ""; }
