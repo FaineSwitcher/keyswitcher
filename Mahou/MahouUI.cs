@@ -231,9 +231,9 @@ namespace Mahou
                 chk_AppDataConfigs.Enabled = false;
             }
             // Visual designer always wants to put that string into resources, blast it!
-            txt_Snippets.Text = "-><" + KMHook.__ANY__ + ">====><" + KMHook.__ANY__ + ">__cursorhere()</" + KMHook.__ANY__ + "><====\r\n->mahou\r\n====>Mahou (魔法) - Magical layout switcher.<====\r\n->eml\r\n====>BladeMight@" +
-    "gmail.com<====\r\n->nowtime====>__date(HH:mm:ss)<====\r\n->nowdate====>__date(dd/MM/yyyy)<====\r\n->datepretty====>__date(dd, ddd MMM)<====" +
-    "\r\n->mahouver====>__version()<====\r\n->mahoutitle====>__title()<====\r\n->env_system====>__system()<====\r\n->date_esc====>\\__date(HH:mm:ss)<====";
+            txt_Snippets.Text = "-><" + KMHook.__ANY__ + ">====><" + KMHook.__ANY__ + ">__cursorhere()</" + KMHook.__ANY__ + "><====" +
+    "\r\n->nowtime====>__date(HH:mm:ss)<====\r\n->nowdate====>__date(dd/MM/yyyy)<====\r\n->datepretty====>__date(dd, ddd MMM)<====" +
+    "\r\n->env_system====>__system()<====\r\n->date_esc====>\\__date(HH:mm:ss)<====";
             // Switch to more secure connection.
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
             nud_LangTTPositionX.Minimum = nud_LangTTPositionY.Minimum = -100;
@@ -248,8 +248,7 @@ namespace Mahou
             //pan_TrSets.AutoScroll = pan_KeySets.AutoScroll = false;
             //pan_TrSets.HorizontalScroll.Maximum = pan_KeySets.HorizontalScroll.Maximum = 0;
             //pan_TrSets.AutoScroll = pan_KeySets.AutoScroll = true;
-            Text = "FaineSwitch (Mahou)";
-            Text += "-no request edition";
+            Text = "FaineSwitch ";
             //if (____.commit != "") {
             //	Text += " <"+____.commit+">";
             //	MMain.MyConfs.Write("Updates", "LatestCommit", ____.commit);
@@ -2084,7 +2083,7 @@ namespace Mahou
             MahouUIActivated((object)1, new EventArgs());
             if (SnippetsEnabled)
             {
-                if (!File.Exists(snipfile))
+                if (!File.Exists(snipfile) || String.IsNullOrWhiteSpace(File.ReadAllText(snipfile)))
                     File.WriteAllText(snipfile, txt_Snippets.Text, Encoding.UTF8);
                 if (File.Exists(snipfile))
                 {

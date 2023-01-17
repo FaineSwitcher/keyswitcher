@@ -461,14 +461,14 @@ namespace Mahou
             CheckBool("AutoSwitch", "DownloadInZip", "true");
             CheckBool("AutoSwitch", "SwitchToGuessLayout", "true");
             CheckBool("AutoSwitch", "SpaceAfter", "true");
-            CheckBool("AutoSwitch", "Enabled", "false");
+            CheckBool("AutoSwitch", "Enabled", "true");
             #endregion
             #region Snippets section
             CheckString("Snippets", "SnippetExpKeyOther", "");
             CheckString("Snippets", "SnippetExpandKey", "Space");
             CheckBool("Snippets", "SwitchToGuessLayout", "false");
             CheckBool("Snippets", "SpaceAfter", "false");
-            CheckBool("Snippets", "SnippetsEnabled", "false");
+            CheckBool("Snippets", "SnippetsEnabled", "true");
             CheckString("Snippets", "NCRSets", "set_0");
             #endregion
             #region Timings section

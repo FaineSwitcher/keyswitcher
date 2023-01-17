@@ -456,7 +456,7 @@ public class Languages
         { Element.DoubleHK, "Double hotkey" },
         { Element.ToggleLangPanel, "Toggle language panel" },
         { Element.TranslateSelection, "Show selected text translation" },
-        { Element.ToggleMahou, "Toogle Pause Mahou" },
+        { Element.ToggleMahou, "Toogle Pause" },
         { Element.CycleCase, "Cycle selected text case" },
         { Element.CustomConversion, "Custom text conversion" },
         { Element.ShowCMenuUnderMouse, "Show tray context menu under mouse" }, 
@@ -486,7 +486,7 @@ public class Languages
 		{ Element.CheckForUpdates, "Check for updates" },
         { Element.YouHaveLatest, "You have latest version." },
         { Element.TimeToUpdate, "I think it is time to update." },
-        { Element.UpdateMahou, "<- Update Mahou to new version" },
+        { Element.UpdateMahou, "<- Update to new version" },
         { Element.DownloadUpdate, "Download update" },
         { Element.ProxyConfig, "Proxy configuration" },
         { Element.ProxyServer, "Server:Port" },
@@ -501,14 +501,7 @@ public class Languages
         { Element.DbgInf_Copied, "Copied!" },
         { Element.Site, "Site" },
         { Element.Releases, "Releases" },
-        { Element.About, "Hotkeys: you can see them in Hotkeys tab.\r\n\r\n"+
-            "*Note that if your typing layout is not selected in settings,"+
-            " conversion will switch typed text to Language 1 (Ignored if Switch between layouts is OFF).\r\n\r\n"+
-            "**If you have problems with symbols conversion (selection) try enabling function [Use layout for whole word in CS], "+
-            " or [switching languages (1=>2 & 2=>1)]"+
-            " or [Convert selection layout switching] or Plus option." +
-            "***If you have problems with selection conversion try increasing tries to get selected text in Timings tab." +
-            "\r\nRead the wiki, or ask me if you have any questions about Mahou(email and links are below)!\r\n\r\nRegards." },
+        { Element.About, "" },
 		#endregion
 		#region Sync
 		{ Element.Backup, "Backup" },
@@ -545,11 +538,11 @@ public class Languages
         { Element.Layout, "Layout" },
         { Element.Hotkey, "Hotkey" },
         { Element.UpdateFound, "New version available!" },
-        { Element.UpdateComplete, "Mahou successfully updated!" },
+        { Element.UpdateComplete, "Successfully updated!" },
         { Element.ShowHide, "Show" },
-        { Element.Mahou, "Mahou (魔法) – magic layout switcher." },
+        { Element.Mahou, "Faine Switch" },
         { Element.Download, "Download" },
-        { Element.ConfigsCannot, "Configs file Mahou.ini cannot be " },
+        { Element.ConfigsCannot, "Configs file *.ini cannot be " },
         { Element.Created, "created" },
         { Element.Readen, "readen" },
         { Element.RetryInAppData, "Retry creating/switching to configs in %AppData%?" },
@@ -589,37 +582,37 @@ public class Languages
         { Element.TT_LDForMouse, "If enabled, when hovering text form with, a language tooltip will be displayed around the mouse." },
         { Element.TT_LDForCaret, "If enabled, a language tooltip will be displayed around the caret." },
         { Element.TT_Snippets, "If enabled, pressing SPACE will expand small (which starts with \"->\") word, to big (which is between \"====>\" and \"<====\") word/text fragment." },
-        { Element.TT_Logging, "Designed ONLY to search for errors, BIG PERFORMANCE IMPACT, logs are saved in Mahou's folder, in folder Logs." },
+        { Element.TT_Logging, "Designed ONLY to search for errors, BIG PERFORMANCE IMPACT, logs are saved in folder, in folder Logs." },
         { Element.TT_LDDifferentAppearence, "If enabled, you can select different appearance for main layouts(1&2), for others will be used from [around mouse] or [around caret]." },
         { Element.TT_TrayDisplayType, "Allows to choose what to display in tray icon.\nIf [Layout text] is selected, its appearance will be same as in Appearance tab's [Layout 1] and [Layout 2] appearance, and [around caret]/[around mouse] for any other layout.\nAlso it is possible to use flags for any other layout, just enable [Use flags] in [around caret]/[around mouse]." },
         { Element.TT_SymbolIgnore, "If enabled, symbols []{};':\"./<>? will be ignored.\nWorks in Convert last word, line, selection.\n" +
                                         "WON'T WORK IF YOU HAVE MORE THAN 2 LAYOUTS AND FUNCTION \"Switch between layouts\" disabled!" },
         { Element.TT_ConvertWords, "Allow to convert specific last word count by pressing hotkey and then 0-9 (0 = 10) on keyboard." },
-        { Element.TT_ExcludedPrograms, "Programs(excluded) in which convert hotkeys won't work.\nSeparators - spaces and new lines.\r\nIf process name has spaces in it replace it with _, if process name has the _ just write it so.\r\nExample: Process Name: foo_bar 2000.exe\r\nIn Mahou: foo_bar_2000.exe." },
+        { Element.TT_ExcludedPrograms, "Programs(excluded) in which convert hotkeys won't work.\nSeparators - spaces and new lines.\r\nIf process name has spaces in it replace it with _, if process name has the _ just write it so.\r\nExample: Process Name: foo_bar 2000.exe\r\nIn : foo_bar_2000.exe." },
         { Element.TT_MCDSSupport, "Add the ability to display language tooltip around caret in Sublime Text 3.\nFor it to work you need to install a plugin, link on right.\nSettings available in appearance tab:\nTop: Your ST3 titlebar + tab bar height,\nBottom: Your y pixels to ST3 console edit box(ctrl+`).\nFor different windows/themes settings will be different!" },
         { Element.TT_LDText, "Leave empty for auto-detect.\r\nEnter Alt+255(Numpad) to disable displaying of this layout, when display flags feature active." },
         { Element.TT_OneLayoutWholeWordCS, "Use one layout for whole word in Convert Selection,\r\n"+
                 "this feature uses quantity of rightly recognized chars IN ALL layouts to indicate layout of whole word,"+
                 "\r\nthis feature works PERFECTLY with words that have symbols around them, but word length must be greater that 1 char for this feature to work properly." },
-        { Element.TT_PersistentLayout, "Write here process names in which you want to have persistent layout, separators are spaces and new lines.\r\nIf process name has spaces in it replace it with _, if process name has the _ just write it so.\r\nExample: Process Name: foo_bar 2000.exe\r\nIn Mahou: foo_bar_2000.exe."},
+        { Element.TT_PersistentLayout, "Write here process names in which you want to have persistent layout, separators are spaces and new lines.\r\nIf process name has spaces in it replace it with _, if process name has the _ just write it so.\r\nExample: Process Name: foo_bar 2000.exe\r\nIn FaineSwitch: foo_bar_2000.exe."},
         { Element.TT_SwitchOnlyOnWindowChange, "Enabling this will disable timers and persistent layout will update only when active window changes(Windows message).\r\nConsumes CPU only when changing windows, i.e. way less CPU usage than timers."},
         { Element.TT_SwitchOnlyOnce, "If enabled switching layout will be only once per window,\r\ne.g. it will switch window's layout on activation if its process name matches selected only once.\r\nList of windows for which layout already been changed clears when clicked on Apply or OK."},
-        { Element.TT_OneLayout, "Allows to store global layout in Mahou, instead of layout per window/program.\r\n(if You have Windows 8 or greater this feature is built in Windows, so you don't need to use enable it in Mahou)"},
+        { Element.TT_OneLayout, "Allows to store global layout in FaineSwitch, instead of layout per window/program.\r\n(if You have Windows 8 or greater this feature is built in Windows, so you don't need to use enable it in FaineSwitch)"},
         { Element.TT_QWERTZ, "Makes right substitutes in QWERTZ keyboards for chars: ß, ä, ö, ü, Ä, Ö, Ü, Y, Z in Convert Selection\r\n(!! but convert selection layout switching(or +) not supported)." },
         { Element.TT_Change1KeyLayoutInExcluded, "Function is in Layouts tab -> [Change to specific layout by keys]." },
         { Element.TT_AllowConvertSWL, "Hotkeys affected: -> \r\n[Convert Selection]\r\n[Convert Last Word]\r\n[Convert Last Line]." },
         { Element.TT_SnippetsSwitchToGuessLayout, "Switches to *guessed* layout after snippet expanded.\r\nGuess works like in whole [One Layout for whole word in Convert Selection] function."},
-        { Element.TT_SnippetsCount, "If ORANGE snippets are OK.\r\nIf RED snippets has errors, maybe its unfinished etc.\r\nIn brackets are displayed count of commented lines(they are ignored by Mahou),\r\nvalid comment characters: # and // and only at start of line." },
+        { Element.TT_SnippetsCount, "If ORANGE snippets are OK.\r\nIf RED snippets has errors, maybe its unfinished etc.\r\nIn brackets are displayed count of commented lines(they are ignored by FaineSwitch),\r\nvalid comment characters: # and // and only at start of line." },
         { Element.TT_GuessKeyCodeFix, "Enabling this will make snippets, convert selection, auto-switch to send real virtual key codes instead of unicode chars,\r\nbut that will cause that all characters will be in your current layout.\r\nUseful in programs virtual machines.(BlueStacks, VirtualBox etc.)" },
-        { Element.TT_ConfigsInAppData, "If enabled Mahou will copy current configs to AppData, and will use them.\r\nAlso logs and snippets will be stored in %AppData%\\Mahou.\r\nAfter this checkbox state changed other checkboxes/datas configurations from user interface will not be saved, because they will be loaded from another configs(if switched, from Mahou's directory or from %AppData%\\Mahou).\r\nUseful if you need to run Mahou from Program Files directory by multiple users, and while some of them have no write access to it,\r\nalso it makes possible to have different configurations for each user." },
-        { Element.TT_KeysType, "Select which keys type to display in Mahou user interface, they are both working at same time,\r\nso try not to set same keys/hotkeys to avoid double layout switching."},
+        { Element.TT_ConfigsInAppData, "If enabled FaineSwitch will copy current configs to AppData, and will use them.\r\nAlso logs and snippets will be stored in %AppData%\\FaineSwitch.\r\nAfter this checkbox state changed other checkboxes/datas configurations from user interface will not be saved, because they will be loaded from another configs(if switched, from Mahou's directory or from %AppData%\\Mahou).\r\nUseful if you need to run Mahou from Program Files directory by multiple users, and while some of them have no write access to it,\r\nalso it makes possible to have different configurations for each user." },
+        { Element.TT_KeysType, "Select which keys type to display in FaineSwitch user interface, they are both working at same time,\r\nso try not to set same keys/hotkeys to avoid double layout switching."},
         { Element.TT_SnippetExpandKey, "Select custom snippet expand key,\r\nworks only for snippets, auto-switch will still expand only on space." },
         { Element.TT_LDUseWinMessages, "If enabled, timers will not be used to update language tooltips,\r\ninstead they will be updated on appropriate Windows Messages.\r\nLess CPU hungry than timers.\r\nMost CPU hungry is mouse tooltip with always enabled,\r\nconsumes CPU only on mouse move/clicks,\r\nto decrease its CPU usage, there will be 1 new config in Timings tab.\r\nSkip x Windows Messages(mouse movement) before updating tooltip." },
-        { Element.TT_RemapCapslockAsF18, "Remaps Caps Lock as F18, after this CapsLock will be disabled.\r\nTo toggle its state use Ctrl/Alt/Shift/Win + Caps Lock key.\r\n! Mahou window excluded from remap!\r\nIn Mahou you should set hotkeys as Caps Lock key, in other programs they will be remapped as F18.\r\nAfter changing hotkey don't forget to press Apply or OK." },
+        { Element.TT_RemapCapslockAsF18, "Remaps Caps Lock as F18, after this CapsLock will be disabled.\r\nTo toggle its state use Ctrl/Alt/Shift/Win + Caps Lock key.\r\n! FaineSwitch window excluded from remap!\r\nIn FaineSwitch you should set hotkeys as Caps Lock key, in other programs they will be remapped as F18.\r\nAfter changing hotkey don't forget to press Apply or OK." },
         { Element.TT_UseJKL, "Allows Mahou to retrieve layout from jkl.exe.\r\nAllows always to get right keyboard layout.(Highly recommended)\r\n" },
-        { Element.TT_ReadOnlyNA, "Switches to read-only mode when no write access to Mahou.ini.\r\nUseful for Administrators." },
-        { Element.TT_WriteInputHistory, "Writes input to history.txt(in Mahou folder or in AppData, depends on configuration),\nwith support of <Backspace> key!, though it may be slow if history too big." },
-        { Element.TT_UseDelayAfterBackspaces, "If enabled Mahou will wait some time after deleting old word and before inputting converted word.\r\nUseful if in some apps Mahou's function to convert last word doesn't work properly." },
+        { Element.TT_ReadOnlyNA, "Switches to read-only mode when no write access to FaineSwitch.ini.\r\nUseful for Administrators." },
+        { Element.TT_WriteInputHistory, "Writes input to history.txt(in FaineSwitch folder or in AppData, depends on configuration),\nwith support of <Backspace> key!, though it may be slow if history too big." },
+        { Element.TT_UseDelayAfterBackspaces, "If enabled FaineSwitch will wait some time after deleting old word and before inputting converted word.\r\nUseful if in some apps FaineSwitch's function to convert last word doesn't work properly." },
         { Element.TT_ShowSelectionTranslationHotkey, "Enable the translator in [Translator] tab in order this hotkey to work." },
         { Element.TT_LeftRightMB, "Left button - open file.\nRight button - open directory." },
         { Element.TT_CycleCase, "Cycle the selected text words case by:\r\nTitle => UPPER => lower => RanDoM => sWAP => Title => ..." },
@@ -630,8 +623,8 @@ public class Languages
         { Element.TT_LCTRLLALTTempLayout, @"Temporarily changes layout while you hold combination of keys containing: LCtrl+LAlt, until release of both.
 Fixes problem when instead of firing hotkeys containing Ctrl+Alt in apps Windows prints special character, which usually typed via AltGr(right Alt, in Windows AltGr = Ctrl+Alt).
 Relevant for extended and typographic layouts: US-International, UK-Extended, European languages layouts etc.
-You need to specify in text box to the right code of layout in which Mahou will be switching, choose layout that doesn't have AltGr combinations: for example English(US) 67699721.
-You can even specify layout which is not loaded in system, for example: English(US) 67699721, Mahou will load/unload it when pressing/releasing LCtrl+LAlt.
+You need to specify in text box to the right code of layout in which FaineSwitch will be switching, choose layout that doesn't have AltGr combinations: for example English(US) 67699721.
+You can even specify layout which is not loaded in system, for example: English(US) 67699721, FaineSwitch will load/unload it when pressing/releasing LCtrl+LAlt.
 Specify layout code 0 to disable this feature." },
 		#endregion
 		#region Messages

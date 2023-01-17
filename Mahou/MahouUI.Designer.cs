@@ -330,6 +330,7 @@ namespace Mahou
 		}
 		public void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MahouUI));
             this.tabs = new Mahou.MahouUI.TabControlC();
             this.tab_functions = new System.Windows.Forms.TabPage();
             this.lbl_TrayDislpayType = new System.Windows.Forms.Label();
@@ -3524,7 +3525,7 @@ namespace Mahou
             this.lnk_Email.Size = new System.Drawing.Size(170, 20);
             this.lnk_Email.TabIndex = 3;
             this.lnk_Email.TabStop = true;
-            this.lnk_Email.Text = "BladeMight@gmail.com";
+            this.lnk_Email.Text = "";
             this.lnk_Email.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_EmailLinkClicked);
             // 
             // lnk_Wiki
@@ -4273,7 +4274,7 @@ namespace Mahou
             this.Controls.Add(this.tabs);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = global::Mahou.Properties.Resources.Mahou;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MahouUI";
