@@ -10,6 +10,14 @@ Even selected text switches just between **selected** layouts, though if you lik
 
 ### Features
 
+###### How to enable autos witch:
+1. Open Snippets tab.
+2. Check 'Enable snippets'.
+3. Open Auto switch tab.
+4. Chack 'Enable auto-switch'.
+5. Press 'Update auto-switch dictionary' (If version with requests).
+6. Press 'Apply' button.
+
 ###### How to use:
 1. To convert selection hit <kbd>Scroll</kbd> when select text.
 2. To convert input hit <kbd>Pause</kbd> when typing.
