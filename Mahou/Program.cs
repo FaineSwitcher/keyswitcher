@@ -113,14 +113,14 @@ namespace Mahou
                     var mahou_folder_appd = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Mahou");
                     if (!Directory.Exists(mahou_folder_appd))
                         Directory.CreateDirectory(mahou_folder_appd);
-                    if (!File.Exists(Path.Combine(mahou_folder_appd, "Mahou.ini"))) // Copy main configs to appdata
-                        File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Mahou.ini"),
-                                  Path.Combine(mahou_folder_appd, "Mahou.ini"), true);
-                    Configs.filePath = Path.Combine(mahou_folder_appd, "Mahou.ini");
+                    if (!File.Exists(Path.Combine(mahou_folder_appd, "FaineSwitch.ini"))) // Copy main configs to appdata
+                        File.Copy(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FaineSwitch.ini"),
+                                  Path.Combine(mahou_folder_appd, "FaineSwitch.ini"), true);
+                    Configs.filePath = Path.Combine(mahou_folder_appd, "FaineSwitch.ini");
                     MyConfs = new Configs();
                 }
                 else
-                    Configs.filePath = Path.Combine(MahouUI.nPath, "Mahou.ini");
+                    Configs.filePath = Path.Combine(MahouUI.nPath, "FaineSwitch.ini");
                 MahouUI.latest_save_dir = Configs.filePath;
                 MahouUI.InitLanguage();
                 RefreshLCnMID();

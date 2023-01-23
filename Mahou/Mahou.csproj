@@ -240,6 +240,8 @@
     <Content Include="AS_dict.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="FaineSwitch.ico" />
+    <None Include="Resources\mainIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="AS_dict.txt">

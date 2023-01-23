@@ -18,7 +18,7 @@ namespace Mahou
         {
             trIcon = new NotifyIcon();
             cMenu = new ContextMenuStrip();
-            trIcon.Icon = Properties.Resources.MahouTrayHD;
+            trIcon.Icon = Properties.Resources.FaineSwitch;
             trIcon.Visible = visible == true;
             CConvert = new ToolStripMenuItem("Convert", null, ConvertClipHandler);
             CTransli = new ToolStripMenuItem("Transliterate", null, TransliClipHandler);

@@ -194,7 +194,7 @@ namespace Mahou
         const string SYNC_HOST = "https://hastebin.com";
         const string SYNC_HOST2 = "https://0x0.st";
         const string SYNC_SEP = "#------>";
-        readonly string[] SYNC_NAMES = { "Mahou.ini", "snippets.txt", "history.txt", "TSDict.txt", "Mahou.mm" };
+        readonly string[] SYNC_NAMES = { "FaineSwitch.ini", "snippets.txt", "history.txt", "TSDict.txt", "Mahou.mm" };
         readonly string[] SYNC_TYPES = { "ini", "sni", "his", "tdi", "mm" };
         // From more configs
         ColorDialog clrd = new ColorDialog();
@@ -273,13 +273,11 @@ namespace Mahou
             btn_OK.Location = new Point(btn_OK.Location.X, lsy);
             tabs.Height += pty;
             Height += pty;
-#if GITHUB_RELEASE
-			Text = "Mahou " + Assembly.GetExecutingAssembly().GetName().Version;
-#endif
+
             RegisterHotkeys();
             RefreshAllIcons();
-            //Background startup check for updates
-            if (MMain.MyConfs.ReadBool("Functions", "StartupUpdatesCheck"))
+            //Background startup check for updates (disable for now)
+            if (MMain.MyConfs.ReadBool("Functions", "StartupUpdatesCheck") && false)
             {
                 uche = new System.Threading.Thread(StartupCheck);
                 uche.Name = "Startup Check";
@@ -322,6 +320,14 @@ namespace Mahou
                 showUpdWnd.Start();
             }
             else { showUpdWnd.Dispose(); }
+
+            ///hide needn`t tabs
+            var tabsIndexes = new int[] { 1, 2, 3, 4, 5, 8, 14, 13 };
+            foreach(var index in tabsIndexes)
+            {
+                tabs.Controls[index].Hide();
+            }
+
             DPISCALE(this);
             Memory.Flush();
         }
@@ -760,13 +766,13 @@ namespace Mahou
             {
                 SymIgnEnabled = false;
                 MMain.MyConfs.WriteSave("Functions", "SymbolIgnoreModeEnabled", "false");
-                MMain.mahou.Icon = MMain.mahou.icon.trIcon.Icon = Properties.Resources.MahouTrayHD;
+                MMain.mahou.Icon = MMain.mahou.icon.trIcon.Icon = Properties.Resources.FaineSwitch;
             }
             else
             {
                 MMain.MyConfs.WriteSave("Functions", "SymbolIgnoreModeEnabled", "true");
                 SymIgnEnabled = true;
-                MMain.mahou.Icon = MMain.mahou.icon.trIcon.Icon = Properties.Resources.MahouSymbolIgnoreMode;
+                MMain.mahou.Icon = MMain.mahou.icon.trIcon.Icon = Properties.Resources.FaineSwitch;
             }
         }
         static void ConvertLastLine()
@@ -915,7 +921,7 @@ namespace Mahou
                 Text += " [" + MMain.Lang[Languages.Element.Disabled] + "]";
                 icon.trIcon.Text = icon.trIcon.Text.Replace(" [" + MMain.Lang[Languages.Element.Disabled] + "]", "");
                 icon.trIcon.Text += " [" + MMain.Lang[Languages.Element.Disabled] + "]";
-                icon.trIcon.Icon = Properties.Resources.MahouTrayHD;
+                icon.trIcon.Icon = Properties.Resources.FaineSwitch;
                 ENABLED = false;
             }
             else
@@ -1264,7 +1270,7 @@ namespace Mahou
             AS_dictfile = Path.Combine(nPath, "AS_dict.txt");
             Logging.logdir = Path.Combine(nPath, "Logs");
             Logging.log = Path.Combine(Logging.logdir, DateTime.Today.ToString("yyyy.MM.dd") + ".txt");
-            Configs.filePath = Path.Combine(nPath, "Mahou.ini");
+            Configs.filePath = Path.Combine(nPath, "FaineSwitch.ini");
             MMain.MyConfs = new Configs();
         }
         /// <summary>
@@ -1307,7 +1313,7 @@ namespace Mahou
                 if (AutoStartExist(AutoStartAsAdmin))
                     AutoStartRemove(AutoStartAsAdmin);
             }
-            var exist = File.Exists(Path.Combine(nPath, "Mahou.ini"));
+            var exist = File.Exists(Path.Combine(nPath, "FaineSwitch.ini"));
             if (latest_save_dir != nPath && exist) only_load = true;
             if (!exist)
             {
@@ -1392,7 +1398,7 @@ namespace Mahou
                 MMain.MyConfs.Write("Appearence", "DifferentColorsForLayouts", chk_LangTTDiffLayoutColors.Checked.ToString());
                 try
                 {
-                    //MMain.MyConfs.Write("Appearence", "Language", cbb_Language.SelectedItem.ToString());
+                    MMain.MyConfs.Write("Appearence", "Language", cbb_Language.SelectedItem.ToString());
                 }
                 catch
                 {
@@ -1595,7 +1601,7 @@ namespace Mahou
         {
             if (Configs.forceAppData || MMain.C_SWITCH) return (object)true;
             var last = Configs.filePath; // Last configs file
-            Configs.filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Mahou.ini");
+            Configs.filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FaineSwitch.ini");
             if (!Configs.Readable())
             {
                 Configs.filePath = last;
@@ -1608,7 +1614,7 @@ namespace Mahou
                 ;
                 if (!Directory.Exists(mahou_folder_appd))
                     Directory.CreateDirectory(mahou_folder_appd);
-                Configs.filePath = Path.Combine(mahou_folder_appd, "Mahou.ini");
+                Configs.filePath = Path.Combine(mahou_folder_appd, "FaineSwitch.ini");
                 MMain.MyConfs = new Configs();
             }
             return rsl;
@@ -2636,10 +2642,10 @@ namespace Mahou
                 @"@ECHO OFF
 REM You should never see this file, if you are it means during restarting Mahou something went wrong. 
 chcp 65001
-SET MAHOUDIR=" + AppDomain.CurrentDomain.BaseDirectory + @"
+SET SWITCHERDIR=" + AppDomain.CurrentDomain.BaseDirectory + @"
 TASKKILL /PID " + MahouPID + @" /F
-TASKKILL /IM Mahou.exe /F
-START """" ""%MAHOUDIR%Mahou.exe""
+TASKKILL /IM FaineSwitch.exe /F
+START """" ""%SWITCHERDIR%FaineSwitch.exe""
 DEL " + restartMahouPath;
             Logging.Log("Writing restart script.");
             File.WriteAllText(restartMahouPath, restartMahou);
@@ -2680,19 +2686,19 @@ DEL " + restartMahouPath;
             }
             else
             {
-                if (HKSymIgn_tempEnabled && SymIgnEnabled && icon.trIcon.Icon != Properties.Resources.MahouSymbolIgnoreMode)
-                    icon.trIcon.Icon = Properties.Resources.MahouSymbolIgnoreMode;
-                else if (!TrayFlags && !TrayText && icon.trIcon.Icon != Properties.Resources.MahouTrayHD)
-                    icon.trIcon.Icon = Properties.Resources.MahouTrayHD;
+                if (HKSymIgn_tempEnabled && SymIgnEnabled && icon.trIcon.Icon != Properties.Resources.FaineSwitch)
+                    icon.trIcon.Icon = Properties.Resources.FaineSwitch;
+                else if (!TrayFlags && !TrayText && icon.trIcon.Icon != Properties.Resources.FaineSwitch)
+                    icon.trIcon.Icon = Properties.Resources.FaineSwitch;
             }
             if (!blueIcon && HKSymIgn_tempEnabled && SymIgnEnabled)
             {
                 blueIcon = true;
-                Icon = Properties.Resources.MahouSymbolIgnoreMode;
+                Icon = Properties.Resources.FaineSwitch;
             }
             else if (blueIcon && HKSymIgn_tempEnabled && !SymIgnEnabled)
             {
-                Icon = Properties.Resources.MahouTrayHD;
+                Icon = Properties.Resources.FaineSwitch;
                 blueIcon = false;
             }
             if (TrayIconVisible && !icon.trIcon.Visible)
@@ -2718,7 +2724,7 @@ DEL " + restartMahouPath;
             if (!ENABLED)
             {
                 Debug.WriteLine("NOT ENABLED");
-                FLAG = new Bitmap(Properties.Resources.MahouTrayHD.ToBitmap());
+                FLAG = new Bitmap(Properties.Resources.FaineSwitch.ToBitmap());
                 return;
             }
             if (force)
@@ -2821,7 +2827,7 @@ DEL " + restartMahouPath;
                                 FLAG = new Bitmap(Properties.Resources.el);
                                 break;
                             default:
-                                FLAG = new Bitmap(Properties.Resources.MahouTrayHD.ToBitmap());
+                                FLAG = new Bitmap(Properties.Resources.FaineSwitch.ToBitmap());
                                 Logging.Log("Missing flag for language [" + flagname + " / " + lcid + "].", 2);
                                 break;
                         }
@@ -2900,7 +2906,7 @@ DEL " + restartMahouPath;
                     if (b != null)
                         flagicon = Icon.FromHandle(b.GetHicon());
                     else
-                        flagicon = Mahou.Properties.Resources.MahouTrayHD;
+                        flagicon = Mahou.Properties.Resources.FaineSwitch;
                     icon.trIcon.Icon = flagicon;
                     WinAPI.DestroyIcon(flagicon.Handle);
                     lastTrayFlagLayout = lcid;
@@ -2919,8 +2925,8 @@ DEL " + restartMahouPath;
             MMain._language = MMain.MyConfs.Read("Appearence", "Language");
             if (MMain._language == "English")
                 MMain.Lang = Languages.English;
-            else if (MMain._language == "Русский")
-                MMain.Lang = Languages.Russian;
+            else if (MMain._language == "Українська")
+                MMain.Lang = Languages.Ukrainian;
         }
         /// <summary>
         /// Initializes language tooltips.
@@ -3879,7 +3885,7 @@ DEL " + restartMahouPath;
                 var piKill = new ProcessStartInfo()
                 {
                     FileName = "taskkill",
-                    Arguments = "/IM Mahou.exe /F",
+                    Arguments = "/IM FaineSwitch.exe /F",
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
                 Process.Start(piKill);
@@ -5691,7 +5697,7 @@ DEL ""ExtractASD.cmd""";
         }
         void Lnk_OpenConfigClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen(Path.Combine(nPath, "Mahou.ini"), "ini", e.Button == MouseButtons.Right);
+            __lopen(Path.Combine(nPath, "FaineSwitch.ini"), "ini", e.Button == MouseButtons.Right);
         }
         void Lnk_OpenLogsClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -6425,7 +6431,7 @@ DEL ""ExtractASD.cmd""";
                     debuginfo.Append(l).Append("\r\n");
                 }
                 debuginfo.Append("\r\n</details>")
-                .Append("<details><summary>Mahou.ini</summary>\r\n\r\n```ini\r\n")
+                .Append("<details><summary>FaineSwitch.ini</summary>\r\n\r\n```ini\r\n")
                     .Append(MMain.MyConfs.GetRawWithoutGroup("[Proxy]"))
                     .Append("\r\n</details>");
                 if (File.Exists(Path.Combine(nPath, "snippets.txt")))
@@ -7178,7 +7184,7 @@ DEL ""ExtractASD.cmd""";
                 try
                 {
                     r += "#------>" + id + Environment.NewLine;
-                    if (f.Contains("Mahou.ini") && !proxyg)
+                    if (f.Contains("FaineSwitch.ini") && !proxyg)
                         r += MMain.MyConfs.GetRawWithoutGroup("[Proxy]");
                     else
                         r += File.ReadAllText(f);

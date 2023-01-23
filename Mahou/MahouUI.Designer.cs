@@ -718,7 +718,7 @@ namespace Mahou
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Multiline = true;
             this.tabs.Name = "tabs";
-            this.tabs.SelectedIndex = 0;
+            this.tabs.SelectedIndex = 6;
             this.tabs.Size = new System.Drawing.Size(567, 316);
             this.tabs.TabIndex = 0;
             this.tabs.SelectedIndexChanged += new System.EventHandler(this.MahouUIActivated);
@@ -1551,7 +1551,7 @@ namespace Mahou
             this.cbb_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_Language.FormattingEnabled = true;
             this.cbb_Language.Items.AddRange(new object[] {
-            "Русский",
+            "Українська",
             "English"});
             this.cbb_Language.Location = new System.Drawing.Point(435, 54);
             this.cbb_Language.Name = "cbb_Language";
@@ -3123,9 +3123,9 @@ namespace Mahou
             this.chk_rMini.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_rMini.Location = new System.Drawing.Point(6, 22);
             this.chk_rMini.Name = "chk_rMini";
-            this.chk_rMini.Size = new System.Drawing.Size(96, 24);
+            this.chk_rMini.Size = new System.Drawing.Size(127, 24);
             this.chk_rMini.TabIndex = 9;
-            this.chk_rMini.Text = "Mahou.ini";
+            this.chk_rMini.Text = "FaineSwitch.ini";
             this.chk_rMini.UseVisualStyleBackColor = true;
             this.chk_rMini.CheckedChanged += new System.EventHandler(this.Chk_CheckedChanged);
             // 
@@ -3286,9 +3286,9 @@ namespace Mahou
             this.chk_Mini.AutoSize = true;
             this.chk_Mini.Location = new System.Drawing.Point(6, 22);
             this.chk_Mini.Name = "chk_Mini";
-            this.chk_Mini.Size = new System.Drawing.Size(96, 24);
+            this.chk_Mini.Size = new System.Drawing.Size(127, 24);
             this.chk_Mini.TabIndex = 0;
-            this.chk_Mini.Text = "Mahou.ini";
+            this.chk_Mini.Text = "FaineSwitch.ini";
             this.chk_Mini.UseVisualStyleBackColor = true;
             this.chk_Mini.CheckedChanged += new System.EventHandler(this.Chk_CheckedChanged);
             // 
@@ -3522,10 +3522,9 @@ namespace Mahou
             this.lnk_Email.AutoSize = true;
             this.lnk_Email.Location = new System.Drawing.Point(211, 249);
             this.lnk_Email.Name = "lnk_Email";
-            this.lnk_Email.Size = new System.Drawing.Size(170, 20);
+            this.lnk_Email.Size = new System.Drawing.Size(0, 20);
             this.lnk_Email.TabIndex = 3;
             this.lnk_Email.TabStop = true;
-            this.lnk_Email.Text = "";
             this.lnk_Email.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_EmailLinkClicked);
             // 
             // lnk_Wiki

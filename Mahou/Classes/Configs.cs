@@ -152,16 +152,16 @@ namespace Mahou
     {
         public static bool forceAppData;
         public static bool fine = false;
-        /// <summary> Mahou.ini file path. </summary>
-        public static string filePath = Path.Combine(MahouUI.nPath, "Mahou.ini");
+        /// <summary> FaineSwitch.ini file path. </summary>
+        public static string filePath = Path.Combine(MahouUI.nPath, "FaineSwitch.ini");
 
         public INI _INI;
-        /// <summary> Creates if it is not exist and test that configs file Mahou.ini its readable, on startup can create dialog about forced AppData configs if configs file failed to be created/readen. </summary>
+        /// <summary> Creates if it is not exist and test that configs file FaineSwitch.ini its readable, on startup can create dialog about forced AppData configs if configs file failed to be created/readen. </summary>
         public static void CreateConfigsFile()
         {
             if (File.Exists(Path.Combine(MahouUI.mahou_folder_appd, ".force")))
             {
-                filePath = Path.Combine(MahouUI.mahou_folder_appd, "Mahou.ini");
+                filePath = Path.Combine(MahouUI.mahou_folder_appd, "FaineSwitch.ini");
                 forceAppData = true;
             }
             bool create = true;
@@ -203,7 +203,7 @@ namespace Mahou
                 if (!Directory.Exists(MahouUI.mahou_folder_appd))
                     Directory.CreateDirectory(MahouUI.mahou_folder_appd);
                 var copy = File.Exists(filePath);
-                filePath = Path.Combine(MahouUI.mahou_folder_appd, "Mahou.ini");
+                filePath = Path.Combine(MahouUI.mahou_folder_appd, "FaineSwitch.ini");
                 File.Create(Path.Combine(MahouUI.mahou_folder_appd, ".force"));
                 MMain.MyConfs = new Configs();
                 return true;

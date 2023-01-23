@@ -171,6 +171,16 @@ namespace Mahou.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon FaineSwitch {
+            get {
+                object obj = ResourceManager.GetObject("FaineSwitch", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap fr {
@@ -227,36 +237,6 @@ namespace Mahou.Properties {
             get {
                 object obj = ResourceManager.GetObject("la", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon Mahou {
-            get {
-                object obj = ResourceManager.GetObject("Mahou", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon MahouSymbolIgnoreMode {
-            get {
-                object obj = ResourceManager.GetObject("MahouSymbolIgnoreMode", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon MahouTrayHD {
-            get {
-                object obj = ResourceManager.GetObject("MahouTrayHD", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         
