@@ -7,7 +7,7 @@
     <ProjectGuid>{DD81ABB0-2011-47DE-AA11-7F3AAA1FD445}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mahou</RootNamespace>
+    <RootNamespace>FaineSwitch</RootNamespace>
     <AssemblyName>FaineSwitch</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

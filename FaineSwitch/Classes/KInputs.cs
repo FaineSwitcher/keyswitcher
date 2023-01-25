@@ -191,7 +191,7 @@ namespace FaineSwitch
         /// <param name="inputs">Array of INPUT to be inputted.</param>
         public static void MakeInput(WinAPI.INPUT[] inputs, int mods = 0)
         { //Simply, sends input
-            var rinputs = new List<WinAPI.INPUT>();
+           var rinputs = new List<WinAPI.INPUT>();
             if (Hotkey.ContainsModifier(mods, (int)WinAPI.MOD_SHIFT)) rinputs.Add(AddKey(Keys.LShiftKey, true));
             if (Hotkey.ContainsModifier(mods, (int)WinAPI.MOD_ALT)) rinputs.Add(AddKey(Keys.LMenu, true));
             if (Hotkey.ContainsModifier(mods, (int)WinAPI.MOD_CONTROL)) rinputs.Add(AddKey(Keys.LControlKey, true));

@@ -546,7 +546,7 @@ namespace FaineSwitch
             CheckString("Appearence", "Layout1BackColor", "#FFFFFF");
             CheckString("Appearence", "Layout1ForeColor", "#000000");
             // Language tooltip appearence for Layout 1
-            CheckString("Appearence", "Language", "English");
+            CheckString("Appearence", "Language", "Українська");
             CheckBool("Appearence", "MouseLTAlways", "false");
             CheckBool("Appearence", "DifferentColorsForLayouts", "false");
             CheckBool("Appearence", "DisplayLangTooltipForCaretOnChange", "false");

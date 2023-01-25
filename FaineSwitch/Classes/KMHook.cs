@@ -4046,6 +4046,7 @@ namespace FaineSwitch
             DoSelf(() =>
             {
                 Debug.WriteLine(">> ST CLW");
+                //ASKME:comments -> get count backs from inputed string
                 var backs = YuKeys.Length;
                 // Fix for cmd exe pause hotkey leaving one char.
                 //if (!skipsnip) { // E.g. not from AutoSwitch
@@ -4055,12 +4056,12 @@ namespace FaineSwitch
                     Program.switcher.HKCLast.VirtualKeyCode == (int)Keys.Pause)
                        && SwitcherUI.cmdbackfix)
                     backs++;
-                //					Debug.WriteLine("ACT_CLASSN: " + clsNM);
+                
                 if (clsNM.StartsWith("Qt5"))
                 { // Qt5 keyboard message handling seems slow, so wait for it before starting 
                     Thread.Sleep(250);
                 }
-                //}
+                
                 Debug.WriteLine(">> LC Aft. " + (Program.locales.Length * 20));
                 var rewr = new StringBuilder();
                 if (!skipsnip)
@@ -4069,9 +4070,11 @@ namespace FaineSwitch
                     c_snip.Clear();
                 }
                 Logging.Log("Deleting old word, with lenght of [" + YuKeys.Length + "].");
+                //ASKME:comments -> Make backspace input
                 KInputs.MakeInput(KInputs.AddPress(Keys.Back, backs));
                 if (SwitcherUI.UseDelayAfterBackspaces)
                     Thread.Sleep(Program.switcher.DelayAfterBackspaces);
+                //ASKME:comments -> create new input array
                 var q = new List<WinAPI.INPUT>();
                 for (int i = 0; i < YuKeys.Length; i++)
                 {
@@ -4088,6 +4091,7 @@ namespace FaineSwitch
                     }
                     else
                     {
+                        //ASKME:comments -> add key
                         var k = YuKeys[i].key; var u = YuKeys[i].upper;
                         Logging.Log("An YuKey with state passed, key = {" + k + "}, upper = [" + u + "].");
                         var upp = u && !Control.IsKeyLocked(Keys.CapsLock);
@@ -4095,6 +4099,7 @@ namespace FaineSwitch
                             q.Add(KInputs.AddKey(Keys.LShiftKey, true));
                         if (!SymbolIgnoreRules(k, u, wasLocale, ref q))
                             q.AddRange(KInputs.AddPress(k));
+                        //ASKME:comments -> add press shift if word is Upper
                         if (upp)
                             q.Add(KInputs.AddKey(Keys.LShiftKey, false));
                         if (!skipsnip)
@@ -4118,6 +4123,7 @@ namespace FaineSwitch
                 {
                     Logging.Log("[SNI] Snip rewrite: " + rewr + " => " + new string(c_snip.ToArray()));
                 }
+                //ASKME:comments -> Make correct word input
                 KInputs.MakeInput(q.ToArray());
                 SwitcherUI.hk_result = true;
                 if (YuKeys.Length > 0 && last)

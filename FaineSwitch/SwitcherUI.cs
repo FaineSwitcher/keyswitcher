@@ -321,12 +321,7 @@ namespace FaineSwitch
             }
             else { showUpdWnd.Dispose(); }
 
-            ///hide needn`t tabs
-            var tabsIndexes = new int[] { 1, 2, 3, 4, 5, 8, 14, 13 };
-            foreach(var index in tabsIndexes)
-            {
-                tabs.Controls[index].Hide();
-            }
+            cbb_Language.SelectedItem = Program.MyConfs.Read("Appearence", "Language");
 
             DPISCALE(this);
             Memory.Flush();
@@ -1403,7 +1398,7 @@ namespace FaineSwitch
                 catch
                 {
                     Logging.Log("Language saving failed, restored to English.");
-                    Program.MyConfs.Write("Appearence", "Language", "English");
+                    Program.MyConfs.Write("Appearence", "Language", "Українська");
                 }
                 Program.MyConfs.Write("Appearence", "MouseLTUpperArrow", mouseLTUpperArrow.ToString());
                 Program.MyConfs.Write("Appearence", "CaretLTUpperArrow", caretLTUpperArrow.ToString());
