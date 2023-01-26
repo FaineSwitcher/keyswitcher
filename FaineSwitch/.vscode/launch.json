@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Mahou vscode debug",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "debug",
+            "program": "${workspaceRoot}/bin/Debug_x86_x64/Mahou.exe",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "console": "internalConsole"
+        }
+    ]
+}
