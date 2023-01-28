@@ -61,6 +61,49 @@ namespace FaineSwitch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -&gt;ффквмфкл
+        ///====&gt;aardvark&lt;====
+        ///-&gt;ффквцщда
+        ///====&gt;aardwolf&lt;====
+        ///-&gt;ффкщт
+        ///====&gt;aaron&lt;====
+        ///-&gt;фифсл
+        ///====&gt;aback&lt;====
+        ///-&gt;фифсгі
+        ///====&gt;abacus&lt;====
+        ///-&gt;фифае
+        ///====&gt;abaft&lt;====
+        ///-&gt;фифдщту
+        ///====&gt;abalone&lt;====
+        ///-&gt;фифтвщт
+        ///====&gt;abandon&lt;====
+        ///-&gt;фифтвщтув
+        ///====&gt;abandoned&lt;====
+        ///-&gt;фифтвщтьуте
+        ///====&gt;abandonment&lt;====
+        ///-&gt;фифтвщті
+        ///====&gt;abandons&lt;====
+        ///-&gt;фифіу
+        ///====&gt;abase&lt;====
+        ///-&gt;фифіув
+        ///====&gt;abased&lt;====
+        ///-&gt;фифіуьуте
+        ///====&gt;abasement&lt;====
+        ///-&gt;фифір
+        ///====&gt;abash&lt;====
+        ///-&gt;фифірув
+        ///====&gt;abashed&lt;====
+        ///-&gt;фифеу
+        ///====&gt;abate&lt;====
+        ///-&gt;фифеув [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string AS_dict {
+            get {
+                return ResourceManager.GetString("AS_dict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap be {

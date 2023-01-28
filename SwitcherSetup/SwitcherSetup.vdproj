@@ -15,26 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_13A81C0F59754AD9BC9D57CFDEE3B0FA"
+        "MsmKey" = "8:_7CB57E02AD2D4C128AB85C5A4832DAC7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_88ED74D4CA4041938BB7D52B118A48DB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B61DDFABB79C4225BAE5C3F54F6E095C"
+        "MsmKey" = "8:_B7943723568B4748AEA538915A71A632"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_88ED74D4CA4041938BB7D52B118A48DB"
+        "OwnerKey" = "8:_B7943723568B4748AEA538915A71A632"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -94,6 +88,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -124,29 +126,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_13A81C0F59754AD9BC9D57CFDEE3B0FA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CB57E02AD2D4C128AB85C5A4832DAC7"
             {
-            "SourcePath" = "8:..\\FaineSwitch\\AS_dict.txt"
-            "TargetName" = "8:AS_dict.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_C223720B6AD2434BA5AF31D89C6C1F0A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B61DDFABB79C4225BAE5C3F54F6E095C"
-            {
-            "SourcePath" = "8:..\\FaineSwitch\\FaineSwitch.ico"
+            "SourcePath" = "8:..\\FaineSwitch.ico"
             "TargetName" = "8:FaineSwitch.ico"
             "Tag" = "8:"
             "Folder" = "8:_C223720B6AD2434BA5AF31D89C6C1F0A"
@@ -232,7 +214,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Faine Switch"
         "ProductCode" = "8:{E3CE6A53-E7FC-4DAB-8EE2-5ADC3E136011}"
-        "PackageCode" = "8:{EB9D1D6D-A329-43BB-A12E-0E7DA7D77EE8}"
+        "PackageCode" = "8:{EDFD31E9-1A23-4EB4-B502-83174D01D1DF}"
         "UpgradeCode" = "8:{863A7A56-F3D8-444D-8E6E-68443E1B63FD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -249,7 +231,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_7CB57E02AD2D4C128AB85C5A4832DAC7"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -352,7 +334,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_951848A192B04E6B85B6C5F4287E1F26"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8C5DAB129F27428BBA9B48FC67385278"
             {
             "Name" = "8:FaineSwitch"
             "Arguments" = "8:"
@@ -360,13 +342,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_88ED74D4CA4041938BB7D52B118A48DB"
+            "Target" = "8:_B7943723568B4748AEA538915A71A632"
             "Folder" = "8:_1F673517EBBF4C1297D65F76EAD5F286"
             "WorkingFolder" = "8:_C223720B6AD2434BA5AF31D89C6C1F0A"
-            "Icon" = "8:_B61DDFABB79C4225BAE5C3F54F6E095C"
+            "Icon" = "8:_7CB57E02AD2D4C128AB85C5A4832DAC7"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E8D64942B7094192B8F74DA3E0B5A14B"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CA702FFAAE4C4CB29850C266E0B81EAE"
             {
             "Name" = "8:FaineSwitch"
             "Arguments" = "8:"
@@ -374,10 +356,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_88ED74D4CA4041938BB7D52B118A48DB"
+            "Target" = "8:_B7943723568B4748AEA538915A71A632"
             "Folder" = "8:_5901EDDD190B4ADF8F041BE065BD1206"
             "WorkingFolder" = "8:_C223720B6AD2434BA5AF31D89C6C1F0A"
-            "Icon" = "8:_B61DDFABB79C4225BAE5C3F54F6E095C"
+            "Icon" = "8:_7CB57E02AD2D4C128AB85C5A4832DAC7"
             "Feature" = "8:"
             }
         }
@@ -779,7 +761,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_88ED74D4CA4041938BB7D52B118A48DB"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B7943723568B4748AEA538915A71A632"
             {
             "SourcePath" = "8:..\\FaineSwitch\\obj\\Debug\\FaineSwitch.exe"
             "TargetName" = "8:"

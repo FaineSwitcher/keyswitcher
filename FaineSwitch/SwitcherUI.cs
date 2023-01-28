@@ -2081,6 +2081,15 @@ namespace FaineSwitch
                     ChangeAutoSwitchDictionaryTextBox();
                     UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
                 }
+                else if(!File.Exists(AS_dictfile))
+                {
+                    AutoSwitchDictionaryRaw = Properties.Resources.AS_dict;
+                    File.WriteAllText(AS_dictfile, AutoSwitchDictionaryRaw);
+                    AutoSwitchDictionaryTooBig = AutoSwitchDictionaryRaw.Length > 710000;
+                    ChangeAutoSwitchDictionaryTextBox();
+                    UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
+                }
+
             SwitcherUIActivated((object)1, new EventArgs());
             if (SnippetsEnabled)
             {

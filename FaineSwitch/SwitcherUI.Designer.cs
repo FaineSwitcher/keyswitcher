@@ -1110,7 +1110,7 @@ namespace FaineSwitch
             this.chk_BlockHKWithCtrl.AutoSize = true;
             this.chk_BlockHKWithCtrl.Location = new System.Drawing.Point(8, 127);
             this.chk_BlockHKWithCtrl.Name = "chk_BlockHKWithCtrl";
-            this.chk_BlockHKWithCtrl.Size = new System.Drawing.Size(233, 24);
+            this.chk_BlockHKWithCtrl.Size = new System.Drawing.Size(264, 24);
             this.chk_BlockHKWithCtrl.TabIndex = 12;
             this.chk_BlockHKWithCtrl.Text = "Block FaineSwitch hotkeys with Ctrl.";
             this.chk_BlockHKWithCtrl.UseVisualStyleBackColor = true;
@@ -3040,7 +3040,7 @@ namespace FaineSwitch
             this.chk_rMmm.AutoSize = true;
             this.chk_rMmm.Location = new System.Drawing.Point(434, 22);
             this.chk_rMmm.Name = "chk_rMmm";
-            this.chk_rMmm.Size = new System.Drawing.Size(106, 24);
+            this.chk_rMmm.Size = new System.Drawing.Size(137, 24);
             this.chk_rMmm.TabIndex = 12;
             this.chk_rMmm.Text = "FaineSwitch.mm";
             this.chk_rMmm.UseVisualStyleBackColor = true;
@@ -3181,7 +3181,7 @@ namespace FaineSwitch
             this.chk_Mmm.AutoSize = true;
             this.chk_Mmm.Location = new System.Drawing.Point(434, 22);
             this.chk_Mmm.Name = "chk_Mmm";
-            this.chk_Mmm.Size = new System.Drawing.Size(106, 24);
+            this.chk_Mmm.Size = new System.Drawing.Size(137, 24);
             this.chk_Mmm.TabIndex = 11;
             this.chk_Mmm.Text = "FaineSwitch.mm";
             this.chk_Mmm.UseVisualStyleBackColor = true;
@@ -3811,7 +3811,7 @@ namespace FaineSwitch
             this.Hlbl_TrayHoverMM.AutoSize = true;
             this.Hlbl_TrayHoverMM.Location = new System.Drawing.Point(8, 642);
             this.Hlbl_TrayHoverMM.Name = "Hlbl_TrayHoverMM";
-            this.Hlbl_TrayHoverMM.Size = new System.Drawing.Size(476, 20);
+            this.Hlbl_TrayHoverMM.Size = new System.Drawing.Size(507, 20);
             this.Hlbl_TrayHoverMM.TabIndex = 43;
             this.Hlbl_TrayHoverMM.Text = "Display FaineSwitch.mm menu when hovering tray icon for:(ms, 0 = disable)";
             // 
@@ -3840,9 +3840,10 @@ namespace FaineSwitch
             this.Hchk_LMBTrayLayoutChangeDC.AutoSize = true;
             this.Hchk_LMBTrayLayoutChangeDC.Location = new System.Drawing.Point(8, 197);
             this.Hchk_LMBTrayLayoutChangeDC.Name = "Hchk_LMBTrayLayoutChangeDC";
-            this.Hchk_LMBTrayLayoutChangeDC.Size = new System.Drawing.Size(557, 24);
+            this.Hchk_LMBTrayLayoutChangeDC.Size = new System.Drawing.Size(588, 24);
             this.Hchk_LMBTrayLayoutChangeDC.TabIndex = 41;
-            this.Hchk_LMBTrayLayoutChangeDC.Text = "[LMB-Tray-Mod] Double Left Click on Tray toggles FaineSwitch window. (only with ↑)";
+            this.Hchk_LMBTrayLayoutChangeDC.Text = "[LMB-Tray-Mod] Double Left Click on Tray toggles FaineSwitch window. (only with ↑" +
+    ")";
             this.Hchk_LMBTrayLayoutChangeDC.UseVisualStyleBackColor = true;
             // 
             // Hlbl_ASIgnoreTimeout
@@ -4105,7 +4106,7 @@ namespace FaineSwitch
             this.Hlbl_AutoRestartMins.AutoSize = true;
             this.Hlbl_AutoRestartMins.Location = new System.Drawing.Point(8, 124);
             this.Hlbl_AutoRestartMins.Name = "Hlbl_AutoRestartMins";
-            this.Hlbl_AutoRestartMins.Size = new System.Drawing.Size(374, 20);
+            this.Hlbl_AutoRestartMins.Size = new System.Drawing.Size(405, 20);
             this.Hlbl_AutoRestartMins.TabIndex = 10;
             this.Hlbl_AutoRestartMins.Text = "Auto-Restart FaineSwitch(min) (0 - disable, restart required):";
             // 
@@ -4168,7 +4169,7 @@ namespace FaineSwitch
             this.Hlbl_OverlayExcluded.AutoSize = true;
             this.Hlbl_OverlayExcluded.Location = new System.Drawing.Point(8, 67);
             this.Hlbl_OverlayExcluded.Name = "Hlbl_OverlayExcluded";
-            this.Hlbl_OverlayExcluded.Size = new System.Drawing.Size(331, 20);
+            this.Hlbl_OverlayExcluded.Size = new System.Drawing.Size(362, 20);
             this.Hlbl_OverlayExcluded.TabIndex = 5;
             this.Hlbl_OverlayExcluded.Text = "Overlay processes disable FaineSwitch: ( | - separator)";
             // 
