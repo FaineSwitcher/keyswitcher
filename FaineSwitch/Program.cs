@@ -51,11 +51,15 @@ namespace FaineSwitch
                 Logging.Log("Unexpected error occurred, FaineSwitch exited, error details:\r\n" + e.Message + "\r\n" + e.StackTrace, 1);
             };
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-            if (System.Globalization.CultureInfo.InstalledUICulture.TwoLetterISOLanguageName == "ru")
-                Lang = Languages.Russian;
+            if (System.Globalization.CultureInfo.InstalledUICulture.TwoLetterISOLanguageName == "ua")
+            {
+                Lang = Languages.Ukrainian;
+            }
             MyConfs = new Configs();
             if (Configs.forceAppData && Configs.fine)
+            {
                 MyConfs.Write("Functions", "AppDataConfigs", "true");
+            }
             Logging.Log("FaineSwitch started.");
             var ind = 0;
             using (var mutex = new Mutex(false, GGPU_Mutex))

@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace FaineSwitch
 {
@@ -150,29 +149,28 @@ namespace FaineSwitch
     }
     class Configs
     {
-        public static bool forceAppData;
+        public static bool forceAppData = true;
         public static bool fine = false;
         /// <summary> FaineSwitch.ini file path. </summary>
-        public static string filePath = Path.Combine(SwitcherUI.nPath, "FaineSwitch.ini");
+        public static string filePath = Path.Combine(SwitcherUI.switcher_folder_appd, "FaineSwitch.ini");
 
         public INI _INI;
-        /// <summary> Creates if it is not exist and test that configs file FaineSwitch.ini its readable, on startup can create dialog about forced AppData configs if configs file failed to be created/readen. </summary>
+        /// <summary> 
+        /// Creates if it is not exist and test that config file FaineSwitch.ini is readable
+        /// on startup to create dialog about forced AppData config if config file failed to be created/read. 
+        /// </summary>
         public static void CreateConfigsFile()
         {
-            if (File.Exists(Path.Combine(SwitcherUI.switcher_folder_appd, ".force")))
-            {
-                filePath = Path.Combine(SwitcherUI.switcher_folder_appd, "FaineSwitch.ini");
-                forceAppData = true;
-            }
             bool create = true;
             try
             {
                 if (!File.Exists(filePath))
-                { //Create an UTF-16 configuration file
-                  // Test write permissions
-                    var dummy = Path.Combine(SwitcherUI.nPath, "dummy");
-                    File.WriteAllText(dummy, "dummy");
-                    File.Delete(dummy);
+                {
+                    if (!Directory.Exists(SwitcherUI.switcher_folder_appd))
+                    {
+                        Directory.CreateDirectory(SwitcherUI.switcher_folder_appd);
+                    }
+
                     // Write configs start
                     File.WriteAllText(filePath, "!Unicode(✔), FaineSwitch settings file", Encoding.Unicode);
                     create = false;
@@ -190,19 +188,26 @@ namespace FaineSwitch
             {
                 fine = false;
                 if (!SwitchToAppData(create, e))
+                {
                     System.Diagnostics.Process.GetCurrentProcess().Kill();
+                }
             }
         }
         public static bool SwitchToAppData(bool create, Exception e)
         {
             if (Program.C_SWITCH) { return false; }
             Logging.Log("Configs read/write error, details: " + e.Message + "\n" + e.StackTrace);
-            if (MessageBox.Show(Program.Lang[Languages.Element.ConfigsCannot] + (create ? Program.Lang[Languages.Element.Created] : Program.Lang[Languages.Element.Readen]) + ", " + Program.Lang[Languages.Element.Error].ToLower() + ":\r\n" + e.Message + "\r\n" + Program.Lang[Languages.Element.RetryInAppData],
-                                   Program.Lang[Languages.Element.Error], MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            DialogResult swithcToAppDataDialogResult = MessageBox.Show(
+                Program.Lang[Languages.Element.ConfigsCannot] + (create ? Program.Lang[Languages.Element.Created] : Program.Lang[Languages.Element.Readen]) + ", " + Program.Lang[Languages.Element.Error].ToLower() + ":\r\n" + e.Message + "\r\n" + Program.Lang[Languages.Element.RetryInAppData],
+                Program.Lang[Languages.Element.Error],
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Error);
+            if (swithcToAppDataDialogResult == DialogResult.Yes)
             {
                 if (!Directory.Exists(SwitcherUI.switcher_folder_appd))
+                {
                     Directory.CreateDirectory(SwitcherUI.switcher_folder_appd);
-                var copy = File.Exists(filePath);
+                }
                 filePath = Path.Combine(SwitcherUI.switcher_folder_appd, "FaineSwitch.ini");
                 File.Create(Path.Combine(SwitcherUI.switcher_folder_appd, ".force"));
                 Program.MyConfs = new Configs();

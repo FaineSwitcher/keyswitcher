@@ -1,12 +1,14 @@
-![](http://i.imgur.com/3BpvbgI.png)
+![logo](FaineSwitch.ico)
 
-# Mahou (魔法) - The magic Layout Switcher.
+# FaineSwitcher - The magic Layout Switcher.
+
+> This is fork from [Mahou project](https://github.com/BladeMight/Mahou). We disable all network activity that that Mahou has and add Ukraine dictionary for switching from EN to UA and UA to EN keyboard.
 
 ### How it works
-Mahou works like **You** want, configure it as you wish, by default it switches *not by next layout*, but by **specified in settings** layouts.\
-Even selected text switches just between **selected** layouts, though if you liked cycling through, starting from `v1.0.2.9` there is **Cycle Mode**, in `v2.0.0.0` and above to activate it you just need to disable function `Switch between layouts`. By default Mahou stores configurations in folder where Mahou.exe is, but there is a function that makes Mahou store them in %AppData%.
+FaineSwitcher works like **You** want, configure it as you wish, by default it switches *not by next layout*, but by **specified in settings** layouts.\
+Even selected text switches just between **selected** layouts, though if you liked cycling through, starting from `v1.0.2.9` there is **Cycle Mode**, in `v2.0.0.0` and above to activate it you just need to disable function `Switch between layouts`. By default FaineSwitch stores configurations in folder where FaineSwitch.exe is, but there is a function that makes FaineSwitch store them in %AppData%.
 
-### Mahou requires [.NET 4.0 or greater](https://www.microsoft.com/en-US/download/details.aspx?id=17718) to work properly. Beginning from v1.4.3.9 error when running on .NET 4.0 were fixed.
+### FaineSwitcher requires [.NET Framework 4.8 or greater](https://www.microsoft.com/en-US/download/details.aspx?id=17718) to work properly. Beginning from v1.4.3.9 error when running on .NET 4.0 were fixed.
 
 ### Features
 
@@ -34,9 +36,16 @@ Even selected text switches just between **selected** layouts, though if you lik
 - <kbd>Shift</kbd>+<kbd>F11</kbd> - Convert multiple last words, to select quantity press 1-9(0 = 10) after hotkey on keyboard(not NumPad)..
 - <kbd>Shift</kbd>+<kbd>F9</kbd> - Toggle language panel visibility.
 - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Win</kbd>+<kbd>Insert</kbd> - To toggle configs windows visibility.
-- <kbd>Shift</kbd>+<kbd>Alt</kbd><kbd>PageUp</kbd> - Restart Mahou.
-- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Win</kbd>+<kbd>F12</kbd> - To exit Mahou.
-- Other hotkeys disabled by default or have description in Mahou.
+- <kbd>Shift</kbd>+<kbd>Alt</kbd><kbd>PageUp</kbd> - Restart FaineSwitch.
+- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Win</kbd>+<kbd>F12</kbd> - To exit FaineSwitch.
+- Other hotkeys disabled by default or have description in FaineSwitch.
 
 ### License
-Mahou is under [GPL v2+]().
+FaineSwitch is under [GPL v2+]().
+
+# Contribute
+
+## Getting Started
+
+1. Install Visual Studio 2022
+2. Install [Microsoft Visual Studio Installer Projects](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)
