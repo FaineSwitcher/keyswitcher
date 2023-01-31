@@ -174,7 +174,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_5901EDDD190B4ADF8F041BE065BD1206"
                     {
-                    "Name" = "8:FaineSwitch"
+                    "Name" = "8:FaineSwitcher"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -212,9 +212,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Faine Switch"
+        "ProductName" = "8:FaineSwitcher"
         "ProductCode" = "8:{E3CE6A53-E7FC-4DAB-8EE2-5ADC3E136011}"
-        "PackageCode" = "8:{EDFD31E9-1A23-4EB4-B502-83174D01D1DF}"
+        "PackageCode" = "8:{A1702CDF-1C5C-4CF6-9B4B-B3C5DE749A43}"
         "UpgradeCode" = "8:{863A7A56-F3D8-444D-8E6E-68443E1B63FD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -222,12 +222,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:SaasJet & FainteTech"
+        "Manufacturer" = "8:SaaSJet & FainteTech"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Faine Switch Setup"
+        "Title" = "8:FaineSwitcher Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:SaasJet & FainteTech"
+        "ARPCONTACT" = "8:SaaSJet & FainteTech"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -336,7 +336,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8C5DAB129F27428BBA9B48FC67385278"
             {
-            "Name" = "8:FaineSwitch"
+            "Name" = "8:FaineSwitcher"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -350,7 +350,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CA702FFAAE4C4CB29850C266E0B81EAE"
             {
-            "Name" = "8:FaineSwitch"
+            "Name" = "8:FaineSwitcher"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
