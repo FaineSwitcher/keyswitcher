@@ -1913,7 +1913,7 @@ namespace FaineSwitcher
             MouseLangTooltipEnabled = Program.MyConfs.ReadBool("Appearence", "DisplayLangTooltipForMouse");
             CaretLangTooltipEnabled = Program.MyConfs.ReadBool("Appearence", "DisplayLangTooltipForCaret");
             GuessKeyCodeFix = chk_GuessKeyCodeFix.Checked = Program.MyConfs.ReadBool("Functions", "GuessKeyCodeFix");
-            RemapCapslockAsF18 = chk_RemapCapsLockAsF18.Checked = Program.MyConfs.ReadBool("Functions", "RemapCapslockAsF18");
+            RemapCapslockAsF18 = Program.MyConfs.ReadBool("Functions", "RemapCapslockAsF18");
             UseJKL = chk_GetLayoutFromJKL.Checked = Program.MyConfs.ReadBool("Functions", "UseJKL");
             ReadOnlyNA = chk_ReadOnlyNA.Checked = Program.MyConfs.ReadBool("Functions", "ReadOnlyNA");
             WriteInputHistory = chk_WriteInputHistory.Checked = Program.MyConfs.ReadBool("Functions", "WriteInputHistory");

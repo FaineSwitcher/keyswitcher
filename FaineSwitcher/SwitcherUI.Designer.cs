@@ -905,6 +905,8 @@ namespace FaineSwitcher
             this.chk_RemapCapsLockAsF18.TabIndex = 22;
             this.chk_RemapCapsLockAsF18.Text = "Remap Caps Lock as F18.";
             this.chk_RemapCapsLockAsF18.UseVisualStyleBackColor = true;
+            this.chk_RemapCapsLockAsF18.Visible = false;
+            this.chk_RemapCapsLockAsF18.Checked = false;
             // 
             // chk_AppDataConfigs
             // 
