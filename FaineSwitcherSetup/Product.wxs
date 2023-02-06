@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define FaineSwitcher_TargetDir=$(var.FaineSwitcher.TargetDir)?>
+  <Product Id="*" Name="FaineSwitcher" Language="1033" Version="1.0.0.0" Manufacturer="https://saasjet.com/" UpgradeCode="62cead8a-23fd-4389-98e4-04fb7f61f62d">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+
+    <!-- UI settings -->
+    <UI>
+      <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONROOTDIRECTORY" />
+      <UIRef Id="WixUI_InstallDir" />
+      <Publish Dialog="ExitDialog"
+          Control="Finish"
+          Event="DoAction"
+          Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch FaineSwitcher" />
+
+    <!-- include the start app action -->
+    <Property Id="WixShellExecTarget" Value="[#FaineSwitch.exe]" />
+    <CustomAction Id="LaunchApplication"
+        BinaryKey="WixCA"
+        DllEntry="WixShellExec"
+        Impersonate="yes" />
+   
+    <!--define references -->
+    <Feature Id="ProductFeature" Title="FaineSwitcher" Level="1">
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="ApplicationShortcutDesctop" />
+      <ComponentRef Id="FaineSwitch.exe" />
+      <ComponentRef Id="AS_dict.txt" />
+      <ComponentRef Id="FaineSwitch.exe.config" />
+    </Feature>
+
+    <!--define path references -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONROOTDIRECTORY" Name="FaineSwitcher" />
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="My Application Name"/>
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <!-- shortcuts -->
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="cde1e030-eb64-49a5-b7b8-400b379c2d1a">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="FaineSwitch"
+                  Description="FaineSwitch"
+                  Target="[#FaineSwitch.exe]"
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\MyCompany\FaineSwitch" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationShortcutDesctop" Guid="73982b5d-04c1-4f76-8a7a-a71db62c34cf">
+        <Shortcut Id="ApplicationShortcutDesctopShortcut"
+                  Name="FaineSwitch"
+                  Description="FaineSwitch"
+                  Target="[#FaineSwitch.exe]"
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+        <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\MyCompany\FaineSwitch" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+    
+    
+    <!-- file registration -->
+    <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+      <Component Id="FaineSwitch.exe.config" Guid="c06088f7-41d9-4b9d-9b59-8b76da106cdf">
+        <File Id="FaineSwitch.exe.config" Name="FaineSwitch.exe.config" Source="$(var.FaineSwitcher_TargetDir)FaineSwitch.exe.config" />
+      </Component>
+      <Component Id="FaineSwitch.exe" Guid="bb6891a0-5e51-477f-8f84-d80747cbcc1b">
+        <File Id="FaineSwitch.exe" Name="FaineSwitch.exe" Source="$(var.FaineSwitcher_TargetDir)FaineSwitch.exe" />
+      </Component>
+      <Component Id="AS_dict.txt" Guid="5c0a3e22-d781-4394-80a9-8e2723486ce8">
+        <File Id="AS_dict.txt" Name="AS_dict.txt" Source="$(var.FaineSwitcher_TargetDir)AS_dict.txt" />
+      </Component>
+    </DirectoryRef>
+  </Product>
+</Wix>

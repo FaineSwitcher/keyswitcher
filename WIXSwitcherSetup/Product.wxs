@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define FaineSwitcher_TargetDir=$(var.FaineSwitcher.TargetDir)?>
+	<Product Id="*" Name="FaineSwitcher" Language="1033" Version="1.0.0.0" Manufacturer="SaaSJet and FaineTech" UpgradeCode="8f7e242c-358e-4b57-ad46-7fb179be2e13">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="My Wpf Application" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="ApplicationShortcutDesktop" />
+      <ComponentGroupRef Id="Files_files" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="FaineSwitcher">
+          <Directory Id="Files" Name="Files" />
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="FaineSwitcher" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="9bd13330-6540-406f-a3a8-d7f7c69ae7f9">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="FaineSwitcher" Description="FaineSwitcher" Target="[INSTALLFOLDER]FaineSwitcher.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\FaineSwitcher" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationShortcutDesktop" Guid="cde1e030-eb64-49a5-b7b8-400b379c2d1a">
+        <Shortcut Id="ApplicationDesktopShortcut" Name="FaineSwitcher" Description="FaineSwitcher" Target="[INSTALLFOLDER]FaineSwitcher.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveDesktopFolder" Directory="DesktopFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\FaineSwitcher" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <!-- <Component Id="ProductComponent"> -->
+      <!-- TODO: Insert files, registry keys, and other resources here. -->
+      <!-- </Component> -->
+      <Component Id="FaineSwitcher.exe" Guid="0f9a1acd-803f-4ecb-a283-7537a05a5eb1">
+        <File Id="FaineSwitcher.exe" Name="FaineSwitcher.exe" Source="$(var.FaineSwitcher_TargetDir)FaineSwitcher.exe" />
+      </Component>
+      <Component Id="FaineSwitcher.exe.config" Guid="749595ae-e1ec-4afa-93ef-3a9ae3b938f7">
+        <File Id="FaineSwitcher.exe.config" Name="FaineSwitcher.exe.config" Source="$(var.FaineSwitcher_TargetDir)FaineSwitcher.exe.config" />
+      </Component>
+      <Component Id="MyWpfDependency.dll" Guid="45361aba-e09e-415b-8a2e-057b77ba41b9">
+        <File Id="MyWpfDependency.dll" Name="MyWpfDependency.dll" Source="$(var.FaineSwitcher_TargetDir)MyWpfDependency.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="Files_files" Directory="Files">
+      <Component Id="Files_TextFile1.txt" Guid="aea868c1-2d18-400d-88fa-e506b16ef130">
+        <File Id="Files_TextFile1.txt" Name="TextFile1.txt" Source="$(var.FaineSwitcher_TargetDir)Files\TextFile1.txt" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
