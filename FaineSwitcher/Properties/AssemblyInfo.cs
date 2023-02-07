@@ -9,9 +9,9 @@ using System.Resources;
 [assembly: AssemblyTitle("FaineSwitcher")]
 [assembly: AssemblyDescription("A magic layout switcher.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BladeMight")]
+[assembly: AssemblyCompany("SaaSJet")]
 [assembly: AssemblyProduct("FaineSwitcher")]
-[assembly: AssemblyCopyright("Copyright © BladeMight 2019")]
+[assembly: AssemblyCopyright("Copyright © SaaSJet 2023")]
 [assembly: AssemblyTrademark("BM")]
 [assembly: AssemblyCulture("")]
 // Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 
@@ -30,7 +30,7 @@ using System.Resources;
 // Можно задать все значения или принять номер построения и номер редакции по умолчанию, 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.9.0.1")]
-[assembly: AssemblyFileVersion("2.9.0.1")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: NeutralResourcesLanguage("")]
-[assembly: AssemblyDefaultAlias("BladeMight")]
+[assembly: AssemblyDefaultAlias("SaaSJet")]

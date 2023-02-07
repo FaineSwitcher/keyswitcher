@@ -1884,6 +1884,8 @@ namespace FaineSwitcher
             #region Functions
             Program.MyConfs = new Configs();
             AutoStartAsAdmin = Program.MyConfs.ReadBool("Functions", "AutoStartAsAdmin");
+            if(chk_AutoStart.Checked && !AutoStartExist(AutoStartAsAdmin))
+                CreateAutoStart();
             chk_AutoStart.Checked = AutoStartExist(AutoStartAsAdmin);
             lbl_TaskExist.Visible = AutoStartExist(true);
             lbl_LinkExist.Visible = AutoStartExist(false);
@@ -3607,8 +3609,8 @@ DEL " + restartSwitcherPath;
             var xml = @"<?xml version=""1.0"" encoding=""UTF-16""?>
 <Task version=""1.2"" xmlns=""http://schemas.microsoft.com/windows/2004/02/mit/task"">
   <RegistrationInfo>
-    <Date>2017-08-16T15:11:10.596</Date>
-    <Author>Kirin\BladeMight</Author>
+    <Date>2023-01-16T15:11:10.596</Date>
+    <Author>SaaSJet</Author>
     <Description>Starts FaineSwitcher with highest priveleges.</Description>
   </RegistrationInfo>
   <Triggers>

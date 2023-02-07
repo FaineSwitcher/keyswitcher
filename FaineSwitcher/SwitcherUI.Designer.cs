@@ -1105,6 +1105,7 @@ namespace FaineSwitcher
             this.chk_AutoStart.TabIndex = 0;
             this.chk_AutoStart.Text = "Start with Windows.";
             this.chk_AutoStart.UseVisualStyleBackColor = true;
+            this.chk_AutoStart.Checked = true;
             this.chk_AutoStart.CheckedChanged += new System.EventHandler(this.Chk_AutoStartCheckedChanged);
             // 
             // chk_BlockHKWithCtrl
