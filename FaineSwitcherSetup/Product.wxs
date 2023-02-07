@@ -7,6 +7,17 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate />
 
+    <!-- install .net framework 4.8 -->
+    <Property Id="NETFRAMEWORK48" Value="dotNetFx48Full_x86_x64.exe" />
+    <Condition Message="This setup requires .NET Framework 4.8. Please install the .NET Framework then run this setup again.">
+      <![CDATA[Installed OR NETFRAMEWORK48]]>
+    </Condition>
+    <InstallExecuteSequence>
+      <Custom Action="NetFx48FullX86X64" After="InstallFinalize">NOT Installed AND NETFRAMEWORK48</Custom>
+    </InstallExecuteSequence>
+    <CustomAction Id="NetFx48FullX86X64" BinaryKey="dotNetFx48Full_x86_x64" ExeCommand="[NETFRAMEWORK48]" Return="ignore" />
+    <Binary Id="dotNetFx48Full_x86_x64" SourceFile="dotNetFx48Full_x86_x64.exe"/>
+
 
     <!-- UI settings -->
     <UI>
@@ -25,7 +36,7 @@
         BinaryKey="WixCA"
         DllEntry="WixShellExec"
         Impersonate="yes" />
-   
+
     <!--define references -->
     <Feature Id="ProductFeature" Title="FaineSwitcher" Level="1">
       <ComponentRef Id="ApplicationShortcut" />
@@ -71,8 +82,8 @@
         <RegistryValue Root="HKCU" Key="Software\MyCompany\FaineSwitch" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
-    
-    
+
+
     <!-- file registration -->
     <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
       <Component Id="FaineSwitch.exe.config" Guid="c06088f7-41d9-4b9d-9b59-8b76da106cdf">

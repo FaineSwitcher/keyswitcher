@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FaineSwitcherSetup.wax" />
+    <Content Include="dotNetFx48Full_x86_x64.exe" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FaineSwitcher\FaineSwitcher.csproj">
