@@ -9,9 +9,9 @@ using System.Resources;
 [assembly: AssemblyTitle("FaineSwitcher")]
 [assembly: AssemblyDescription("A magic layout switcher.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SaaSJet")]
+[assembly: AssemblyCompany("SaaSJet & FaineTech")]
 [assembly: AssemblyProduct("FaineSwitcher")]
-[assembly: AssemblyCopyright("Copyright © SaaSJet 2023")]
+[assembly: AssemblyCopyright("Copyright © SaaSJet & FaineTech 2023")]
 [assembly: AssemblyTrademark("BM")]
 [assembly: AssemblyCulture("")]
 // Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 
@@ -33,4 +33,4 @@ using System.Resources;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: NeutralResourcesLanguage("")]
-[assembly: AssemblyDefaultAlias("SaaSJet")]
+[assembly: AssemblyDefaultAlias("SaaSJet & FaineTech")]
