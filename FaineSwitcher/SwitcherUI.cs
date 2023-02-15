@@ -5713,11 +5713,11 @@ DEL ""ExtractASD.cmd""";
         }
         void Lnk_RepositoryLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("https://github.com/FaineSwitcher/keyswitcher", "http", false, e.Button == MouseButtons.Right);
+            __lopen("https://github.com/FaineSwitcher/keyswitcher", "https", false, e.Button == MouseButtons.Right);
         }
         void Lnk_SiteLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           // __lopen("http://blademight.github.io/FaineSwitcher/", "http", false, e.Button == MouseButtons.Right);
+            __lopen("https://faineswitcher.com/", "https", false, e.Button == MouseButtons.Right);
         }
         void Lnk_WikiLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
