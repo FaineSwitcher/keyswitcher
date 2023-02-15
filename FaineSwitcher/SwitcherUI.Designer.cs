@@ -3474,7 +3474,7 @@ namespace FaineSwitcher
             // tab_about
             // 
             this.tab_about.Controls.Add(this.btn_DebugInfo);
-           // this.tab_about.Controls.Add(this.txt_Help);
+            this.tab_about.Controls.Add(this.txt_Help);
            // this.tab_about.Controls.Add(this.lnk_Releases);
            // this.tab_about.Controls.Add(this.lnk_Email);
           //  this.tab_about.Controls.Add(this.lnk_Wiki);

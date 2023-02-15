@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.InteropServices.ComTypes;
 public class Languages
 {
@@ -540,7 +541,7 @@ public class Languages
         { Element.UpdateFound, "New version available!" },
         { Element.UpdateComplete, "Successfully updated!" },
         { Element.ShowHide, "Show" },
-        { Element.Switcher, "Faine Switch" },
+        { Element.Switcher, "Faine Switch " + Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version },
         { Element.Download, "Download" },
         { Element.ConfigsCannot, "Configs file *.ini cannot be " },
         { Element.Created, "created" },
@@ -871,7 +872,7 @@ Specify layout code 0 to disable this feature." },
         { Element.UpdateFound, "Доступна нова версія!" },
         { Element.UpdateComplete, "Faine Switcher успішно оновлено!" },
         { Element.ShowHide, "Показати" },
-        { Element.Switcher, "Faine Switcher – вбудований перемикач розкладок." },
+        { Element.Switcher, $"Faine Switcher {Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version} – вбудований перемикач розкладок." },
         { Element.Download, "Завантажити" },
         { Element.ConfigsCannot, "Файл налаштувань Faine Switcher.ini не може бути " },
         { Element.Created, "створений" },
@@ -1202,7 +1203,7 @@ Specify layout code 0 to disable this feature." },
         { Element.UpdateFound, "Доступна новая версия!" },
         { Element.UpdateComplete, "Faine Switcher успешно обновлен!" },
         { Element.ShowHide, "Показать" },
-        { Element.Switcher, "Faine Switcher (魔法) – волшебный переключатель раскладок." },
+        { Element.Switcher, $"Faine Switcher {Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>().Version} – волшебный переключатель раскладок." },
         { Element.Download, "Скачать" },
         { Element.ConfigsCannot, "Файл настроек Faine Switcher.ini не может быть " },
         { Element.Created, "создан" },

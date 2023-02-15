@@ -5713,7 +5713,7 @@ DEL ""ExtractASD.cmd""";
         }
         void Lnk_RepositoryLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            __lopen("http://github.com/BladeMight/FaineSwitcher", "http", false, e.Button == MouseButtons.Right);
+            __lopen("https://github.com/FaineSwitcher/keyswitcher", "http", false, e.Button == MouseButtons.Right);
         }
         void Lnk_SiteLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
