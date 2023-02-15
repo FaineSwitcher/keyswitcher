@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define FaineSwitcher_TargetDir=$(var.FaineSwitcher.TargetDir)?>
-  <Product Id="*" Name="FaineSwitcher" Language="1033" Version="1.0.0.0" Manufacturer="https://saasjet.com/" UpgradeCode="62cead8a-23fd-4389-98e4-04fb7f61f62d">
+  <Product Id="*" Name="Faine Switcher" Language="1033" Version="1.0.0.0" Manufacturer="https://saasjet.com/" UpgradeCode="62cead8a-23fd-4389-98e4-04fb7f61f62d">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-    <MediaTemplate />
+    <MediaTemplate EmbedCab="yes"/>
+
+    <!--<Media Id="2133" Cabinet="cab3.cab" EmbedCab="yes" />
+    <Media Id="12311" Cabinet="cab1.cab" EmbedCab="yes" />-->
+    <!--<MediaTemplate EmbedCab="yes" />-->
 
     <!-- install .net framework 4.8 -->
     <Property Id="NETFRAMEWORK48" Value="dotNetFx48Full_x86_x64.exe" />
@@ -62,7 +66,7 @@
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="cde1e030-eb64-49a5-b7b8-400b379c2d1a">
         <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="FaineSwitch"
+                  Name="Faine Switch"
                   Description="FaineSwitch"
                   Target="[#FaineSwitch.exe]"
                   WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
@@ -74,7 +78,7 @@
     <DirectoryRef Id="DesktopFolder">
       <Component Id="ApplicationShortcutDesctop" Guid="73982b5d-04c1-4f76-8a7a-a71db62c34cf">
         <Shortcut Id="ApplicationShortcutDesctopShortcut"
-                  Name="FaineSwitch"
+                  Name="Faine Switch"
                   Description="FaineSwitch"
                   Target="[#FaineSwitch.exe]"
                   WorkingDirectory="APPLICATIONROOTDIRECTORY"/>

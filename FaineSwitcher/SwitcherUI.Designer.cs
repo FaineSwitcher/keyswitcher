@@ -709,11 +709,11 @@ namespace FaineSwitcher
             this.tabs.Controls.Add(this.tab_hotkeys);
             this.tabs.Controls.Add(this.tab_sounds);
             this.tabs.Controls.Add(this.tab_LangPanel);
-            this.tabs.Controls.Add(this.tab_translator);
-            this.tabs.Controls.Add(this.tab_sync);
-            this.tabs.Controls.Add(this.tab_updates);
+            //this.tabs.Controls.Add(this.tab_translator);
+          //  this.tabs.Controls.Add(this.tab_sync);
+          //  this.tabs.Controls.Add(this.tab_updates);
             this.tabs.Controls.Add(this.tab_about);
-            this.tabs.Controls.Add(this.tab_Hidden);
+           // this.tabs.Controls.Add(this.tab_Hidden);
             this.tabs.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Multiline = true;
@@ -3474,10 +3474,10 @@ namespace FaineSwitcher
             // tab_about
             // 
             this.tab_about.Controls.Add(this.btn_DebugInfo);
-            this.tab_about.Controls.Add(this.txt_Help);
-            this.tab_about.Controls.Add(this.lnk_Releases);
-            this.tab_about.Controls.Add(this.lnk_Email);
-            this.tab_about.Controls.Add(this.lnk_Wiki);
+           // this.tab_about.Controls.Add(this.txt_Help);
+           // this.tab_about.Controls.Add(this.lnk_Releases);
+           // this.tab_about.Controls.Add(this.lnk_Email);
+          //  this.tab_about.Controls.Add(this.lnk_Wiki);
             this.tab_about.Controls.Add(this.lnk_Site);
             this.tab_about.Controls.Add(this.lnk_Repository);
             this.tab_about.Location = new System.Drawing.Point(4, 79);

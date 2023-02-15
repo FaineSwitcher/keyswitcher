@@ -248,7 +248,7 @@ namespace FaineSwitcher
             //pan_TrSets.AutoScroll = pan_KeySets.AutoScroll = false;
             //pan_TrSets.HorizontalScroll.Maximum = pan_KeySets.HorizontalScroll.Maximum = 0;
             //pan_TrSets.AutoScroll = pan_KeySets.AutoScroll = true;
-            Text = "FaineSwitcher ";
+            Text = "Faine Switcher ";
             //if (____.commit != "") {
             //	Text += " <"+____.commit+">";
             //	Program.MyConfs.Write("Updates", "LatestCommit", ____.commit);
@@ -5713,7 +5713,7 @@ DEL ""ExtractASD.cmd""";
         }
         void Lnk_RepositoryLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-          //  __lopen("http://github.com/BladeMight/FaineSwitcher", "http", false, e.Button == MouseButtons.Right);
+            __lopen("http://github.com/BladeMight/FaineSwitcher", "http", false, e.Button == MouseButtons.Right);
         }
         void Lnk_SiteLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

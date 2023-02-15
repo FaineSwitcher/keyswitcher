@@ -61,7 +61,15 @@ namespace FaineSwitcher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -&gt;ффквмфкл
+        ///   Looks up a localized string similar to -&gt;ошкф
+        ///====&gt;jira&lt;====
+        ///-&gt;іффі
+        ///====&gt;saas&lt;====
+        ///-&gt;федфіішфт
+        ///====&gt;atlassian&lt;====
+        ///-&gt;wt
+        ///====&gt;це&lt;====
+        ///-&gt;ффквмфкл
         ///====&gt;aardvark&lt;====
         ///-&gt;ффквцщда
         ///====&gt;aardwolf&lt;====
@@ -88,14 +96,7 @@ namespace FaineSwitcher.Properties {
         ///-&gt;фифіув
         ///====&gt;abased&lt;====
         ///-&gt;фифіуьуте
-        ///====&gt;abasement&lt;====
-        ///-&gt;фифір
-        ///====&gt;abash&lt;====
-        ///-&gt;фифірув
-        ///====&gt;abashed&lt;====
-        ///-&gt;фифеу
-        ///====&gt;abate&lt;====
-        ///-&gt;фифеув [rest of string was truncated]&quot;;.
+        ///====&gt;abas [rest of string was truncated]&quot;;.
         /// </summary>
         public static string AS_dict {
             get {
@@ -218,7 +219,7 @@ namespace FaineSwitcher.Properties {
         /// </summary>
         public static System.Drawing.Icon FaineSwitcher {
             get {
-                object obj = ResourceManager.GetObject("FaineSwitch", resourceCulture);
+                object obj = ResourceManager.GetObject("FaineSwitcher", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
