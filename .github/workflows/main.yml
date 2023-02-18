@@ -1,0 +1,47 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Build FaineSwitcher project
+      run: msbuild FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=bin/FaineSwitcher
+
+    - name: Build FaineSwitcherSetup project
+      run: msbuild FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release /p:OutputPath=bin/FaineSwitcherSetup
+
+    - name: Create Release
+      uses: actions/create-release@v1.0.4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ github.run_number }}
+        release_name: Release v${{ github.run_number }}
+        body: |
+          Automatic build and release of FaineSwitcher and FaineSwitcherSetup projects
+        draft: false
+        prerelease: false
+
+    - name: Upload FaineSwitcher binaries
+      uses: actions/upload-artifact@v1
+      with:
+        name: FaineSwitcher
+        path: bin/FaineSwitcher
+
+    - name: Upload FaineSwitcherSetup binaries
+      uses: actions/upload-artifact@v1
+      with:
+        name: FaineSwitcherSetup
+        path: bin/FaineSwitcherSetup
