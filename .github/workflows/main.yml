@@ -33,7 +33,7 @@ jobs:
     - name: Build FaineSwitcherSetup project
       run: |
           cd FaineSwitcherSetup
-          msbuild.exe FaineSwitcherSetup.wixproj /p:Configuration=Release
+          msbuild.exe FaineSwitcherSetup.wixproj /p:Configuration=Release  /p:OutputPath=bin/FaineSwitcherSetup
           
     - name: Create Release
       uses: actions/create-release@v1
@@ -53,7 +53,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
         files: |
-          FaineSwitcherSetup/bin/Release/FaineSwitcherSetup.msi
+          FaineSwitcherSetup/bin/FaineSwitcherSetup/FaineSwitcherSetup.msi
         token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
         owner: ${{ github.repository_owner }}
         repo: ${{ github.event.repository.name }}
