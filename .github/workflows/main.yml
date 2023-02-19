@@ -48,12 +48,12 @@ jobs:
         prerelease: false
 
     - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
+      uses: xresloader/upload-to-github-release@v1
       with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: FaineSwitcherSetup/bin/Release/FaineSwitcherSetup.msi"
-        asset_name: FaineSwitcherSetup.msi
-        asset_content_type: application/octet-stream
-
+        files: |
+          FaineSwitcherSetup/bin/Release/FaineSwitcherSetup.msi
+        token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
+        owner: ${{ github.repository_owner }}
+        repo: ${{ github.event.repository.name }}
+        tag: v${{ github.run_number }}
+        overwrite: true
