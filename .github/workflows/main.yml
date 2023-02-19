@@ -28,31 +28,37 @@ jobs:
       run: nuget restore FaineSwitcher/FaineSwitcher.sln
 
     - name: Build FaineSwitcher project
-      run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=FaineSwitcher/bin/FaineSwitcher
+      run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=FaineSwitcher/bin/Debug_x86_x64
   
     - name: Build FaineSwitcherSetup project
-      run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release  /p:OutputPath=FaineSwitcherSetup/bin/FaineSwitcherSetup
+      run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release  /p:OutputPath=${{env.DOTNET_ROOT}}/myapp
           
     - name: Create Release
+      id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ github.run_number }}
-        release_name: Release v${{ github.run_number }}
-        body: |
-          Automatic build and release of FaineSwitcher and FaineSwitcherSetup projects
+        tag_name: v1.0.0
+        release_name: Release 1.0.0
+        body: 'Release notes for version 1.0.0.'
         draft: false
         prerelease: false
-
-    - name: Upload Release Asset
-      uses: xresloader/upload-to-github-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
+        
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
       with:
-        files: "FaineSwitcher/bin/FaineSwitcherSetup/*.msi"
-        token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
-        owner: ${{ github.repository_owner }}
-        repo: ${{ github.event.repository.name }}
-        tag: v${{ github.run_number }}
-        overwrite: true
+        name: myapp
+        path: ${{env.DOTNET_ROOT}}/myapp
+        
+    - name: Attach Artifact to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{env.DOTNET_ROOT}}/myapp
+        asset_name: myapp
+        asset_content_type: application/zip
+
+   
