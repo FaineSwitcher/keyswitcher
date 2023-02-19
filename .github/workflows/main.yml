@@ -33,7 +33,8 @@ jobs:
     - name: Build FaineSwitcherSetup project
       run: |
           cd FaineSwitcherSetup
-          msbuild.exe FaineSwitcherSetup.wixproj
+          msbuild.exe FaineSwitcherSetup.wixproj /p:Configuration=Release
+          $assetPath = "$(pwd)\bin\Release\FaineSwitcherSetup.msi"
 
     - name: Create Release
       uses: actions/create-release@v1
@@ -47,15 +48,13 @@ jobs:
         draft: false
         prerelease: false
 
-    - name: Upload FaineSwitcher binaries
-      uses: actions/upload-artifact@v1
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
-        name: FaineSwitcher
-        path: bin/FaineSwitcher
-
-    - name: Upload FaineSwitcherSetup binaries
-      uses: actions/upload-artifact@v1
-      with:
-        name: FaineSwitcherSetup
-        path: bin/FaineSwitcherSetup
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ${{ assetPath }}
+        asset_name: FaineSwitcherSetup.msi
+        asset_content_type: application/octet-stream
 
