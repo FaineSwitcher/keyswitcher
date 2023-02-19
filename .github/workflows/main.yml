@@ -34,8 +34,7 @@ jobs:
       run: |
           cd FaineSwitcherSetup
           msbuild.exe FaineSwitcherSetup.wixproj /p:Configuration=Release
-          $assetPath = "$(pwd)\bin\Release\FaineSwitcherSetup.msi"
-
+          
     - name: Create Release
       uses: actions/create-release@v1
       env:
@@ -54,7 +53,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ${{ assetPath }}
+        asset_path: FaineSwitcherSetup/bin/Release/FaineSwitcherSetup.msi"
         asset_name: FaineSwitcherSetup.msi
         asset_content_type: application/octet-stream
 
