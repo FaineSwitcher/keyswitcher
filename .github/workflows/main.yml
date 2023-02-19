@@ -23,7 +23,7 @@ jobs:
       run: msbuild FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release /p:OutputPath=bin/FaineSwitcherSetup
 
     - name: Create Release
-      uses: actions/create-release@v1.0.4
+      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
