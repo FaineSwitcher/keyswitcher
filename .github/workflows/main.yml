@@ -13,16 +13,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v3
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
       with:
-        dotnet-version: 6.0.x
+        msbuild-version: 16.0
+
+    - name: Restore NuGet packages
+      run: nuget restore FaineSwitcher/FaineSwitcher.sln
 
     - name: Build FaineSwitcher project
-      run: dotnet build FaineSwitcher/FaineSwitcher.csproj --configuration Release --output bin/FaineSwitcher
+      run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=bin/FaineSwitcher
 
     - name: Build FaineSwitcherSetup project
-      run: dotnet publish FaineSwitcherSetup/FaineSwitcherSetup.csproj -c Release -o bin/FaineSwitcherSetup --self-contained true -r win-x64
+      run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.csproj /p:Configuration=Release /p:OutputPath=bin/FaineSwitcherSetup /p:SelfContained=true /p:RuntimeIdentifier=win-x64
 
     - name: Create Release
       uses: actions/create-release@v1
@@ -47,3 +50,4 @@ jobs:
       with:
         name: FaineSwitcherSetup
         path: bin/FaineSwitcherSetup
+
