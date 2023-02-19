@@ -33,9 +33,7 @@ jobs:
     - name: Build FaineSwitcherSetup project
       run: |
           cd FaineSwitcherSetup
-          "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" Product.wxs
-          "C:\Program Files (x86)\WiX Toolset v3.11\bin\light.exe" -ext WixUIExtension -cultures:en-us -o bin\FaineSwitcherSetup FaineSwitcherSetup.wixobj
-
+          msbuild.exe FaineSwitcherSetup.wixproj
 
     - name: Create Release
       uses: actions/create-release@v1
