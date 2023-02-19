@@ -52,8 +52,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
-        files: |
-          FaineSwitcherSetup/bin/FaineSwitcherSetup/FaineSwitcherSetup.msi
+        files: "*.msi"
         token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
         owner: ${{ github.repository_owner }}
         repo: ${{ github.event.repository.name }}
