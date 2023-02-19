@@ -17,15 +17,25 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
       with:
         msbuild-version: 16.0
+        
+    - name: Install WiX Toolset v3.11
+      run: |
+        New-Item -ItemType Directory -Path "C:\wix311"
+        Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311.exe" -OutFile "C:\wix311\wix311.exe"
+        Start-Process -Wait -FilePath "C:\wix311\wix311.exe" -ArgumentList "/install /quiet"
 
     - name: Restore NuGet packages
       run: nuget restore FaineSwitcher/FaineSwitcher.sln
 
     - name: Build FaineSwitcher project
       run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=bin/FaineSwitcher
-
+  
     - name: Build FaineSwitcherSetup project
-      run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.csproj /p:Configuration=Release /p:OutputPath=bin/FaineSwitcherSetup /p:SelfContained=true /p:RuntimeIdentifier=win-x64
+      run: |
+          cd FaineSwitcherSetup
+          "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" Product.wxs
+          "C:\Program Files (x86)\WiX Toolset v3.11\bin\light.exe" -ext WixUIExtension -cultures:en-us -o bin\FaineSwitcherSetup FaineSwitcherSetup.wixobj
+
 
     - name: Create Release
       uses: actions/create-release@v1
