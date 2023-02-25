@@ -49,3 +49,46 @@ FaineSwitch is under [GPL v2+]().
 
 1. Install Visual Studio 2022
 2. Install [Microsoft Visual Studio Installer Projects](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)
+
+# Setup Project
+
+This guide will walk you through the process of building a .NET project and a WIX installer project using Visual Studio and Winget. 
+
+## Prerequisites 
+
+Before getting started, you will need the following: 
+
+- Windows 10 with the Winget package manager installed 
+- Visual Studio installed on your computer
+- The .NET project and WIX installer project files
+
+## Installing Visual Studio and WIX with Winget 
+
+1. Open the Command Prompt as an Administrator. 
+2. Enter the following command to install Visual Studio: 
+
+`winget install --id=Microsoft.VisualStudio2019Community --version=16.5.5`
+
+3. Enter the following command to install WIX: 
+
+`winget install --id=WixToolset.WixToolset --version=3.11.2.3012`
+
+4. Wait for the installations to complete. 
+
+## Building the .NET Project 
+
+1. Open the .NET project in Visual Studio. 
+2. In the menu bar, go to **Build**, then select **Build Solution**. 
+3. If you are prompted to build the dependencies first, select **Yes**. 
+4. After the solution builds successfully, you should now have an executable file in the project's output directory. 
+
+## Building the WIX Installer Project 
+
+1. Open the WIX installer project in Visual Studio. 
+2. In the menu bar, go to **Build**, then select **Build Solution**. 
+3. If you are prompted to build the dependencies first, select **Yes**. 
+4. After the solution builds successfully, you should now have an installer file in the project's output directory. 
+
+## Finishing Up 
+
+Congratulations, you have now successfully setup FaineSwitcher project!
