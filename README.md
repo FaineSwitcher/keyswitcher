@@ -89,6 +89,16 @@ Before getting started, you will need the following:
 3. If you are prompted to build the dependencies first, select **Yes**. 
 4. After the solution builds successfully, you should now have an installer file in the project's output directory. 
 
+## AI work logic
+
+- Model ZIP location: **keyswitcher\FaineSwitcher\ML\MLModel1.zip**;
+- To change model need only replace the old zip file with the new;
+- Call prediction method: `var res = MLModel1.Predict(new MLModel1.ModelInput() { Col0 = word });`
+- Prediction result: `res.PredictedLabel`;
+- **Result == 1** - need rewriting word;
+- All AI logic located in **keyswitcher\FaineSwitcher\Classes\KMHook.cs** file and method `CheckAutoSwitch` row `1190`;
+- `CheckAutoSwitch` have comments with logic description;
+
 ## Finishing Up 
 
 Congratulations, you have now successfully setup FaineSwitcher project!
