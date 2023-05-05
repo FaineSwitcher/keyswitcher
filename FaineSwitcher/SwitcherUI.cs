@@ -2077,7 +2077,7 @@ namespace FaineSwitcher
             AutoSwitchSwitchToGuessLayout = chk_AutoSwitchSwitchToGuessLayout.Checked = Program.MyConfs.ReadBool("AutoSwitch", "SwitchToGuessLayout");
             Dowload_ASD_InZip = chk_DownloadASD_InZip.Checked = Program.MyConfs.ReadBool("AutoSwitch", "DownloadInZip");
             check_ASD_size = true;
-            if (AutoSwitchEnabled && SnippetsEnabled)
+            if (AutoSwitchEnabled && SnippetsEnabled && false)
                 if (File.Exists(AS_dictfile) && !AutoSwitchDictionaryTooBig)
                 {
                     AutoSwitchDictionaryRaw = File.ReadAllText(AS_dictfile);

@@ -8,6 +8,7 @@ using System.Threading;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using MLSwitcher;
 
 namespace FaineSwitcher
 {
@@ -772,7 +773,7 @@ namespace FaineSwitcher
                         if (IGN) { Logging.Log("[AS] > Ignore AutoSwitch by: B/D/LS: " + was_back + "/" + was_del + "/" + was_ls); }
                         Debug.WriteLine("Ignore AutoSwitch by: B/D/LS: " + was_back + "/" + was_del + "/" + was_ls);
                         Debug.WriteLine("IGN:" + IGN + "EVT" + MSG);
-                        if (!matched && as_wrongs != null && Key == Keys.Space && !IGN /*&& aseKeyDown == Keys.None*/)
+                        if (!matched /*&& as_wrongs != null*/ && Key == Keys.Space && !IGN /*&& aseKeyDown == Keys.None*/)
                         {
                             if (NCRule.rule == "\0" || (NCRule.rule != "\0" && !NCRule.iauto))
                             {
@@ -790,20 +791,20 @@ namespace FaineSwitcher
                                     snip = ASsymDR;
                                 }
                                 asls = matched = CheckAutoSwitch(snip, CW);
-                                if (!matched)
-                                {
-                                    var snip2x = last_snip + " " + snip;
-                                    //Debug.WriteLine("SNIp2x! " + snip2x);
-                                    var SPace = new List<YuKey>() { new YuKey() { key = Keys.Space, altnum = false, upper = false } };
-                                    var dash = new List<YuKey>() { new YuKey() { key = Keys.OemMinus, altnum = false, upper = false } };
-                                    var last2words = CLW.Concat(dash).Concat(CW).ToList();
-                                    asls = matched = CheckAutoSwitch(snip2x, last2words);
-                                    if (!matched)
-                                    {
-                                        last2words = CLW.Concat(SwitcherUI.AddOneSpace ? new List<YuKey>() : SPace).Concat(CW).ToList();
-                                        asls = matched = CheckAutoSwitch(snip2x, last2words);
-                                    }
-                                }
+                                //if (!matched)
+                                //{
+                                //    var snip2x = last_snip + " " + snip;
+                                //    //Debug.WriteLine("SNIp2x! " + snip2x);
+                                //    var SPace = new List<YuKey>() { new YuKey() { key = Keys.Space, altnum = false, upper = false } };
+                                //    var dash = new List<YuKey>() { new YuKey() { key = Keys.OemMinus, altnum = false, upper = false } };
+                                //    var last2words = CLW.Concat(dash).Concat(CW).ToList();
+                                //    asls = matched = CheckAutoSwitch(snip2x, last2words);
+                                //    if (!matched)
+                                //    {
+                                //        last2words = CLW.Concat(SwitcherUI.AddOneSpace ? new List<YuKey>() : SPace).Concat(CW).ToList();
+                                //        asls = matched = CheckAutoSwitch(snip2x, last2words);
+                                //    }
+                                //}
                                 if (!matched)
                                 {
                                     var snl = WordGuessLayout(snip).Item2;
@@ -1174,122 +1175,85 @@ namespace FaineSwitcher
             }
             return false;
         }
+
+        static List<string> ukrainianWords = new List<string>()
+{
+    "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "не", "ні", "тільки", "ледве", "мов",
+    "ти", "на", "не", "ні", "як", "ще"
+};
+
+        static List<string> needSwitch = new List<string>() { "іффіоуе", "гш" };
+
         static bool CheckAutoSwitch(string snip, List<YuKey> word, bool single = true)
         {
             var matched = false;
+            if (snip.Length < 2 || ukrainianWords.Contains(snip))
+                return matched;
             var corr = "";
             var snil = snip.ToLowerInvariant();
             foreach (var element in word)
             {
                 Debug.WriteLine(element.key);
             }
-            for (int i = 0; i < as_wrongs.Length; i++)
+
+            if (String.IsNullOrWhiteSpace(snip))
+                return matched;
+
+            var res = MLModel1.Predict(new MLModel1.ModelInput() { Col0 = snip });
+            if (needSwitch.Contains(snip) || res.PredictedLabel > 0.5)
             {
-                if (as_corrects.Length > i)
+                //if (!String.IsNullOrEmpty(AS_END_symbols))
+                //{
+                //    if (snip.Length == as_wrongs[i].Length + 1)
+                //    {
+                //        for (int m = 0; m != AS_END_symbols.Length; m++)
+                //        {
+                //            var asi = new StringBuilder(as_wrongs[i]).Append(AS_END_symbols[m]);
+                //            if (snil == asi.ToString())
+                //            {
+                //                Debug.WriteLine("Word: " + as_wrongs[i] + " with symbol ending: " + AS_END_symbols[m]);
+                //                withsymbol = true;
+                //                core = AS_END_symbols[m].ToString();
+                //                break;
+                //            }
+                //        }
+                //    }
+                //}
+                if (SwitcherUI.SoundOnAutoSwitch)
+                    SwitcherUI.SoundPlay();
+                if (SwitcherUI.SoundOnAutoSwitch2)
+                    SwitcherUI.SoundPlay(true);
+
+
+                corr = ParseWord(snip);
+
+                //predict language
+                var asl = WordGuessLayout(corr, 0, false).Item2;
+
+                ChangeToLayout(Locales.ActiveWindow(), asl);
+
+                var ofk = true;
+                if (ofk)
                 {
-                    //					if (snip == as_wrongs[i]) {
-                    //						ExpandSnippet(snip, as_corrects[i], Program.switcher.AutoSwitchSpaceAfter, Program.switcher.AutoSwitchSwitchToGuessLayout);
-                    //						break;
-                    //					} else {
-                    if (as_wrongs[i] == null)
-                        break;
-                    var withsymbol = false;
-                    var core = "";
-                    if (!String.IsNullOrEmpty(AS_END_symbols))
+                    if (!SwitcherUI.AddOneSpace)
+                        DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back");
+                    else if (!SwitcherUI.AutoSwitchSpaceAfter)
                     {
-                        if (snip.Length == as_wrongs[i].Length + 1)
-                        {
-                            for (int m = 0; m != AS_END_symbols.Length; m++)
-                            {
-                                var asi = new StringBuilder(as_wrongs[i]).Append(AS_END_symbols[m]);
-                                if (snil == asi.ToString())
-                                {
-                                    Debug.WriteLine("Word: " + as_wrongs[i] + " with symbol ending: " + AS_END_symbols[m]);
-                                    withsymbol = true;
-                                    core = AS_END_symbols[m].ToString();
-                                    break;
-                                }
-                            }
-                        }
+                        DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back2");
+                        word.RemoveAt(word.Count - 1);
                     }
-                    if (snip.Length == as_wrongs[i].Length || withsymbol)
-                    {
-                        if (snil == as_wrongs[i].ToLowerInvariant() || withsymbol)
-                        {
-                            if (SwitcherUI.SoundOnAutoSwitch)
-                                SwitcherUI.SoundPlay();
-                            if (SwitcherUI.SoundOnAutoSwitch2)
-                                SwitcherUI.SoundPlay(true);
-                            corr = as_corrects[i] + core;
-                            Logging.Log("[AS] --- snil guess ---");
-                            var snl = WordGuessLayout(snil, 0, false).Item2;
-                            Logging.Log("[AS] --- asl guess ---");
-                            var asl = WordGuessLayout(corr, 0, false).Item2;
-                            Logging.Log("[AS] --- end guesses ---");
-                            if (snl == as_lword_layout)
-                            {
-                                if (_hasKey(as_wrongs, as_corrects[i]))
-                                {
-                                    Logging.Log("[AS] > Double-layout autoswitch rule: " + as_wrongs[i] + "<=>" + as_corrects[i]);
-                                    Logging.Log("[AS] > Leave as it was: " + snil);
-                                    break;
-                                }
-                            }
-                            as_lword_layout = asl;
-                            var skipLS = (snl == asl);
-                            Logging.Log("[AS] snl: " + snil + ", l:" + snl + "as_crI: " + as_corrects[i] + ", l: " + asl + "SKIP: " + skipLS);
-                            var ofk = false;
-                            if (!skipLS)
-                            {
-                                if (SwitcherUI.UseJKL && SwitcherUI.SwitchBetweenLayouts && SwitcherUI.EmulateLS && !KMHook.JKLERR)
-                                {
-                                    jklXHidServ.OnLayoutAction = asl;
-                                    var was = Locales.GetCurrentLocale();
-                                    jklXHidServ.ActionOnLayout = () =>
-                                    {
-                                        if (!SwitcherUI.AddOneSpace)
-                                            DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "jkl_autoswitch_back");
-                                        else if (!SwitcherUI.AutoSwitchSpaceAfter)
-                                        {
-                                            DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "jkl_autoswitch_back2");
-                                            word.RemoveAt(word.Count - 1);
-                                        }
-                                        word = QWERTZ_wordFIX(word);
-                                        StartConvertWord(word.ToArray(), was, true, true);
-                                        ExpandSnippet(snip, as_corrects[i], !SwitcherUI.AddOneSpace && SwitcherUI.AutoSwitchSpaceAfter,
-                                            SwitcherUI.AutoSwitchSwitchToGuessLayout, true, false, asl);
-                                    };
-                                }
-                                else ofk = true;
-                                ChangeToLayout(Locales.ActiveWindow(), asl);
-                                Debug.WriteLine("ASL" + asl);
-                            }
-                            else ofk = true;
-                            if (ofk)
-                            {
-                                if (!SwitcherUI.AddOneSpace)
-                                    DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back");
-                                else if (!SwitcherUI.AutoSwitchSpaceAfter)
-                                {
-                                    DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back2");
-                                    word.RemoveAt(word.Count - 1);
-                                }
-                                word = QWERTZ_wordFIX(word);
-                                StartConvertWord(word.ToArray(), Locales.GetCurrentLocale(), true, true);
-                                ExpandSnippet(snip, as_corrects[i], !SwitcherUI.AddOneSpace && SwitcherUI.AutoSwitchSpaceAfter,
-                                              SwitcherUI.AutoSwitchSwitchToGuessLayout, true, false, asl);
-                            }
-                            matched = true;
-                            break;
-                        }
-                    }
-                    //					}
+                    word = QWERTZ_wordFIX(word);
+                    StartConvertWord(word.ToArray(), Locales.GetCurrentLocale(), true, true);
+                    //ExpandSnippet(snip, as_corrects[i], !SwitcherUI.AddOneSpace && SwitcherUI.AutoSwitchSpaceAfter,
+                    //              SwitcherUI.AutoSwitchSwitchToGuessLayout, true, false, asl);
                 }
-                else
+                matched = true;
+            }
+            else
                 {
                     Logging.Log("[AS] > word [" + snip + "] has no expansion, snippet is not finished or its expansion commented.", 1);
                 }
-            }
+            
             if (matched)
             {
                 Logging.Log("[AS] > Changed last snippet to AS-ed, " + corr + ", instead of ignorecase: " + snil);
@@ -1297,6 +1261,90 @@ namespace FaineSwitcher
                 last_snip = corr;
             }
             return matched;
+        }
+
+
+        static Dictionary<string, string> replacmentTemplate = new Dictionary<string, string>()
+{
+    {"q", "й"},
+    {"й", "q"},
+    {"w", "ц"},
+    {"ц", "w"},
+    {"e", "у"},
+    {"у", "e"},
+    {"r", "к"},
+    {"к", "r"},
+    {"t", "е"},
+    {"е", "t"},
+    {"y", "н"},
+    {"н", "y"},
+    {"u", "г"},
+    {"г", "u"},
+    {"i", "ш"},
+    {"ш", "i"},
+    {"o", "щ"},
+    {"щ", "o"},
+    {"p", "з"},
+    {"з", "p"},
+    {"[", "х"},
+    {"х", "["},
+    {"]", "ї"},
+    {"ї", "]"},
+    {"a", "ф"},
+    {"ф", "a"},
+    {"s", "і"},
+    {"і", "s"},
+    {"d", "в"},
+    {"в", "d"},
+    {"f", "а"},
+    {"а", "f"},
+    {"g", "п"},
+    {"п", "g"},
+    {"h", "р"},
+    {"р", "h"},
+    {"j", "о"},
+    {"о", "j"},
+    {"k", "л"},
+    {"л", "k"},
+    {"l", "д"},
+    {"д", "l"},
+    {";", "ж"},
+    {"ж", ";"},
+    {"'", "є"},
+    {"є", "'"},
+    {"z", "я"},
+    {"я", "z"},
+    {"x", "ч"},
+    {"ч", "x"},
+    {"c", "с"},
+    {"с", "c"},
+    {"v", "м"},
+    {"м", "v"},
+    {"b", "и"},
+    {"и", "b"},
+    {"n", "т"},
+    {"т", "n"},
+    {"m", "ь"},
+    {"ь", "m"},
+    {",", "б"},
+    {"б", ","},
+    {".", "ю"},
+    {"ю", "."},
+    {"-", "-"}
+};
+
+
+        static string ParseWord(string word)
+        {
+            var result = string.Empty;
+
+            foreach (var ch in word)
+            {
+                if (ch != ' ' && replacmentTemplate.ContainsKey(ch.ToString()))
+                    result += replacmentTemplate[ch.ToString()];
+            }
+
+            return result.Trim();
         }
         static NCR CheckNCS(string snip)
         {
