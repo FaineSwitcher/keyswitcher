@@ -1182,7 +1182,7 @@ namespace FaineSwitcher
         static List<string> ukrainianWords = new List<string>()
         {
             "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "не", "ні", "тільки", "ледве", "мов",
-            "ти", "на", "не", "ні", "як", "ще"
+            "ти", "на", "не", "ні", "як", "ще", "зі"
         };
 
         // список слів які потрібно переписати навіть якщо MLResul == false
@@ -1190,7 +1190,7 @@ namespace FaineSwitcher
         //***
         // list of words to be rewritten even if MLResul == false
         // words for any language may be misspelled here
-        static List<string> needSwitch = new List<string>() { "іффіоуе", "гш" };
+        static List<string> needSwitch = new List<string>() { "іффіоуе", "гш", "ps" };
 
         static bool CheckAutoSwitch(string snip, List<YuKey> word, bool single = true)
         {
