@@ -915,7 +915,7 @@ namespace FaineSwitcher
                 Text = Text.Replace(" [" + Program.Lang[Languages.Element.Disabled] + "]", "");
                 Text += " [" + Program.Lang[Languages.Element.Disabled] + "]";
                 icon.trIcon.Text = icon.trIcon.Text.Replace(" [" + Program.Lang[Languages.Element.Disabled] + "]", "");
-                icon.trIcon.Text += " [" + Program.Lang[Languages.Element.Disabled] + "]";
+                //icon.trIcon.Text += " [" + Program.Lang[Languages.Element.Disabled] + "]";
                 icon.trIcon.Icon = Properties.Resources.FaineSwitcher;
                 ENABLED = false;
             }
