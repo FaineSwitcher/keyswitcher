@@ -1177,6 +1177,8 @@ namespace FaineSwitcher
         }
 
         // слова української мови які не потрібно перевіряти через AI
+        //***
+        // words of the Ukrainian language that do not need to be checked by AI
         static List<string> ukrainianWords = new List<string>()
         {
             "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "не", "ні", "тільки", "ледве", "мов",
@@ -1185,6 +1187,9 @@ namespace FaineSwitcher
 
         // список слів які потрібно переписати навіть якщо MLResul == false
         // тут можуть бути неправельно написані слова для любої мови
+        //***
+        // list of words to be rewritten even if MLResul == false
+        // words for any language may be misspelled here
         static List<string> needSwitch = new List<string>() { "іффіоуе", "гш" };
 
         static bool CheckAutoSwitch(string snip, List<YuKey> word, bool single = true)
@@ -1192,6 +1197,8 @@ namespace FaineSwitcher
             var matched = false;
 
             // Перевірка, чи текст забагато короткий або вже міститься у списку українських слів
+            //***
+            // Checking whether the text is too short or is already in the list of Ukrainian words
             if (snip.Length < 2 || ukrainianWords.Contains(snip))
                 return matched;
 
@@ -1199,10 +1206,14 @@ namespace FaineSwitcher
             var snil = snip.ToLowerInvariant();
 
             // Перевірка, чи текст є пустим або складається тільки з пробілів
+            //***
+            // Check if the text is empty or consists only of spaces
             if (String.IsNullOrWhiteSpace(snip))
                 return matched;
 
             // Застосування моделі машинного навчання для передбачення мови
+            //***
+            // Application of machine learning model for speech prediction
             var res = MLModel1.Predict(new MLModel1.ModelInput() { Col0 = snip });
             if (needSwitch.Contains(snip) || res.PredictedLabel > 0.5)
             {
@@ -1212,15 +1223,23 @@ namespace FaineSwitcher
                     SwitcherUI.SoundPlay(true);
 
                 // Парсинг слова для подальшого визначення мови
+                //***
+                // Word parsing for further language determination
                 corr = ParseWord(snip);
 
                 // Визначення мови (використовується функція WordGuessLayout)
+                //***
+                // Language definition (WordGuessLayout function is used)
                 var asl = WordGuessLayout(corr, 0, false).Item2;
 
                 // Зміна мови на визначену
+                //***
+                // Change the language to the specified one
                 ChangeToLayout(Locales.ActiveWindow(), asl);
 
                 // видалення останнього спейсу якщо необхідно
+                //***
+                // remove the last space if necessary
                 if (!SwitcherUI.AddOneSpace)
                     DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back");
                 else if (!SwitcherUI.AutoSwitchSpaceAfter)
