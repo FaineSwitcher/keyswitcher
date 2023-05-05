@@ -1176,87 +1176,66 @@ namespace FaineSwitcher
             return false;
         }
 
+        // слова української мови які не потрібно перевіряти через AI
         static List<string> ukrainianWords = new List<string>()
-{
-    "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "не", "ні", "тільки", "ледве", "мов",
-    "ти", "на", "не", "ні", "як", "ще"
-};
+        {
+            "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "не", "ні", "тільки", "ледве", "мов",
+            "ти", "на", "не", "ні", "як", "ще"
+        };
 
+        // список слів які потрібно переписати навіть якщо MLResul == false
+        // тут можуть бути неправельно написані слова для любої мови
         static List<string> needSwitch = new List<string>() { "іффіоуе", "гш" };
 
         static bool CheckAutoSwitch(string snip, List<YuKey> word, bool single = true)
         {
             var matched = false;
+
+            // Перевірка, чи текст забагато короткий або вже міститься у списку українських слів
             if (snip.Length < 2 || ukrainianWords.Contains(snip))
                 return matched;
+
             var corr = "";
             var snil = snip.ToLowerInvariant();
-            foreach (var element in word)
-            {
-                Debug.WriteLine(element.key);
-            }
 
+            // Перевірка, чи текст є пустим або складається тільки з пробілів
             if (String.IsNullOrWhiteSpace(snip))
                 return matched;
 
+            // Застосування моделі машинного навчання для передбачення мови
             var res = MLModel1.Predict(new MLModel1.ModelInput() { Col0 = snip });
             if (needSwitch.Contains(snip) || res.PredictedLabel > 0.5)
             {
-                //if (!String.IsNullOrEmpty(AS_END_symbols))
-                //{
-                //    if (snip.Length == as_wrongs[i].Length + 1)
-                //    {
-                //        for (int m = 0; m != AS_END_symbols.Length; m++)
-                //        {
-                //            var asi = new StringBuilder(as_wrongs[i]).Append(AS_END_symbols[m]);
-                //            if (snil == asi.ToString())
-                //            {
-                //                Debug.WriteLine("Word: " + as_wrongs[i] + " with symbol ending: " + AS_END_symbols[m]);
-                //                withsymbol = true;
-                //                core = AS_END_symbols[m].ToString();
-                //                break;
-                //            }
-                //        }
-                //    }
-                //}
                 if (SwitcherUI.SoundOnAutoSwitch)
                     SwitcherUI.SoundPlay();
                 if (SwitcherUI.SoundOnAutoSwitch2)
                     SwitcherUI.SoundPlay(true);
 
-
+                // Парсинг слова для подальшого визначення мови
                 corr = ParseWord(snip);
 
-                //predict language
+                // Визначення мови (використовується функція WordGuessLayout)
                 var asl = WordGuessLayout(corr, 0, false).Item2;
 
+                // Зміна мови на визначену
                 ChangeToLayout(Locales.ActiveWindow(), asl);
 
-                var ofk = true;
-                if (ofk)
+                // видалення останнього спейсу якщо необхідно
+                if (!SwitcherUI.AddOneSpace)
+                    DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back");
+                else if (!SwitcherUI.AutoSwitchSpaceAfter)
                 {
-                    if (!SwitcherUI.AddOneSpace)
-                        DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back");
-                    else if (!SwitcherUI.AutoSwitchSpaceAfter)
-                    {
-                        DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back2");
-                        word.RemoveAt(word.Count - 1);
-                    }
-                    word = QWERTZ_wordFIX(word);
-                    StartConvertWord(word.ToArray(), Locales.GetCurrentLocale(), true, true);
-                    //ExpandSnippet(snip, as_corrects[i], !SwitcherUI.AddOneSpace && SwitcherUI.AutoSwitchSpaceAfter,
-                    //              SwitcherUI.AutoSwitchSwitchToGuessLayout, true, false, asl);
+                    DoSelf(() => KInputs.MakeInput(KInputs.AddPress(Keys.Back)), "autoswitch_back2");
+                    word.RemoveAt(word.Count - 1);
                 }
+                word = QWERTZ_wordFIX(word);
+                StartConvertWord(word.ToArray(), Locales.GetCurrentLocale(), true, true);
+
                 matched = true;
             }
-            else
-                {
-                    Logging.Log("[AS] > word [" + snip + "] has no expansion, snippet is not finished or its expansion commented.", 1);
-                }
             
             if (matched)
             {
-                Logging.Log("[AS] > Changed last snippet to AS-ed, " + corr + ", instead of ignorecase: " + snil);
                 aftsingleAS = single;
                 last_snip = corr;
             }
