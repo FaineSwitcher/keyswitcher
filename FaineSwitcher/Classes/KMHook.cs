@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MLSwitcher;
+using System.IO;
 
 namespace FaineSwitcher
 {
@@ -1176,21 +1177,183 @@ namespace FaineSwitcher
             return false;
         }
 
-        // слова української мови які не потрібно перевіряти через AI
-        //***
-        // words of the Ukrainian language that do not need to be checked by AI
-        static List<string> ukrainianWords = new List<string>()
+        public static void WriteWordsToFile(List<string> words, string filePath)
         {
-            "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "не", "ні", "тільки", "ледве", "мов",
-            "ти", "на", "не", "ні", "як", "ще", "зі"
-        };
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    foreach (string word in words)
+                    {
+                        writer.WriteLine(word);
+                    }
+                }
+
+                Console.WriteLine("Words have been written to the file successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while writing the file: " + ex.Message);
+            }
+        }
+
+        public static string GenerateStringWithNewLines(List<string> words)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (string word in words)
+            {
+                sb.AppendLine(word);
+            }
+
+            return sb.ToString();
+        }
+
+        // слова винятки які не потрібно перевіряти через AI
+        //***
+        // words are exceptions that do not need to be checked by AI
+        static private List<string> _exceptionWords = new List<string>();
+
+        public static List<string> exceptionWords
+        {
+            get
+            {
+                if(_exceptionWords.Any()) return _exceptionWords;
+
+                var filePath = "exceptionWords.txt";
+
+                if (!File.Exists(filePath))
+                {
+                    GenerateFile(filePath);
+                }
+
+                _exceptionWords = ReadFile(filePath);
+
+                return _exceptionWords;
+            }
+            set { _exceptionWords = value; }
+        }
+
+        private static void GenerateFile(string filePath)
+        {
+            var words = new[]
+            {
+            "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед",
+            "не", "ні", "тільки", "ледве", "мов", "ти", "на", "не", "ні",
+            "як", "ще", "зі",  "але",
+    "або",
+    "аби",
+    "ага",
+    "але",
+    "без",
+    "і",
+    "та",
+    "й",
+    "але",
+    "а",
+    "цей",
+    "ці",
+    "це",
+    "ми",
+    "ти",
+    "ви",
+    "як",
+    "що",
+    "ще",
+    "щоб",
+    "зате",
+    "якщо",
+    "якже",
+    "так",
+    "мов",
+    "наче",
+    "бо",
+    "чи",
+    "тобто",
+    "би",
+    "якби",
+    "ба",
+    "як-от",
+    "от-як",
+    "немов",
+    "однак",
+    "все ж",
+    "зате",
+    "проте",
+    "тих",
+    "цих",
+    "їх",
+    "нас",
+    "вас",
+    "нам",
+    "вам",
+    "на",
+    "ні",
+    "то",
+    "ті",
+    "тому",
+    "ну",
+    "не"
+            };
+
+            using (FileStream fs = File.Create(filePath))
+            using (StreamWriter writer = new StreamWriter(fs))
+            {
+                foreach (var word in words)
+                {
+                    writer.WriteLine(word);
+                }
+            }
+        }
 
         // список слів які потрібно переписати навіть якщо MLResul == false
         // тут можуть бути неправельно написані слова для любої мови
         //***
         // list of words to be rewritten even if MLResul == false
         // words for any language may be misspelled here
-        static List<string> needSwitch = new List<string>() { "іффіоуе", "гш", "ps" };
+        static private List<string> _needSwitch = new List<string>();
+
+        public static List<string> needSwitch
+        {
+            get
+            {
+                if (_needSwitch.Any()) return _needSwitch;
+
+                var filePath = "needSwitchWords.txt";
+
+                if (!File.Exists(filePath))
+                {
+                    GenerateFileNeedSwitchWords(filePath);
+                }
+
+                _needSwitch = ReadFile(filePath);
+
+                return _needSwitch;
+            }
+            set { _needSwitch = value; }
+        }
+
+        private static void GenerateFileNeedSwitchWords(string filePath)
+        {
+            var words = new[]
+            {
+                "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk"
+            };
+
+            using (FileStream fs = File.Create(filePath))
+            using (StreamWriter writer = new StreamWriter(fs))
+            {
+                foreach (var word in words)
+                {
+                    writer.WriteLine(word);
+                }
+            }
+        }
+
+        private static List<string> ReadFile(string filePath)
+        {
+            return new List<string>(File.ReadAllLines(filePath));
+        }
 
         static bool CheckAutoSwitch(string snip, List<YuKey> word, bool single = true)
         {
@@ -1199,7 +1362,7 @@ namespace FaineSwitcher
             // Перевірка, чи текст забагато короткий або вже міститься у списку українських слів
             //***
             // Checking whether the text is too short or is already in the list of Ukrainian words
-            if (snip.Length < 2 || ukrainianWords.Contains(snip))
+            if (snip.Length < 2 || exceptionWords.Contains(snip))
                 return matched;
 
             var corr = "";

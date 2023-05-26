@@ -504,6 +504,11 @@ namespace FaineSwitcher
             this.nud_LPRefreshRate = new System.Windows.Forms.NumericUpDown();
             this.lbl_LPRefreshRate = new System.Windows.Forms.Label();
             this.chk_DisplayLangPanel = new System.Windows.Forms.CheckBox();
+            this.tab_about = new System.Windows.Forms.TabPage();
+            this.btn_DebugInfo = new System.Windows.Forms.Button();
+            this.txt_Help = new FaineSwitcher.SwitcherUI.TextBoxCA();
+            this.lnk_Site = new System.Windows.Forms.LinkLabel();
+            this.lnk_Repository = new System.Windows.Forms.LinkLabel();
             this.tab_translator = new System.Windows.Forms.TabPage();
             this.lbl_TrMethod = new System.Windows.Forms.Label();
             this.cbb_TrMethod = new System.Windows.Forms.ComboBox();
@@ -571,14 +576,9 @@ namespace FaineSwitcher
             this.grb_SwitcherReleaseTitle = new System.Windows.Forms.GroupBox();
             this.txt_UpdateDetails = new FaineSwitcher.SwitcherUI.TextBoxCA();
             this.btn_CheckForUpdates = new System.Windows.Forms.Button();
-            this.tab_about = new System.Windows.Forms.TabPage();
-            this.btn_DebugInfo = new System.Windows.Forms.Button();
-            this.txt_Help = new FaineSwitcher.SwitcherUI.TextBoxCA();
             this.lnk_Releases = new System.Windows.Forms.LinkLabel();
             this.lnk_Email = new System.Windows.Forms.LinkLabel();
             this.lnk_Wiki = new System.Windows.Forms.LinkLabel();
-            this.lnk_Site = new System.Windows.Forms.LinkLabel();
-            this.lnk_Repository = new System.Windows.Forms.LinkLabel();
             this.tab_Hidden = new System.Windows.Forms.TabPage();
             this.Htxt_LayoutModifier_D = new System.Windows.Forms.TextBox();
             this.Hlbl_LayoutModifier_D = new System.Windows.Forms.Label();
@@ -639,6 +639,9 @@ namespace FaineSwitcher
             this.btn_OK = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Apply = new System.Windows.Forms.Button();
+            this.textBoxCA1 = new FaineSwitcher.SwitcherUI.TextBoxCA();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tab_functions.SuspendLayout();
             this.tab_persistent.SuspendLayout();
@@ -677,6 +680,7 @@ namespace FaineSwitcher
             this.grb_LPConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LPTransparency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LPRefreshRate)).BeginInit();
+            this.tab_about.SuspendLayout();
             this.tab_translator.SuspendLayout();
             this.grb_TrConfs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TrTransparency)).BeginInit();
@@ -689,7 +693,6 @@ namespace FaineSwitcher
             this.grb_DownloadUpdate.SuspendLayout();
             this.grb_ProxyConfig.SuspendLayout();
             this.grb_SwitcherReleaseTitle.SuspendLayout();
-            this.tab_about.SuspendLayout();
             this.tab_Hidden.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Hnud_TrayHoverMM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Hnud_ASIgnoreTimeout)).BeginInit();
@@ -709,11 +712,7 @@ namespace FaineSwitcher
             this.tabs.Controls.Add(this.tab_hotkeys);
             this.tabs.Controls.Add(this.tab_sounds);
             this.tabs.Controls.Add(this.tab_LangPanel);
-            //this.tabs.Controls.Add(this.tab_translator);
-          //  this.tabs.Controls.Add(this.tab_sync);
-          //  this.tabs.Controls.Add(this.tab_updates);
             this.tabs.Controls.Add(this.tab_about);
-           // this.tabs.Controls.Add(this.tab_Hidden);
             this.tabs.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Multiline = true;
@@ -759,10 +758,10 @@ namespace FaineSwitcher
             this.tab_functions.Controls.Add(this.chk_TrayIcon);
             this.tab_functions.Controls.Add(this.chk_AutoStart);
             this.tab_functions.Controls.Add(this.chk_BlockHKWithCtrl);
-            this.tab_functions.Location = new System.Drawing.Point(4, 79);
+            this.tab_functions.Location = new System.Drawing.Point(4, 54);
             this.tab_functions.Name = "tab_functions";
             this.tab_functions.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_functions.Size = new System.Drawing.Size(559, 233);
+            this.tab_functions.Size = new System.Drawing.Size(559, 258);
             this.tab_functions.TabIndex = 0;
             this.tab_functions.Text = "Functions";
             this.tab_functions.UseVisualStyleBackColor = true;
@@ -906,7 +905,6 @@ namespace FaineSwitcher
             this.chk_RemapCapsLockAsF18.Text = "Remap Caps Lock as F18.";
             this.chk_RemapCapsLockAsF18.UseVisualStyleBackColor = true;
             this.chk_RemapCapsLockAsF18.Visible = false;
-            this.chk_RemapCapsLockAsF18.Checked = false;
             // 
             // chk_AppDataConfigs
             // 
@@ -1099,13 +1097,14 @@ namespace FaineSwitcher
             // chk_AutoStart
             // 
             this.chk_AutoStart.AutoSize = true;
+            this.chk_AutoStart.Checked = true;
+            this.chk_AutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_AutoStart.Location = new System.Drawing.Point(8, 7);
             this.chk_AutoStart.Name = "chk_AutoStart";
             this.chk_AutoStart.Size = new System.Drawing.Size(162, 24);
             this.chk_AutoStart.TabIndex = 0;
             this.chk_AutoStart.Text = "Start with Windows.";
             this.chk_AutoStart.UseVisualStyleBackColor = true;
-            this.chk_AutoStart.Checked = true;
             this.chk_AutoStart.CheckedChanged += new System.EventHandler(this.Chk_AutoStartCheckedChanged);
             // 
             // chk_BlockHKWithCtrl
@@ -1113,7 +1112,7 @@ namespace FaineSwitcher
             this.chk_BlockHKWithCtrl.AutoSize = true;
             this.chk_BlockHKWithCtrl.Location = new System.Drawing.Point(8, 127);
             this.chk_BlockHKWithCtrl.Name = "chk_BlockHKWithCtrl";
-            this.chk_BlockHKWithCtrl.Size = new System.Drawing.Size(264, 24);
+            this.chk_BlockHKWithCtrl.Size = new System.Drawing.Size(277, 24);
             this.chk_BlockHKWithCtrl.TabIndex = 12;
             this.chk_BlockHKWithCtrl.Text = "Block FaineSwitcher hotkeys with Ctrl.";
             this.chk_BlockHKWithCtrl.UseVisualStyleBackColor = true;
@@ -1124,10 +1123,10 @@ namespace FaineSwitcher
             this.tab_persistent.Controls.Add(this.chk_ChangeLayoutOnlyOnce);
             this.tab_persistent.Controls.Add(this.grb_PersistentLayout1);
             this.tab_persistent.Controls.Add(this.chk_OnlyOnWindowChange);
-            this.tab_persistent.Location = new System.Drawing.Point(4, 79);
+            this.tab_persistent.Location = new System.Drawing.Point(4, 54);
             this.tab_persistent.Name = "tab_persistent";
             this.tab_persistent.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_persistent.Size = new System.Drawing.Size(559, 233);
+            this.tab_persistent.Size = new System.Drawing.Size(559, 258);
             this.tab_persistent.TabIndex = 8;
             this.tab_persistent.Text = "Persistent layout";
             this.tab_persistent.UseVisualStyleBackColor = true;
@@ -1271,10 +1270,10 @@ namespace FaineSwitcher
             this.tab_appearence.Controls.Add(this.chk_LangTTMouseOnChange);
             this.tab_appearence.Controls.Add(this.chk_LangTooltipCaret);
             this.tab_appearence.Controls.Add(this.chk_LangTooltipMouse);
-            this.tab_appearence.Location = new System.Drawing.Point(4, 79);
+            this.tab_appearence.Location = new System.Drawing.Point(4, 54);
             this.tab_appearence.Name = "tab_appearence";
             this.tab_appearence.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_appearence.Size = new System.Drawing.Size(559, 233);
+            this.tab_appearence.Size = new System.Drawing.Size(559, 258);
             this.tab_appearence.TabIndex = 2;
             this.tab_appearence.Text = "Appearence";
             this.tab_appearence.UseVisualStyleBackColor = true;
@@ -1642,10 +1641,10 @@ namespace FaineSwitcher
             this.tab_timings.Controls.Add(this.lbl_LangTTCaretRefreshRate);
             this.tab_timings.Controls.Add(this.nud_LangTTMouseRefreshRate);
             this.tab_timings.Controls.Add(this.lbl_LangTTMouseRefreshRate);
-            this.tab_timings.Location = new System.Drawing.Point(4, 79);
+            this.tab_timings.Location = new System.Drawing.Point(4, 54);
             this.tab_timings.Name = "tab_timings";
             this.tab_timings.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_timings.Size = new System.Drawing.Size(559, 233);
+            this.tab_timings.Size = new System.Drawing.Size(559, 258);
             this.tab_timings.TabIndex = 7;
             this.tab_timings.Text = "Timings";
             this.tab_timings.UseVisualStyleBackColor = true;
@@ -1889,25 +1888,28 @@ namespace FaineSwitcher
             // 
             // tab_excluded
             // 
+            this.tab_excluded.Controls.Add(this.label2);
+            this.tab_excluded.Controls.Add(this.label1);
+            this.tab_excluded.Controls.Add(this.textBoxCA1);
             this.tab_excluded.Controls.Add(this.txt_ExcludedPrograms);
             this.tab_excluded.Controls.Add(this.lbl_ExcludedPrograms);
             this.tab_excluded.Controls.Add(this.chk_Change1KeyL);
             this.tab_excluded.Controls.Add(this.chk_ConvSWL);
-            this.tab_excluded.Location = new System.Drawing.Point(4, 79);
+            this.tab_excluded.Location = new System.Drawing.Point(4, 54);
             this.tab_excluded.Name = "tab_excluded";
             this.tab_excluded.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_excluded.Size = new System.Drawing.Size(559, 233);
+            this.tab_excluded.Size = new System.Drawing.Size(559, 258);
             this.tab_excluded.TabIndex = 11;
             this.tab_excluded.Text = "Excluded";
             this.tab_excluded.UseVisualStyleBackColor = true;
             // 
             // txt_ExcludedPrograms
             // 
-            this.txt_ExcludedPrograms.Location = new System.Drawing.Point(8, 38);
+            this.txt_ExcludedPrograms.Location = new System.Drawing.Point(8, 46);
             this.txt_ExcludedPrograms.Multiline = true;
             this.txt_ExcludedPrograms.Name = "txt_ExcludedPrograms";
             this.txt_ExcludedPrograms.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt_ExcludedPrograms.Size = new System.Drawing.Size(541, 224);
+            this.txt_ExcludedPrograms.Size = new System.Drawing.Size(247, 216);
             this.txt_ExcludedPrograms.TabIndex = 24;
             this.txt_ExcludedPrograms.Text = "LA.exe SomeProgram.exe";
             // 
@@ -1919,6 +1921,7 @@ namespace FaineSwitcher
             this.lbl_ExcludedPrograms.Size = new System.Drawing.Size(140, 20);
             this.lbl_ExcludedPrograms.TabIndex = 25;
             this.lbl_ExcludedPrograms.Text = "Excluded programs:";
+            this.lbl_ExcludedPrograms.Visible = false;
             // 
             // chk_Change1KeyL
             // 
@@ -1929,16 +1932,18 @@ namespace FaineSwitcher
             this.chk_Change1KeyL.TabIndex = 26;
             this.chk_Change1KeyL.Text = "Change layout by 1 key even in excluded.";
             this.chk_Change1KeyL.UseVisualStyleBackColor = true;
+            this.chk_Change1KeyL.Visible = false;
             // 
             // chk_ConvSWL
             // 
             this.chk_ConvSWL.AutoSize = true;
-            this.chk_ConvSWL.Location = new System.Drawing.Point(185, 18);
+            this.chk_ConvSWL.Location = new System.Drawing.Point(185, 0);
             this.chk_ConvSWL.Name = "chk_ConvSWL";
             this.chk_ConvSWL.Size = new System.Drawing.Size(333, 24);
             this.chk_ConvSWL.TabIndex = 27;
             this.chk_ConvSWL.Text = "Allow convert selection/word/line conversion.";
             this.chk_ConvSWL.UseVisualStyleBackColor = true;
+            this.chk_ConvSWL.Visible = false;
             // 
             // tab_snippets
             // 
@@ -1957,10 +1962,10 @@ namespace FaineSwitcher
             this.tab_snippets.Controls.Add(this.chk_SnippetsSpaceAfter);
             this.tab_snippets.Controls.Add(this.chk_SnippetsSwitchToGuessLayout);
             this.tab_snippets.Controls.Add(this.lbl_SnippetsCount);
-            this.tab_snippets.Location = new System.Drawing.Point(4, 79);
+            this.tab_snippets.Location = new System.Drawing.Point(4, 54);
             this.tab_snippets.Name = "tab_snippets";
             this.tab_snippets.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_snippets.Size = new System.Drawing.Size(559, 233);
+            this.tab_snippets.Size = new System.Drawing.Size(559, 258);
             this.tab_snippets.TabIndex = 3;
             this.tab_snippets.Text = "Snippets";
             this.tab_snippets.UseVisualStyleBackColor = true;
@@ -2115,9 +2120,9 @@ namespace FaineSwitcher
             this.tab_autoswitch.Controls.Add(this.txt_AutoSwitchDictionary);
             this.tab_autoswitch.Controls.Add(this.chk_AutoSwitch);
             this.tab_autoswitch.Controls.Add(this.lbl_AutoSwitchDependsOnSnippets);
-            this.tab_autoswitch.Location = new System.Drawing.Point(4, 79);
+            this.tab_autoswitch.Location = new System.Drawing.Point(4, 54);
             this.tab_autoswitch.Name = "tab_autoswitch";
-            this.tab_autoswitch.Size = new System.Drawing.Size(559, 233);
+            this.tab_autoswitch.Size = new System.Drawing.Size(559, 258);
             this.tab_autoswitch.TabIndex = 10;
             this.tab_autoswitch.Text = "Auto Switch";
             this.tab_autoswitch.UseVisualStyleBackColor = true;
@@ -2212,10 +2217,10 @@ namespace FaineSwitcher
             // 
             this.tab_hotkeys.Controls.Add(this.grb_Hotkey);
             this.tab_hotkeys.Controls.Add(this.lsb_Hotkeys);
-            this.tab_hotkeys.Location = new System.Drawing.Point(4, 79);
+            this.tab_hotkeys.Location = new System.Drawing.Point(4, 54);
             this.tab_hotkeys.Name = "tab_hotkeys";
             this.tab_hotkeys.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_hotkeys.Size = new System.Drawing.Size(559, 233);
+            this.tab_hotkeys.Size = new System.Drawing.Size(559, 258);
             this.tab_hotkeys.TabIndex = 4;
             this.tab_hotkeys.Text = "Hotkeys";
             this.tab_hotkeys.UseVisualStyleBackColor = true;
@@ -2314,10 +2319,10 @@ namespace FaineSwitcher
             this.tab_sounds.Controls.Add(this.grb_Sound2);
             this.tab_sounds.Controls.Add(this.grb_Sound1);
             this.tab_sounds.Controls.Add(this.chk_EnableSnd);
-            this.tab_sounds.Location = new System.Drawing.Point(4, 79);
+            this.tab_sounds.Location = new System.Drawing.Point(4, 54);
             this.tab_sounds.Name = "tab_sounds";
             this.tab_sounds.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_sounds.Size = new System.Drawing.Size(559, 233);
+            this.tab_sounds.Size = new System.Drawing.Size(559, 258);
             this.tab_sounds.TabIndex = 12;
             this.tab_sounds.Text = "Sounds";
             this.tab_sounds.UseVisualStyleBackColor = true;
@@ -2528,10 +2533,10 @@ namespace FaineSwitcher
             this.tab_LangPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tab_LangPanel.Controls.Add(this.grb_LPConfig);
             this.tab_LangPanel.Controls.Add(this.chk_DisplayLangPanel);
-            this.tab_LangPanel.Location = new System.Drawing.Point(4, 79);
+            this.tab_LangPanel.Location = new System.Drawing.Point(4, 54);
             this.tab_LangPanel.Name = "tab_LangPanel";
             this.tab_LangPanel.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_LangPanel.Size = new System.Drawing.Size(559, 233);
+            this.tab_LangPanel.Size = new System.Drawing.Size(559, 258);
             this.tab_LangPanel.TabIndex = 9;
             this.tab_LangPanel.Text = "Language panel";
             this.tab_LangPanel.UseVisualStyleBackColor = true;
@@ -2730,6 +2735,63 @@ namespace FaineSwitcher
             this.chk_DisplayLangPanel.UseVisualStyleBackColor = true;
             this.chk_DisplayLangPanel.CheckedChanged += new System.EventHandler(this.Chk_CheckedChanged);
             // 
+            // tab_about
+            // 
+            this.tab_about.Controls.Add(this.btn_DebugInfo);
+            this.tab_about.Controls.Add(this.txt_Help);
+            this.tab_about.Controls.Add(this.lnk_Site);
+            this.tab_about.Controls.Add(this.lnk_Repository);
+            this.tab_about.Location = new System.Drawing.Point(4, 54);
+            this.tab_about.Name = "tab_about";
+            this.tab_about.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_about.Size = new System.Drawing.Size(559, 258);
+            this.tab_about.TabIndex = 6;
+            this.tab_about.Text = "About";
+            this.tab_about.UseVisualStyleBackColor = true;
+            // 
+            // btn_DebugInfo
+            // 
+            this.btn_DebugInfo.Location = new System.Drawing.Point(353, 245);
+            this.btn_DebugInfo.Name = "btn_DebugInfo";
+            this.btn_DebugInfo.Size = new System.Drawing.Size(200, 23);
+            this.btn_DebugInfo.TabIndex = 6;
+            this.btn_DebugInfo.Text = "Debug info";
+            this.btn_DebugInfo.UseVisualStyleBackColor = true;
+            this.btn_DebugInfo.Click += new System.EventHandler(this.Btn_DebugInfoClick);
+            // 
+            // txt_Help
+            // 
+            this.txt_Help.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_Help.Location = new System.Drawing.Point(0, 0);
+            this.txt_Help.Multiline = true;
+            this.txt_Help.Name = "txt_Help";
+            this.txt_Help.ReadOnly = true;
+            this.txt_Help.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_Help.Size = new System.Drawing.Size(559, 238);
+            this.txt_Help.TabIndex = 5;
+            // 
+            // lnk_Site
+            // 
+            this.lnk_Site.AutoSize = true;
+            this.lnk_Site.Location = new System.Drawing.Point(86, 249);
+            this.lnk_Site.Name = "lnk_Site";
+            this.lnk_Site.Size = new System.Drawing.Size(34, 20);
+            this.lnk_Site.TabIndex = 1;
+            this.lnk_Site.TabStop = true;
+            this.lnk_Site.Text = "Site";
+            this.lnk_Site.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_SiteLinkClicked);
+            // 
+            // lnk_Repository
+            // 
+            this.lnk_Repository.AutoSize = true;
+            this.lnk_Repository.Location = new System.Drawing.Point(8, 249);
+            this.lnk_Repository.Name = "lnk_Repository";
+            this.lnk_Repository.Size = new System.Drawing.Size(91, 20);
+            this.lnk_Repository.TabIndex = 0;
+            this.lnk_Repository.TabStop = true;
+            this.lnk_Repository.Text = "Source code";
+            this.lnk_Repository.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_RepositoryLinkClicked);
+            // 
             // tab_translator
             // 
             this.tab_translator.Controls.Add(this.lbl_TrMethod);
@@ -2761,7 +2823,7 @@ namespace FaineSwitcher
             "Web Script"});
             this.cbb_TrMethod.Location = new System.Drawing.Point(290, 3);
             this.cbb_TrMethod.Name = "cbb_TrMethod";
-            this.cbb_TrMethod.Size = new System.Drawing.Size(263, 28);
+            this.cbb_TrMethod.Size = new System.Drawing.Size(263, 24);
             this.cbb_TrMethod.TabIndex = 53;
             this.cbb_TrMethod.SelectedIndexChanged += new System.EventHandler(this.Cbb_TrMethodSelectedIndexChanged);
             // 
@@ -2771,7 +2833,7 @@ namespace FaineSwitcher
             this.chk_TrEnable.Enabled = false;
             this.chk_TrEnable.Location = new System.Drawing.Point(8, 3);
             this.chk_TrEnable.Name = "chk_TrEnable";
-            this.chk_TrEnable.Size = new System.Drawing.Size(172, 24);
+            this.chk_TrEnable.Size = new System.Drawing.Size(159, 20);
             this.chk_TrEnable.TabIndex = 1;
             this.chk_TrEnable.Text = "Disable by developer";
             this.chk_TrEnable.UseVisualStyleBackColor = true;
@@ -2840,7 +2902,7 @@ namespace FaineSwitcher
             this.lbl_TrTitleFont.AutoSize = true;
             this.lbl_TrTitleFont.Location = new System.Drawing.Point(338, 81);
             this.lbl_TrTitleFont.Name = "lbl_TrTitleFont";
-            this.lbl_TrTitleFont.Size = new System.Drawing.Size(74, 20);
+            this.lbl_TrTitleFont.Size = new System.Drawing.Size(65, 16);
             this.lbl_TrTitleFont.TabIndex = 50;
             this.lbl_TrTitleFont.Text = "Title Font:";
             // 
@@ -2877,7 +2939,7 @@ namespace FaineSwitcher
             this.lbl_TrLanguages.AutoSize = true;
             this.lbl_TrLanguages.Location = new System.Drawing.Point(6, 98);
             this.lbl_TrLanguages.Name = "lbl_TrLanguages";
-            this.lbl_TrLanguages.Size = new System.Drawing.Size(143, 20);
+            this.lbl_TrLanguages.Size = new System.Drawing.Size(134, 16);
             this.lbl_TrLanguages.TabIndex = 46;
             this.lbl_TrLanguages.Text = "Translate languages:";
             // 
@@ -2915,7 +2977,7 @@ namespace FaineSwitcher
             this.chk_TrUseAccent.AutoSize = true;
             this.chk_TrUseAccent.Location = new System.Drawing.Point(284, 19);
             this.chk_TrUseAccent.Name = "chk_TrUseAccent";
-            this.chk_TrUseAccent.Size = new System.Drawing.Size(180, 24);
+            this.chk_TrUseAccent.Size = new System.Drawing.Size(164, 20);
             this.chk_TrUseAccent.TabIndex = 41;
             this.chk_TrUseAccent.Text = "Use Aero/Accent color";
             this.chk_TrUseAccent.UseVisualStyleBackColor = true;
@@ -2944,7 +3006,7 @@ namespace FaineSwitcher
             this.lbl_TrBG.AutoSize = true;
             this.lbl_TrBG.Location = new System.Drawing.Point(382, 50);
             this.lbl_TrBG.Name = "lbl_TrBG";
-            this.lbl_TrBG.Size = new System.Drawing.Size(129, 20);
+            this.lbl_TrBG.Size = new System.Drawing.Size(116, 16);
             this.lbl_TrBG.TabIndex = 38;
             this.lbl_TrBG.Text = "Background color:";
             // 
@@ -2989,7 +3051,7 @@ namespace FaineSwitcher
             0,
             0});
             this.nud_TrTransparency.Name = "nud_TrTransparency";
-            this.nud_TrTransparency.Size = new System.Drawing.Size(43, 27);
+            this.nud_TrTransparency.Size = new System.Drawing.Size(43, 22);
             this.nud_TrTransparency.TabIndex = 29;
             this.nud_TrTransparency.Value = new decimal(new int[] {
             1,
@@ -3002,7 +3064,7 @@ namespace FaineSwitcher
             this.lbl_TrTransparency.AutoSize = true;
             this.lbl_TrTransparency.Location = new System.Drawing.Point(8, 48);
             this.lbl_TrTransparency.Name = "lbl_TrTransparency";
-            this.lbl_TrTransparency.Size = new System.Drawing.Size(98, 20);
+            this.lbl_TrTransparency.Size = new System.Drawing.Size(94, 16);
             this.lbl_TrTransparency.TabIndex = 28;
             this.lbl_TrTransparency.Text = "Transparency:";
             // 
@@ -3043,7 +3105,7 @@ namespace FaineSwitcher
             this.chk_rMmm.AutoSize = true;
             this.chk_rMmm.Location = new System.Drawing.Point(434, 22);
             this.chk_rMmm.Name = "chk_rMmm";
-            this.chk_rMmm.Size = new System.Drawing.Size(137, 24);
+            this.chk_rMmm.Size = new System.Drawing.Size(138, 20);
             this.chk_rMmm.TabIndex = 12;
             this.chk_rMmm.Text = "FaineSwitcher.mm";
             this.chk_rMmm.UseVisualStyleBackColor = true;
@@ -3053,14 +3115,13 @@ namespace FaineSwitcher
             this.chk_andPROXY2.AutoSize = true;
             this.chk_andPROXY2.Location = new System.Drawing.Point(91, 22);
             this.chk_andPROXY2.Name = "chk_andPROXY2";
-            this.chk_andPROXY2.Size = new System.Drawing.Size(97, 24);
+            this.chk_andPROXY2.Size = new System.Drawing.Size(86, 20);
             this.chk_andPROXY2.TabIndex = 11;
             this.chk_andPROXY2.Text = "(+[Proxy])";
             this.chk_andPROXY2.UseVisualStyleBackColor = true;
             // 
             // pctResPaste
             // 
-            this.pctResPaste.BackgroundImage = global::FaineSwitcher.Properties.Resources.clip;
             this.pctResPaste.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pctResPaste.InitialImage = null;
             this.pctResPaste.Location = new System.Drawing.Point(398, 55);
@@ -3090,7 +3151,7 @@ namespace FaineSwitcher
             this.chk_rHtxt.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_rHtxt.Location = new System.Drawing.Point(268, 22);
             this.chk_rHtxt.Name = "chk_rHtxt";
-            this.chk_rHtxt.Size = new System.Drawing.Size(95, 24);
+            this.chk_rHtxt.Size = new System.Drawing.Size(83, 20);
             this.chk_rHtxt.TabIndex = 12;
             this.chk_rHtxt.Text = "history.txt";
             this.chk_rHtxt.UseVisualStyleBackColor = true;
@@ -3102,7 +3163,7 @@ namespace FaineSwitcher
             this.chk_rTtxt.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_rTtxt.Location = new System.Drawing.Point(352, 22);
             this.chk_rTtxt.Name = "chk_rTtxt";
-            this.chk_rTtxt.Size = new System.Drawing.Size(94, 24);
+            this.chk_rTtxt.Size = new System.Drawing.Size(85, 20);
             this.chk_rTtxt.TabIndex = 11;
             this.chk_rTtxt.Text = "TSDict.txt";
             this.chk_rTtxt.UseVisualStyleBackColor = true;
@@ -3114,7 +3175,7 @@ namespace FaineSwitcher
             this.chk_rStxt.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_rStxt.Location = new System.Drawing.Point(176, 22);
             this.chk_rStxt.Name = "chk_rStxt";
-            this.chk_rStxt.Size = new System.Drawing.Size(106, 24);
+            this.chk_rStxt.Size = new System.Drawing.Size(95, 20);
             this.chk_rStxt.TabIndex = 10;
             this.chk_rStxt.Text = "snippets.txt";
             this.chk_rStxt.UseVisualStyleBackColor = true;
@@ -3126,7 +3187,7 @@ namespace FaineSwitcher
             this.chk_rMini.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_rMini.Location = new System.Drawing.Point(6, 22);
             this.chk_rMini.Name = "chk_rMini";
-            this.chk_rMini.Size = new System.Drawing.Size(127, 24);
+            this.chk_rMini.Size = new System.Drawing.Size(129, 20);
             this.chk_rMini.TabIndex = 9;
             this.chk_rMini.Text = "FaineSwitcher.ini";
             this.chk_rMini.UseVisualStyleBackColor = true;
@@ -3146,7 +3207,7 @@ namespace FaineSwitcher
             // 
             this.txt_restoreId.Location = new System.Drawing.Point(33, 55);
             this.txt_restoreId.Name = "txt_restoreId";
-            this.txt_restoreId.Size = new System.Drawing.Size(359, 27);
+            this.txt_restoreId.Size = new System.Drawing.Size(359, 22);
             this.txt_restoreId.TabIndex = 1;
             // 
             // lbl_restoreId
@@ -3154,7 +3215,7 @@ namespace FaineSwitcher
             this.lbl_restoreId.AutoSize = true;
             this.lbl_restoreId.Location = new System.Drawing.Point(6, 58);
             this.lbl_restoreId.Name = "lbl_restoreId";
-            this.lbl_restoreId.Size = new System.Drawing.Size(27, 20);
+            this.lbl_restoreId.Size = new System.Drawing.Size(23, 16);
             this.lbl_restoreId.TabIndex = 0;
             this.lbl_restoreId.Text = "ID:";
             // 
@@ -3184,7 +3245,7 @@ namespace FaineSwitcher
             this.chk_Mmm.AutoSize = true;
             this.chk_Mmm.Location = new System.Drawing.Point(434, 22);
             this.chk_Mmm.Name = "chk_Mmm";
-            this.chk_Mmm.Size = new System.Drawing.Size(137, 24);
+            this.chk_Mmm.Size = new System.Drawing.Size(138, 20);
             this.chk_Mmm.TabIndex = 11;
             this.chk_Mmm.Text = "FaineSwitcher.mm";
             this.chk_Mmm.UseVisualStyleBackColor = true;
@@ -3194,14 +3255,13 @@ namespace FaineSwitcher
             this.chk_andPROXY.AutoSize = true;
             this.chk_andPROXY.Location = new System.Drawing.Point(92, 22);
             this.chk_andPROXY.Name = "chk_andPROXY";
-            this.chk_andPROXY.Size = new System.Drawing.Size(97, 24);
+            this.chk_andPROXY.Size = new System.Drawing.Size(86, 20);
             this.chk_andPROXY.TabIndex = 10;
             this.chk_andPROXY.Text = "(+[Proxy])";
             this.chk_andPROXY.UseVisualStyleBackColor = true;
             // 
             // pctBkpCopy
             // 
-            this.pctBkpCopy.BackgroundImage = global::FaineSwitcher.Properties.Resources.clip;
             this.pctBkpCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pctBkpCopy.InitialImage = null;
             this.pctBkpCopy.Location = new System.Drawing.Point(398, 59);
@@ -3229,7 +3289,7 @@ namespace FaineSwitcher
             this.lbl_backupId.AutoSize = true;
             this.lbl_backupId.Location = new System.Drawing.Point(6, 62);
             this.lbl_backupId.Name = "lbl_backupId";
-            this.lbl_backupId.Size = new System.Drawing.Size(27, 20);
+            this.lbl_backupId.Size = new System.Drawing.Size(23, 16);
             this.lbl_backupId.TabIndex = 6;
             this.lbl_backupId.Text = "ID:";
             // 
@@ -3239,7 +3299,7 @@ namespace FaineSwitcher
             this.txt_backupId.Location = new System.Drawing.Point(33, 59);
             this.txt_backupId.Name = "txt_backupId";
             this.txt_backupId.ReadOnly = true;
-            this.txt_backupId.Size = new System.Drawing.Size(359, 27);
+            this.txt_backupId.Size = new System.Drawing.Size(359, 22);
             this.txt_backupId.TabIndex = 5;
             // 
             // btn_backup
@@ -3257,7 +3317,7 @@ namespace FaineSwitcher
             this.chk_Htxt.AutoSize = true;
             this.chk_Htxt.Location = new System.Drawing.Point(268, 22);
             this.chk_Htxt.Name = "chk_Htxt";
-            this.chk_Htxt.Size = new System.Drawing.Size(95, 24);
+            this.chk_Htxt.Size = new System.Drawing.Size(83, 20);
             this.chk_Htxt.TabIndex = 3;
             this.chk_Htxt.Text = "history.txt";
             this.chk_Htxt.UseVisualStyleBackColor = true;
@@ -3267,7 +3327,7 @@ namespace FaineSwitcher
             this.chk_Ttxt.AutoSize = true;
             this.chk_Ttxt.Location = new System.Drawing.Point(352, 22);
             this.chk_Ttxt.Name = "chk_Ttxt";
-            this.chk_Ttxt.Size = new System.Drawing.Size(94, 24);
+            this.chk_Ttxt.Size = new System.Drawing.Size(85, 20);
             this.chk_Ttxt.TabIndex = 2;
             this.chk_Ttxt.Text = "TSDict.txt";
             this.chk_Ttxt.UseVisualStyleBackColor = true;
@@ -3279,7 +3339,7 @@ namespace FaineSwitcher
             this.chk_Stxt.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_Stxt.Location = new System.Drawing.Point(176, 22);
             this.chk_Stxt.Name = "chk_Stxt";
-            this.chk_Stxt.Size = new System.Drawing.Size(106, 24);
+            this.chk_Stxt.Size = new System.Drawing.Size(95, 20);
             this.chk_Stxt.TabIndex = 1;
             this.chk_Stxt.Text = "snippets.txt";
             this.chk_Stxt.UseVisualStyleBackColor = true;
@@ -3289,7 +3349,7 @@ namespace FaineSwitcher
             this.chk_Mini.AutoSize = true;
             this.chk_Mini.Location = new System.Drawing.Point(6, 22);
             this.chk_Mini.Name = "chk_Mini";
-            this.chk_Mini.Size = new System.Drawing.Size(127, 24);
+            this.chk_Mini.Size = new System.Drawing.Size(129, 20);
             this.chk_Mini.TabIndex = 0;
             this.chk_Mini.Text = "FaineSwitcher.ini";
             this.chk_Mini.UseVisualStyleBackColor = true;
@@ -3300,7 +3360,7 @@ namespace FaineSwitcher
             this.chk_ZxZ.AutoSize = true;
             this.chk_ZxZ.Location = new System.Drawing.Point(487, 41);
             this.chk_ZxZ.Name = "chk_ZxZ";
-            this.chk_ZxZ.Size = new System.Drawing.Size(68, 24);
+            this.chk_ZxZ.Size = new System.Drawing.Size(62, 20);
             this.chk_ZxZ.TabIndex = 12;
             this.chk_ZxZ.Text = "0x0.st";
             this.chk_ZxZ.UseVisualStyleBackColor = true;
@@ -3331,7 +3391,7 @@ namespace FaineSwitcher
             "LatestCommit(Beta)"});
             this.cbb_UpdatesChannel.Location = new System.Drawing.Point(310, 32);
             this.cbb_UpdatesChannel.Name = "cbb_UpdatesChannel";
-            this.cbb_UpdatesChannel.Size = new System.Drawing.Size(243, 28);
+            this.cbb_UpdatesChannel.Size = new System.Drawing.Size(243, 24);
             this.cbb_UpdatesChannel.TabIndex = 5;
             this.cbb_UpdatesChannel.SelectedIndexChanged += new System.EventHandler(this.Cbb_UpdatesChannelSelectedIndexChanged);
             // 
@@ -3393,7 +3453,7 @@ namespace FaineSwitcher
             this.txt_ProxyPassword.Location = new System.Drawing.Point(117, 80);
             this.txt_ProxyPassword.Name = "txt_ProxyPassword";
             this.txt_ProxyPassword.PasswordChar = '~';
-            this.txt_ProxyPassword.Size = new System.Drawing.Size(122, 27);
+            this.txt_ProxyPassword.Size = new System.Drawing.Size(122, 22);
             this.txt_ProxyPassword.TabIndex = 5;
             // 
             // lbl_ProxyPassword
@@ -3401,7 +3461,7 @@ namespace FaineSwitcher
             this.lbl_ProxyPassword.AutoSize = true;
             this.lbl_ProxyPassword.Location = new System.Drawing.Point(7, 84);
             this.lbl_ProxyPassword.Name = "lbl_ProxyPassword";
-            this.lbl_ProxyPassword.Size = new System.Drawing.Size(73, 20);
+            this.lbl_ProxyPassword.Size = new System.Drawing.Size(70, 16);
             this.lbl_ProxyPassword.TabIndex = 4;
             this.lbl_ProxyPassword.Text = "Password:";
             // 
@@ -3409,7 +3469,7 @@ namespace FaineSwitcher
             // 
             this.txt_ProxyLogin.Location = new System.Drawing.Point(117, 51);
             this.txt_ProxyLogin.Name = "txt_ProxyLogin";
-            this.txt_ProxyLogin.Size = new System.Drawing.Size(122, 27);
+            this.txt_ProxyLogin.Size = new System.Drawing.Size(122, 22);
             this.txt_ProxyLogin.TabIndex = 3;
             // 
             // lbl_ProxyLogin
@@ -3417,7 +3477,7 @@ namespace FaineSwitcher
             this.lbl_ProxyLogin.AutoSize = true;
             this.lbl_ProxyLogin.Location = new System.Drawing.Point(7, 55);
             this.lbl_ProxyLogin.Name = "lbl_ProxyLogin";
-            this.lbl_ProxyLogin.Size = new System.Drawing.Size(49, 20);
+            this.lbl_ProxyLogin.Size = new System.Drawing.Size(43, 16);
             this.lbl_ProxyLogin.TabIndex = 2;
             this.lbl_ProxyLogin.Text = "Login:";
             // 
@@ -3425,7 +3485,7 @@ namespace FaineSwitcher
             // 
             this.txt_ProxyServerPort.Location = new System.Drawing.Point(117, 22);
             this.txt_ProxyServerPort.Name = "txt_ProxyServerPort";
-            this.txt_ProxyServerPort.Size = new System.Drawing.Size(122, 27);
+            this.txt_ProxyServerPort.Size = new System.Drawing.Size(122, 22);
             this.txt_ProxyServerPort.TabIndex = 1;
             // 
             // lbl_ProxyServerPort
@@ -3433,7 +3493,7 @@ namespace FaineSwitcher
             this.lbl_ProxyServerPort.AutoSize = true;
             this.lbl_ProxyServerPort.Location = new System.Drawing.Point(7, 26);
             this.lbl_ProxyServerPort.Name = "lbl_ProxyServerPort";
-            this.lbl_ProxyServerPort.Size = new System.Drawing.Size(79, 20);
+            this.lbl_ProxyServerPort.Size = new System.Drawing.Size(74, 16);
             this.lbl_ProxyServerPort.TabIndex = 0;
             this.lbl_ProxyServerPort.Text = "Server:Port";
             // 
@@ -3452,12 +3512,12 @@ namespace FaineSwitcher
             this.txt_UpdateDetails.BackColor = System.Drawing.SystemColors.Window;
             this.txt_UpdateDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_UpdateDetails.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_UpdateDetails.Location = new System.Drawing.Point(3, 23);
+            this.txt_UpdateDetails.Location = new System.Drawing.Point(3, 18);
             this.txt_UpdateDetails.Multiline = true;
             this.txt_UpdateDetails.Name = "txt_UpdateDetails";
             this.txt_UpdateDetails.ReadOnly = true;
             this.txt_UpdateDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_UpdateDetails.Size = new System.Drawing.Size(295, 182);
+            this.txt_UpdateDetails.Size = new System.Drawing.Size(295, 187);
             this.txt_UpdateDetails.TabIndex = 0;
             // 
             // btn_CheckForUpdates
@@ -3470,44 +3530,6 @@ namespace FaineSwitcher
             this.btn_CheckForUpdates.Text = "Check for updates";
             this.btn_CheckForUpdates.UseVisualStyleBackColor = true;
             this.btn_CheckForUpdates.Click += new System.EventHandler(this.Btn_CheckForUpdatesClick);
-            // 
-            // tab_about
-            // 
-            this.tab_about.Controls.Add(this.btn_DebugInfo);
-            this.tab_about.Controls.Add(this.txt_Help);
-           // this.tab_about.Controls.Add(this.lnk_Releases);
-           // this.tab_about.Controls.Add(this.lnk_Email);
-          //  this.tab_about.Controls.Add(this.lnk_Wiki);
-            this.tab_about.Controls.Add(this.lnk_Site);
-            this.tab_about.Controls.Add(this.lnk_Repository);
-            this.tab_about.Location = new System.Drawing.Point(4, 79);
-            this.tab_about.Name = "tab_about";
-            this.tab_about.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_about.Size = new System.Drawing.Size(559, 233);
-            this.tab_about.TabIndex = 6;
-            this.tab_about.Text = "About";
-            this.tab_about.UseVisualStyleBackColor = true;
-            // 
-            // btn_DebugInfo
-            // 
-            this.btn_DebugInfo.Location = new System.Drawing.Point(353, 245);
-            this.btn_DebugInfo.Name = "btn_DebugInfo";
-            this.btn_DebugInfo.Size = new System.Drawing.Size(200, 23);
-            this.btn_DebugInfo.TabIndex = 6;
-            this.btn_DebugInfo.Text = "Debug info";
-            this.btn_DebugInfo.UseVisualStyleBackColor = true;
-            this.btn_DebugInfo.Click += new System.EventHandler(this.Btn_DebugInfoClick);
-            // 
-            // txt_Help
-            // 
-            this.txt_Help.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_Help.Location = new System.Drawing.Point(0, 0);
-            this.txt_Help.Multiline = true;
-            this.txt_Help.Name = "txt_Help";
-            this.txt_Help.ReadOnly = true;
-            this.txt_Help.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_Help.Size = new System.Drawing.Size(559, 238);
-            this.txt_Help.TabIndex = 5;
             // 
             // lnk_Releases
             // 
@@ -3540,28 +3562,6 @@ namespace FaineSwitcher
             this.lnk_Wiki.TabStop = true;
             this.lnk_Wiki.Text = "Wiki";
             this.lnk_Wiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_WikiLinkClicked);
-            // 
-            // lnk_Site
-            // 
-            this.lnk_Site.AutoSize = true;
-            this.lnk_Site.Location = new System.Drawing.Point(86, 249);
-            this.lnk_Site.Name = "lnk_Site";
-            this.lnk_Site.Size = new System.Drawing.Size(34, 20);
-            this.lnk_Site.TabIndex = 1;
-            this.lnk_Site.TabStop = true;
-            this.lnk_Site.Text = "Site";
-            this.lnk_Site.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_SiteLinkClicked);
-            // 
-            // lnk_Repository
-            // 
-            this.lnk_Repository.AutoSize = true;
-            this.lnk_Repository.Location = new System.Drawing.Point(8, 249);
-            this.lnk_Repository.Name = "lnk_Repository";
-            this.lnk_Repository.Size = new System.Drawing.Size(91, 20);
-            this.lnk_Repository.TabIndex = 0;
-            this.lnk_Repository.TabStop = true;
-            this.lnk_Repository.Text = "Source code";
-            this.lnk_Repository.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_RepositoryLinkClicked);
             // 
             // tab_Hidden
             // 
@@ -3638,7 +3638,7 @@ namespace FaineSwitcher
             this.Htxt_LayoutModifier_D.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_LayoutModifier_D.Location = new System.Drawing.Point(438, 801);
             this.Htxt_LayoutModifier_D.Name = "Htxt_LayoutModifier_D";
-            this.Htxt_LayoutModifier_D.Size = new System.Drawing.Size(97, 27);
+            this.Htxt_LayoutModifier_D.Size = new System.Drawing.Size(97, 22);
             this.Htxt_LayoutModifier_D.TabIndex = 60;
             // 
             // Hlbl_LayoutModifier_D
@@ -3646,7 +3646,7 @@ namespace FaineSwitcher
             this.Hlbl_LayoutModifier_D.AutoSize = true;
             this.Hlbl_LayoutModifier_D.Location = new System.Drawing.Point(8, 803);
             this.Hlbl_LayoutModifier_D.Name = "Hlbl_LayoutModifier_D";
-            this.Hlbl_LayoutModifier_D.Size = new System.Drawing.Size(536, 20);
+            this.Hlbl_LayoutModifier_D.Size = new System.Drawing.Size(462, 16);
             this.Hlbl_LayoutModifier_D.TabIndex = 59;
             this.Hlbl_LayoutModifier_D.Text = "Layout #1/#2 modifier key: (change to either #1 or #2 while holding, 1 key only)";
             // 
@@ -3655,7 +3655,7 @@ namespace FaineSwitcher
             this.Hchk_cmdbackfix.AutoSize = true;
             this.Hchk_cmdbackfix.Location = new System.Drawing.Point(8, 848);
             this.Hchk_cmdbackfix.Name = "Hchk_cmdbackfix";
-            this.Hchk_cmdbackfix.Size = new System.Drawing.Size(457, 24);
+            this.Hchk_cmdbackfix.Size = new System.Drawing.Size(419, 20);
             this.Hchk_cmdbackfix.TabIndex = 58;
             this.Hchk_cmdbackfix.Text = "Enable cmd.exe convert last with Pause key BackSpace count fix. ";
             this.Hchk_cmdbackfix.UseVisualStyleBackColor = true;
@@ -3665,7 +3665,7 @@ namespace FaineSwitcher
             this.Hchk_DARK.AutoSize = true;
             this.Hchk_DARK.Location = new System.Drawing.Point(8, 825);
             this.Hchk_DARK.Name = "Hchk_DARK";
-            this.Hchk_DARK.Size = new System.Drawing.Size(118, 24);
+            this.Hchk_DARK.Size = new System.Drawing.Size(111, 20);
             this.Hchk_DARK.TabIndex = 57;
             this.Hchk_DARK.Text = "Dark Theme?";
             this.Hchk_DARK.UseVisualStyleBackColor = true;
@@ -3678,7 +3678,7 @@ namespace FaineSwitcher
             this.Htxt_LayoutModifier_2.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_LayoutModifier_2.Location = new System.Drawing.Point(438, 775);
             this.Htxt_LayoutModifier_2.Name = "Htxt_LayoutModifier_2";
-            this.Htxt_LayoutModifier_2.Size = new System.Drawing.Size(97, 27);
+            this.Htxt_LayoutModifier_2.Size = new System.Drawing.Size(97, 22);
             this.Htxt_LayoutModifier_2.TabIndex = 56;
             // 
             // Hlbl_LayoutModifier_2
@@ -3686,7 +3686,7 @@ namespace FaineSwitcher
             this.Hlbl_LayoutModifier_2.AutoSize = true;
             this.Hlbl_LayoutModifier_2.Location = new System.Drawing.Point(8, 777);
             this.Hlbl_LayoutModifier_2.Name = "Hlbl_LayoutModifier_2";
-            this.Hlbl_LayoutModifier_2.Size = new System.Drawing.Size(480, 20);
+            this.Hlbl_LayoutModifier_2.Size = new System.Drawing.Size(419, 16);
             this.Hlbl_LayoutModifier_2.TabIndex = 55;
             this.Hlbl_LayoutModifier_2.Text = "Layout #2 modifier key: (change to Layout #2 while holding, 1 key only)";
             // 
@@ -3697,7 +3697,7 @@ namespace FaineSwitcher
             this.Htxt_LayoutModifier_1.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_LayoutModifier_1.Location = new System.Drawing.Point(438, 747);
             this.Htxt_LayoutModifier_1.Name = "Htxt_LayoutModifier_1";
-            this.Htxt_LayoutModifier_1.Size = new System.Drawing.Size(97, 27);
+            this.Htxt_LayoutModifier_1.Size = new System.Drawing.Size(97, 22);
             this.Htxt_LayoutModifier_1.TabIndex = 54;
             // 
             // Hlbl_LayoutModifier_1
@@ -3705,7 +3705,7 @@ namespace FaineSwitcher
             this.Hlbl_LayoutModifier_1.AutoSize = true;
             this.Hlbl_LayoutModifier_1.Location = new System.Drawing.Point(8, 750);
             this.Hlbl_LayoutModifier_1.Name = "Hlbl_LayoutModifier_1";
-            this.Hlbl_LayoutModifier_1.Size = new System.Drawing.Size(480, 20);
+            this.Hlbl_LayoutModifier_1.Size = new System.Drawing.Size(419, 16);
             this.Hlbl_LayoutModifier_1.TabIndex = 53;
             this.Hlbl_LayoutModifier_1.Text = "Layout #1 modifier key: (change to Layout #1 while holding, 1 key only)";
             // 
@@ -3714,7 +3714,7 @@ namespace FaineSwitcher
             this.Hchk_SaveBase.AutoSize = true;
             this.Hchk_SaveBase.Location = new System.Drawing.Point(8, 457);
             this.Hchk_SaveBase.Name = "Hchk_SaveBase";
-            this.Hchk_SaveBase.Size = new System.Drawing.Size(529, 24);
+            this.Hchk_SaveBase.Size = new System.Drawing.Size(477, 20);
             this.Hchk_SaveBase.TabIndex = 49;
             this.Hchk_SaveBase.Text = "Save text before first Cycle Case conversion. (to return use [B]ase in order ↑)";
             this.Hchk_SaveBase.UseVisualStyleBackColor = true;
@@ -3726,7 +3726,7 @@ namespace FaineSwitcher
             this.Htxt_Redefines.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_Redefines.Location = new System.Drawing.Point(270, 668);
             this.Htxt_Redefines.Name = "Htxt_Redefines";
-            this.Htxt_Redefines.Size = new System.Drawing.Size(265, 27);
+            this.Htxt_Redefines.Size = new System.Drawing.Size(265, 22);
             this.Htxt_Redefines.TabIndex = 45;
             this.Htxt_Redefines.TextChanged += new System.EventHandler(this.Htxt_RedefinesTextChanged);
             this.Htxt_Redefines.Enter += new System.EventHandler(this.Htxt_RedefinesEnter);
@@ -3739,7 +3739,7 @@ namespace FaineSwitcher
             this.Htxt_ASEndSymbols.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_ASEndSymbols.Location = new System.Drawing.Point(324, 719);
             this.Htxt_ASEndSymbols.Name = "Htxt_ASEndSymbols";
-            this.Htxt_ASEndSymbols.Size = new System.Drawing.Size(211, 27);
+            this.Htxt_ASEndSymbols.Size = new System.Drawing.Size(211, 22);
             this.Htxt_ASEndSymbols.TabIndex = 48;
             // 
             // Hlbl_ASEndSymbols
@@ -3747,7 +3747,7 @@ namespace FaineSwitcher
             this.Hlbl_ASEndSymbols.AutoSize = true;
             this.Hlbl_ASEndSymbols.Location = new System.Drawing.Point(8, 723);
             this.Hlbl_ASEndSymbols.Name = "Hlbl_ASEndSymbols";
-            this.Hlbl_ASEndSymbols.Size = new System.Drawing.Size(343, 20);
+            this.Hlbl_ASEndSymbols.Size = new System.Drawing.Size(307, 16);
             this.Hlbl_ASEndSymbols.TabIndex = 47;
             this.Hlbl_ASEndSymbols.Text = "AutoSwitch possible end symbols:(empty=disable)";
             // 
@@ -3756,7 +3756,7 @@ namespace FaineSwitcher
             this.Hchk_ClipBackOnlyText.AutoSize = true;
             this.Hchk_ClipBackOnlyText.Location = new System.Drawing.Point(8, 694);
             this.Hchk_ClipBackOnlyText.Name = "Hchk_ClipBackOnlyText";
-            this.Hchk_ClipBackOnlyText.Size = new System.Drawing.Size(357, 24);
+            this.Hchk_ClipBackOnlyText.Size = new System.Drawing.Size(322, 20);
             this.Hchk_ClipBackOnlyText.TabIndex = 46;
             this.Hchk_ClipBackOnlyText.Text = "Disable full clipboard backup, backup only: [Text]";
             this.Hchk_ClipBackOnlyText.UseVisualStyleBackColor = true;
@@ -3768,7 +3768,7 @@ namespace FaineSwitcher
             this.Htxt_OSnippetsExcluded.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_OSnippetsExcluded.Location = new System.Drawing.Point(270, 325);
             this.Htxt_OSnippetsExcluded.Name = "Htxt_OSnippetsExcluded";
-            this.Htxt_OSnippetsExcluded.Size = new System.Drawing.Size(265, 27);
+            this.Htxt_OSnippetsExcluded.Size = new System.Drawing.Size(265, 22);
             this.Htxt_OSnippetsExcluded.TabIndex = 23;
             this.Htxt_OSnippetsExcluded.TextChanged += new System.EventHandler(this.Htxt_RedefinesTextChanged);
             this.Htxt_OSnippetsExcluded.Enter += new System.EventHandler(this.Htxt_RedefinesEnter);
@@ -3781,7 +3781,7 @@ namespace FaineSwitcher
             this.Htxt_OAutoSwitchExcluded.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_OAutoSwitchExcluded.Location = new System.Drawing.Point(270, 354);
             this.Htxt_OAutoSwitchExcluded.Name = "Htxt_OAutoSwitchExcluded";
-            this.Htxt_OAutoSwitchExcluded.Size = new System.Drawing.Size(265, 27);
+            this.Htxt_OAutoSwitchExcluded.Size = new System.Drawing.Size(265, 22);
             this.Htxt_OAutoSwitchExcluded.TabIndex = 25;
             this.Htxt_OAutoSwitchExcluded.TextChanged += new System.EventHandler(this.Htxt_RedefinesTextChanged);
             this.Htxt_OAutoSwitchExcluded.Enter += new System.EventHandler(this.Htxt_RedefinesEnter);
@@ -3794,7 +3794,7 @@ namespace FaineSwitcher
             this.Htxt_OverlayExcluded.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_OverlayExcluded.Location = new System.Drawing.Point(270, 63);
             this.Htxt_OverlayExcluded.Name = "Htxt_OverlayExcluded";
-            this.Htxt_OverlayExcluded.Size = new System.Drawing.Size(265, 27);
+            this.Htxt_OverlayExcluded.Size = new System.Drawing.Size(265, 22);
             this.Htxt_OverlayExcluded.TabIndex = 6;
             this.Htxt_OverlayExcluded.TextChanged += new System.EventHandler(this.Htxt_RedefinesTextChanged);
             this.Htxt_OverlayExcluded.Enter += new System.EventHandler(this.Htxt_RedefinesEnter);
@@ -3805,7 +3805,7 @@ namespace FaineSwitcher
             this.Hlbl_Redefines.AutoSize = true;
             this.Hlbl_Redefines.Location = new System.Drawing.Point(8, 672);
             this.Hlbl_Redefines.Name = "Hlbl_Redefines";
-            this.Hlbl_Redefines.Size = new System.Drawing.Size(302, 20);
+            this.Hlbl_Redefines.Size = new System.Drawing.Size(277, 16);
             this.Hlbl_Redefines.TabIndex = 44;
             this.Hlbl_Redefines.Text = "Redefine keys: (example: CapsLock>F18<all)";
             // 
@@ -3814,7 +3814,7 @@ namespace FaineSwitcher
             this.Hlbl_TrayHoverMM.AutoSize = true;
             this.Hlbl_TrayHoverMM.Location = new System.Drawing.Point(8, 642);
             this.Hlbl_TrayHoverMM.Name = "Hlbl_TrayHoverMM";
-            this.Hlbl_TrayHoverMM.Size = new System.Drawing.Size(507, 20);
+            this.Hlbl_TrayHoverMM.Size = new System.Drawing.Size(461, 16);
             this.Hlbl_TrayHoverMM.TabIndex = 43;
             this.Hlbl_TrayHoverMM.Text = "Display FaineSwitcher.mm menu when hovering tray icon for:(ms, 0 = disable)";
             // 
@@ -3835,7 +3835,7 @@ namespace FaineSwitcher
             0,
             0});
             this.Hnud_TrayHoverMM.Name = "Hnud_TrayHoverMM";
-            this.Hnud_TrayHoverMM.Size = new System.Drawing.Size(83, 27);
+            this.Hnud_TrayHoverMM.Size = new System.Drawing.Size(83, 22);
             this.Hnud_TrayHoverMM.TabIndex = 42;
             // 
             // Hchk_LMBTrayLayoutChangeDC
@@ -3843,10 +3843,10 @@ namespace FaineSwitcher
             this.Hchk_LMBTrayLayoutChangeDC.AutoSize = true;
             this.Hchk_LMBTrayLayoutChangeDC.Location = new System.Drawing.Point(8, 197);
             this.Hchk_LMBTrayLayoutChangeDC.Name = "Hchk_LMBTrayLayoutChangeDC";
-            this.Hchk_LMBTrayLayoutChangeDC.Size = new System.Drawing.Size(588, 24);
+            this.Hchk_LMBTrayLayoutChangeDC.Size = new System.Drawing.Size(535, 20);
             this.Hchk_LMBTrayLayoutChangeDC.TabIndex = 41;
-            this.Hchk_LMBTrayLayoutChangeDC.Text = "[LMB-Tray-Mod] Double Left Click on Tray toggles FaineSwitcher window. (only with ↑" +
-    ")";
+            this.Hchk_LMBTrayLayoutChangeDC.Text = "[LMB-Tray-Mod] Double Left Click on Tray toggles FaineSwitcher window. (only with" +
+    " ↑)";
             this.Hchk_LMBTrayLayoutChangeDC.UseVisualStyleBackColor = true;
             // 
             // Hlbl_ASIgnoreTimeout
@@ -3854,7 +3854,7 @@ namespace FaineSwitcher
             this.Hlbl_ASIgnoreTimeout.AutoSize = true;
             this.Hlbl_ASIgnoreTimeout.Location = new System.Drawing.Point(8, 613);
             this.Hlbl_ASIgnoreTimeout.Name = "Hlbl_ASIgnoreTimeout";
-            this.Hlbl_ASIgnoreTimeout.Size = new System.Drawing.Size(403, 20);
+            this.Hlbl_ASIgnoreTimeout.Size = new System.Drawing.Size(348, 16);
             this.Hlbl_ASIgnoreTimeout.TabIndex = 39;
             this.Hlbl_ASIgnoreTimeout.Text = "Auto Switch ignore after layout changed <LC> timeout(ms):";
             // 
@@ -3875,7 +3875,7 @@ namespace FaineSwitcher
             0,
             0});
             this.Hnud_ASIgnoreTimeout.Name = "Hnud_ASIgnoreTimeout";
-            this.Hnud_ASIgnoreTimeout.Size = new System.Drawing.Size(83, 27);
+            this.Hnud_ASIgnoreTimeout.Size = new System.Drawing.Size(83, 22);
             this.Hnud_ASIgnoreTimeout.TabIndex = 38;
             // 
             // Htxt_AutoSwitchIngoreRules
@@ -3885,7 +3885,7 @@ namespace FaineSwitcher
             this.Htxt_AutoSwitchIngoreRules.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_AutoSwitchIngoreRules.Location = new System.Drawing.Point(428, 521);
             this.Htxt_AutoSwitchIngoreRules.Name = "Htxt_AutoSwitchIngoreRules";
-            this.Htxt_AutoSwitchIngoreRules.Size = new System.Drawing.Size(107, 27);
+            this.Htxt_AutoSwitchIngoreRules.Size = new System.Drawing.Size(107, 22);
             this.Htxt_AutoSwitchIngoreRules.TabIndex = 37;
             // 
             // Hlbl_AutoSwitchIngoreRules
@@ -3893,7 +3893,7 @@ namespace FaineSwitcher
             this.Hlbl_AutoSwitchIngoreRules.AutoSize = true;
             this.Hlbl_AutoSwitchIngoreRules.Location = new System.Drawing.Point(8, 523);
             this.Hlbl_AutoSwitchIngoreRules.Name = "Hlbl_AutoSwitchIngoreRules";
-            this.Hlbl_AutoSwitchIngoreRules.Size = new System.Drawing.Size(519, 20);
+            this.Hlbl_AutoSwitchIngoreRules.Size = new System.Drawing.Size(458, 16);
             this.Hlbl_AutoSwitchIngoreRules.TabIndex = 36;
             this.Hlbl_AutoSwitchIngoreRules.Text = "AutoSwitch ignore rules ([S]pace [W]indow [M]ouse [C]aret [L]ayout [T]imer):";
             // 
@@ -3902,7 +3902,7 @@ namespace FaineSwitcher
             this.Hchk_ASIgnoreLS.AutoSize = true;
             this.Hchk_ASIgnoreLS.Location = new System.Drawing.Point(8, 587);
             this.Hchk_ASIgnoreLS.Name = "Hchk_ASIgnoreLS";
-            this.Hchk_ASIgnoreLS.Size = new System.Drawing.Size(384, 24);
+            this.Hchk_ASIgnoreLS.Size = new System.Drawing.Size(340, 20);
             this.Hchk_ASIgnoreLS.TabIndex = 35;
             this.Hchk_ASIgnoreLS.Text = "Auto Switch ignore: [Changed Layout Manually <LC>]";
             this.Hchk_ASIgnoreLS.UseVisualStyleBackColor = true;
@@ -3912,7 +3912,7 @@ namespace FaineSwitcher
             this.Hchk_ASIgnoreDel.AutoSize = true;
             this.Hchk_ASIgnoreDel.Location = new System.Drawing.Point(8, 567);
             this.Hchk_ASIgnoreDel.Name = "Hchk_ASIgnoreDel";
-            this.Hchk_ASIgnoreDel.Size = new System.Drawing.Size(319, 24);
+            this.Hchk_ASIgnoreDel.Size = new System.Drawing.Size(284, 20);
             this.Hchk_ASIgnoreDel.TabIndex = 34;
             this.Hchk_ASIgnoreDel.Text = "Auto Switch ignore: [Pressed Delete <Del>]";
             this.Hchk_ASIgnoreDel.UseVisualStyleBackColor = true;
@@ -3922,7 +3922,7 @@ namespace FaineSwitcher
             this.Hchk_ASIgnoreBack.AutoSize = true;
             this.Hchk_ASIgnoreBack.Location = new System.Drawing.Point(8, 547);
             this.Hchk_ASIgnoreBack.Name = "Hchk_ASIgnoreBack";
-            this.Hchk_ASIgnoreBack.Size = new System.Drawing.Size(354, 24);
+            this.Hchk_ASIgnoreBack.Size = new System.Drawing.Size(325, 20);
             this.Hchk_ASIgnoreBack.TabIndex = 33;
             this.Hchk_ASIgnoreBack.Text = "Auto Switch ignore: [Pressed BackSpace <Back>]";
             this.Hchk_ASIgnoreBack.UseVisualStyleBackColor = true;
@@ -3932,7 +3932,7 @@ namespace FaineSwitcher
             this.Hchk___setlayoutOnlyWM.AutoSize = true;
             this.Hchk___setlayoutOnlyWM.Location = new System.Drawing.Point(8, 499);
             this.Hchk___setlayoutOnlyWM.Name = "Hchk___setlayoutOnlyWM";
-            this.Hchk___setlayoutOnlyWM.Size = new System.Drawing.Size(624, 24);
+            this.Hchk___setlayoutOnlyWM.Size = new System.Drawing.Size(557, 20);
             this.Hchk___setlayoutOnlyWM.TabIndex = 32;
             this.Hchk___setlayoutOnlyWM.Text = "Snippet __setlayout() will use only Window Messages ignoring \"emulate layout swit" +
     "ching\".";
@@ -3943,7 +3943,7 @@ namespace FaineSwitcher
             this.Hchk___setlayoutForce.AutoSize = true;
             this.Hchk___setlayoutForce.Location = new System.Drawing.Point(8, 478);
             this.Hchk___setlayoutForce.Name = "Hchk___setlayoutForce";
-            this.Hchk___setlayoutForce.Size = new System.Drawing.Size(620, 24);
+            this.Hchk___setlayoutForce.Size = new System.Drawing.Size(545, 20);
             this.Hchk___setlayoutForce.TabIndex = 31;
             this.Hchk___setlayoutForce.Text = "Snippet __setlayout() will force layout, ignoring the \"Switch to guess layout aft" +
     "er snippet\".";
@@ -3954,7 +3954,7 @@ namespace FaineSwitcher
             this.Hchk_CycleCaseReset.AutoSize = true;
             this.Hchk_CycleCaseReset.Location = new System.Drawing.Point(8, 436);
             this.Hchk_CycleCaseReset.Name = "Hchk_CycleCaseReset";
-            this.Hchk_CycleCaseReset.Size = new System.Drawing.Size(435, 24);
+            this.Hchk_CycleCaseReset.Size = new System.Drawing.Size(393, 20);
             this.Hchk_CycleCaseReset.TabIndex = 30;
             this.Hchk_CycleCaseReset.Text = "Reset Cycle Case Order after caret position/window changed.";
             this.Hchk_CycleCaseReset.UseVisualStyleBackColor = true;
@@ -3966,7 +3966,7 @@ namespace FaineSwitcher
             this.Htxt_CycleCaseOrder.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_CycleCaseOrder.Location = new System.Drawing.Point(412, 412);
             this.Htxt_CycleCaseOrder.Name = "Htxt_CycleCaseOrder";
-            this.Htxt_CycleCaseOrder.Size = new System.Drawing.Size(124, 27);
+            this.Htxt_CycleCaseOrder.Size = new System.Drawing.Size(124, 22);
             this.Htxt_CycleCaseOrder.TabIndex = 29;
             // 
             // Hlbl_CycleCaseOrder
@@ -3974,7 +3974,7 @@ namespace FaineSwitcher
             this.Hlbl_CycleCaseOrder.AutoSize = true;
             this.Hlbl_CycleCaseOrder.Location = new System.Drawing.Point(10, 414);
             this.Hlbl_CycleCaseOrder.Name = "Hlbl_CycleCaseOrder";
-            this.Hlbl_CycleCaseOrder.Size = new System.Drawing.Size(455, 20);
+            this.Hlbl_CycleCaseOrder.Size = new System.Drawing.Size(409, 16);
             this.Hlbl_CycleCaseOrder.TabIndex = 28;
             this.Hlbl_CycleCaseOrder.Text = "Cycle Case Hotkey order: ([T]itle [U]pper [L]ower [S]wap [R]andom)";
             // 
@@ -3985,7 +3985,7 @@ namespace FaineSwitcher
             this.Htxt_ReselectCustoms.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_ReselectCustoms.Location = new System.Drawing.Point(412, 383);
             this.Htxt_ReselectCustoms.Name = "Htxt_ReselectCustoms";
-            this.Htxt_ReselectCustoms.Size = new System.Drawing.Size(124, 27);
+            this.Htxt_ReselectCustoms.Size = new System.Drawing.Size(124, 22);
             this.Htxt_ReselectCustoms.TabIndex = 27;
             // 
             // Hlbl_ReselectCustoms
@@ -3993,7 +3993,7 @@ namespace FaineSwitcher
             this.Hlbl_ReselectCustoms.AutoSize = true;
             this.Hlbl_ReselectCustoms.Location = new System.Drawing.Point(10, 385);
             this.Hlbl_ReselectCustoms.Name = "Hlbl_ReselectCustoms";
-            this.Hlbl_ReselectCustoms.Size = new System.Drawing.Size(428, 20);
+            this.Hlbl_ReselectCustoms.Size = new System.Drawing.Size(395, 16);
             this.Hlbl_ReselectCustoms.TabIndex = 26;
             this.Hlbl_ReselectCustoms.Text = "Use reselect only in these convert selection hotkeys: (tTRSULCN)";
             // 
@@ -4002,7 +4002,7 @@ namespace FaineSwitcher
             this.Hlbl_OnlyAutoSwitchExcluded.AutoSize = true;
             this.Hlbl_OnlyAutoSwitchExcluded.Location = new System.Drawing.Point(9, 356);
             this.Hlbl_OnlyAutoSwitchExcluded.Name = "Hlbl_OnlyAutoSwitchExcluded";
-            this.Hlbl_OnlyAutoSwitchExcluded.Size = new System.Drawing.Size(316, 20);
+            this.Hlbl_OnlyAutoSwitchExcluded.Size = new System.Drawing.Size(283, 16);
             this.Hlbl_OnlyAutoSwitchExcluded.TabIndex = 24;
             this.Hlbl_OnlyAutoSwitchExcluded.Text = "Autoswitch excluded processes: ( | - separator)";
             // 
@@ -4011,7 +4011,7 @@ namespace FaineSwitcher
             this.Hlbl_OnlySnippetsExcluded.AutoSize = true;
             this.Hlbl_OnlySnippetsExcluded.Location = new System.Drawing.Point(9, 327);
             this.Hlbl_OnlySnippetsExcluded.Name = "Hlbl_OnlySnippetsExcluded";
-            this.Hlbl_OnlySnippetsExcluded.Size = new System.Drawing.Size(300, 20);
+            this.Hlbl_OnlySnippetsExcluded.Size = new System.Drawing.Size(273, 16);
             this.Hlbl_OnlySnippetsExcluded.TabIndex = 22;
             this.Hlbl_OnlySnippetsExcluded.Text = "Snippets excluded processes: ( | - separator)";
             // 
@@ -4022,7 +4022,7 @@ namespace FaineSwitcher
             this.Htxt_AutoSwitchHotkeyStr.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_AutoSwitchHotkeyStr.Location = new System.Drawing.Point(412, 296);
             this.Htxt_AutoSwitchHotkeyStr.Name = "Htxt_AutoSwitchHotkeyStr";
-            this.Htxt_AutoSwitchHotkeyStr.Size = new System.Drawing.Size(123, 27);
+            this.Htxt_AutoSwitchHotkeyStr.Size = new System.Drawing.Size(123, 22);
             this.Htxt_AutoSwitchHotkeyStr.TabIndex = 21;
             // 
             // Hlbl_AutoSwitchHotkey
@@ -4030,7 +4030,7 @@ namespace FaineSwitcher
             this.Hlbl_AutoSwitchHotkey.AutoSize = true;
             this.Hlbl_AutoSwitchHotkey.Location = new System.Drawing.Point(9, 298);
             this.Hlbl_AutoSwitchHotkey.Name = "Hlbl_AutoSwitchHotkey";
-            this.Hlbl_AutoSwitchHotkey.Size = new System.Drawing.Size(470, 20);
+            this.Hlbl_AutoSwitchHotkey.Size = new System.Drawing.Size(411, 16);
             this.Hlbl_AutoSwitchHotkey.TabIndex = 20;
             this.Hlbl_AutoSwitchHotkey.Text = "Toggle AutoSwitch hotkey: (format: modifiers|key, example: alt+ctrl|k)";
             // 
@@ -4041,7 +4041,7 @@ namespace FaineSwitcher
             this.Htxt_SymbolClear.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_SymbolClear.Location = new System.Drawing.Point(270, 267);
             this.Htxt_SymbolClear.Name = "Htxt_SymbolClear";
-            this.Htxt_SymbolClear.Size = new System.Drawing.Size(265, 27);
+            this.Htxt_SymbolClear.Size = new System.Drawing.Size(265, 22);
             this.Htxt_SymbolClear.TabIndex = 19;
             // 
             // Hlbl_SymbolClear
@@ -4049,7 +4049,7 @@ namespace FaineSwitcher
             this.Hlbl_SymbolClear.AutoSize = true;
             this.Hlbl_SymbolClear.Location = new System.Drawing.Point(8, 271);
             this.Hlbl_SymbolClear.Name = "Hlbl_SymbolClear";
-            this.Hlbl_SymbolClear.Size = new System.Drawing.Size(249, 20);
+            this.Hlbl_SymbolClear.Size = new System.Drawing.Size(225, 16);
             this.Hlbl_SymbolClear.TabIndex = 18;
             this.Hlbl_SymbolClear.Text = "Symbols which clear Last Word/Line:";
             // 
@@ -4058,7 +4058,7 @@ namespace FaineSwitcher
             this.Hchk_LibrePasteFixCASV.AutoSize = true;
             this.Hchk_LibrePasteFixCASV.Location = new System.Drawing.Point(8, 244);
             this.Hchk_LibrePasteFixCASV.Name = "Hchk_LibrePasteFixCASV";
-            this.Hchk_LibrePasteFixCASV.Size = new System.Drawing.Size(325, 24);
+            this.Hchk_LibrePasteFixCASV.Size = new System.Drawing.Size(278, 20);
             this.Hchk_LibrePasteFixCASV.TabIndex = 15;
             this.Hchk_LibrePasteFixCASV.Text = "Libre Office fix, paste using Ctrl+Alt+Shift+V";
             this.Hchk_LibrePasteFixCASV.UseVisualStyleBackColor = true;
@@ -4070,7 +4070,7 @@ namespace FaineSwitcher
             this.Htxt_AutoCopyTranslation.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_AutoCopyTranslation.Location = new System.Drawing.Point(501, 219);
             this.Htxt_AutoCopyTranslation.Name = "Htxt_AutoCopyTranslation";
-            this.Htxt_AutoCopyTranslation.Size = new System.Drawing.Size(34, 27);
+            this.Htxt_AutoCopyTranslation.Size = new System.Drawing.Size(34, 22);
             this.Htxt_AutoCopyTranslation.TabIndex = 14;
             // 
             // Hlbl_AutoCopyTranslation
@@ -4078,7 +4078,7 @@ namespace FaineSwitcher
             this.Hlbl_AutoCopyTranslation.AutoSize = true;
             this.Hlbl_AutoCopyTranslation.Location = new System.Drawing.Point(8, 221);
             this.Hlbl_AutoCopyTranslation.Name = "Hlbl_AutoCopyTranslation";
-            this.Hlbl_AutoCopyTranslation.Size = new System.Drawing.Size(588, 20);
+            this.Hlbl_AutoCopyTranslation.Size = new System.Drawing.Size(517, 16);
             this.Hlbl_AutoCopyTranslation.TabIndex = 13;
             this.Hlbl_AutoCopyTranslation.Text = "[Translator] Auto Copy to Clipboard translation (only one lang short code, e.g. j" +
     "a/en/ru):";
@@ -4088,7 +4088,7 @@ namespace FaineSwitcher
             this.Hchk_LMBTrayLayoutChange.AutoSize = true;
             this.Hchk_LMBTrayLayoutChange.Location = new System.Drawing.Point(8, 175);
             this.Hchk_LMBTrayLayoutChange.Name = "Hchk_LMBTrayLayoutChange";
-            this.Hchk_LMBTrayLayoutChange.Size = new System.Drawing.Size(595, 24);
+            this.Hchk_LMBTrayLayoutChange.Size = new System.Drawing.Size(537, 20);
             this.Hchk_LMBTrayLayoutChange.TabIndex = 12;
             this.Hchk_LMBTrayLayoutChange.Text = "Left Click on Tray Icon changes layout (uses Alt+Tab to go back to your previous " +
     "app).";
@@ -4099,7 +4099,7 @@ namespace FaineSwitcher
             this.Hchk_DisableMemFlush.AutoSize = true;
             this.Hchk_DisableMemFlush.Location = new System.Drawing.Point(8, 150);
             this.Hchk_DisableMemFlush.Name = "Hchk_DisableMemFlush";
-            this.Hchk_DisableMemFlush.Size = new System.Drawing.Size(362, 24);
+            this.Hchk_DisableMemFlush.Size = new System.Drawing.Size(335, 20);
             this.Hchk_DisableMemFlush.TabIndex = 11;
             this.Hchk_DisableMemFlush.Text = "Disable memory flush (SetProcessWorkingSetSize)";
             this.Hchk_DisableMemFlush.UseVisualStyleBackColor = true;
@@ -4109,7 +4109,7 @@ namespace FaineSwitcher
             this.Hlbl_AutoRestartMins.AutoSize = true;
             this.Hlbl_AutoRestartMins.Location = new System.Drawing.Point(8, 124);
             this.Hlbl_AutoRestartMins.Name = "Hlbl_AutoRestartMins";
-            this.Hlbl_AutoRestartMins.Size = new System.Drawing.Size(405, 20);
+            this.Hlbl_AutoRestartMins.Size = new System.Drawing.Size(369, 16);
             this.Hlbl_AutoRestartMins.TabIndex = 10;
             this.Hlbl_AutoRestartMins.Text = "Auto-Restart FaineSwitcher(min) (0 - disable, restart required):";
             // 
@@ -4125,7 +4125,7 @@ namespace FaineSwitcher
             0,
             0});
             this.Hnud_AutoRestartMins.Name = "Hnud_AutoRestartMins";
-            this.Hnud_AutoRestartMins.Size = new System.Drawing.Size(83, 27);
+            this.Hnud_AutoRestartMins.Size = new System.Drawing.Size(83, 22);
             this.Hnud_AutoRestartMins.TabIndex = 9;
             // 
             // Hlbl_OverlayExcludedInterval
@@ -4133,7 +4133,7 @@ namespace FaineSwitcher
             this.Hlbl_OverlayExcludedInterval.AutoSize = true;
             this.Hlbl_OverlayExcludedInterval.Location = new System.Drawing.Point(8, 95);
             this.Hlbl_OverlayExcludedInterval.Name = "Hlbl_OverlayExcludedInterval";
-            this.Hlbl_OverlayExcludedInterval.Size = new System.Drawing.Size(208, 20);
+            this.Hlbl_OverlayExcludedInterval.Size = new System.Drawing.Size(188, 16);
             this.Hlbl_OverlayExcludedInterval.TabIndex = 8;
             this.Hlbl_OverlayExcludedInterval.Text = "Overlay Excluded Interval(ms):";
             // 
@@ -4159,7 +4159,7 @@ namespace FaineSwitcher
             0,
             0});
             this.Hnud_OverlayExcludedInterval.Name = "Hnud_OverlayExcludedInterval";
-            this.Hnud_OverlayExcludedInterval.Size = new System.Drawing.Size(82, 27);
+            this.Hnud_OverlayExcludedInterval.Size = new System.Drawing.Size(82, 22);
             this.Hnud_OverlayExcludedInterval.TabIndex = 7;
             this.Hnud_OverlayExcludedInterval.Value = new decimal(new int[] {
             2500,
@@ -4172,7 +4172,7 @@ namespace FaineSwitcher
             this.Hlbl_OverlayExcluded.AutoSize = true;
             this.Hlbl_OverlayExcluded.Location = new System.Drawing.Point(8, 67);
             this.Hlbl_OverlayExcluded.Name = "Hlbl_OverlayExcluded";
-            this.Hlbl_OverlayExcluded.Size = new System.Drawing.Size(362, 20);
+            this.Hlbl_OverlayExcluded.Size = new System.Drawing.Size(344, 16);
             this.Hlbl_OverlayExcluded.TabIndex = 5;
             this.Hlbl_OverlayExcluded.Text = "Overlay processes disable FaineSwitcher: ( | - separator)";
             // 
@@ -4181,7 +4181,7 @@ namespace FaineSwitcher
             this.Hchk_NCStray.AutoSize = true;
             this.Hchk_NCStray.Location = new System.Drawing.Point(8, 37);
             this.Hchk_NCStray.Name = "Hchk_NCStray";
-            this.Hchk_NCStray.Size = new System.Drawing.Size(225, 24);
+            this.Hchk_NCStray.Size = new System.Drawing.Size(207, 20);
             this.Hchk_NCStray.TabIndex = 4;
             this.Hchk_NCStray.Text = "Num/Caps/Scroll Lock in Tray";
             this.Hchk_NCStray.UseVisualStyleBackColor = true;
@@ -4191,7 +4191,7 @@ namespace FaineSwitcher
             this.Hlbl_NCS.AutoSize = true;
             this.Hlbl_NCS.Location = new System.Drawing.Point(371, 39);
             this.Hlbl_NCS.Name = "Hlbl_NCS";
-            this.Hlbl_NCS.Size = new System.Drawing.Size(151, 20);
+            this.Hlbl_NCS.Size = new System.Drawing.Size(134, 16);
             this.Hlbl_NCS.TabIndex = 3;
             this.Hlbl_NCS.Text = "[N]um [C]aps [S]croll:";
             // 
@@ -4202,7 +4202,7 @@ namespace FaineSwitcher
             this.Htxt_NCS.ForeColor = System.Drawing.Color.LightCyan;
             this.Htxt_NCS.Location = new System.Drawing.Point(501, 37);
             this.Htxt_NCS.Name = "Htxt_NCS";
-            this.Htxt_NCS.Size = new System.Drawing.Size(34, 27);
+            this.Htxt_NCS.Size = new System.Drawing.Size(34, 22);
             this.Htxt_NCS.TabIndex = 2;
             // 
             // Hchk___selection_nomouse
@@ -4210,7 +4210,7 @@ namespace FaineSwitcher
             this.Hchk___selection_nomouse.AutoSize = true;
             this.Hchk___selection_nomouse.Location = new System.Drawing.Point(8, 20);
             this.Hchk___selection_nomouse.Name = "Hchk___selection_nomouse";
-            this.Hchk___selection_nomouse.Size = new System.Drawing.Size(560, 24);
+            this.Hchk___selection_nomouse.Size = new System.Drawing.Size(502, 20);
             this.Hchk___selection_nomouse.TabIndex = 1;
             this.Hchk___selection_nomouse.Text = "Disable __selection()\'s mouse triggers. (double click triggers Ctrl+Insert, to co" +
     "py)";
@@ -4221,7 +4221,7 @@ namespace FaineSwitcher
             this.Hchk___selection.AutoSize = true;
             this.Hchk___selection.Location = new System.Drawing.Point(8, 3);
             this.Hchk___selection.Name = "Hchk___selection";
-            this.Hchk___selection.Size = new System.Drawing.Size(609, 24);
+            this.Hchk___selection.Size = new System.Drawing.Size(547, 20);
             this.Hchk___selection.TabIndex = 0;
             this.Hchk___selection.Text = "Enable __selection(), allows you to write snippet over selection and use it insid" +
     "e snippet.\r\n";
@@ -4265,6 +4265,34 @@ namespace FaineSwitcher
             this.btn_Apply.Text = "Apply";
             this.btn_Apply.UseVisualStyleBackColor = true;
             this.btn_Apply.Click += new System.EventHandler(this.Btn_ApplyClick);
+            // 
+            // textBoxCA1
+            // 
+            this.textBoxCA1.Location = new System.Drawing.Point(287, 46);
+            this.textBoxCA1.Multiline = true;
+            this.textBoxCA1.Name = "textBoxCA1";
+            this.textBoxCA1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxCA1.Size = new System.Drawing.Size(262, 212);
+            this.textBoxCA1.TabIndex = 28;
+            this.textBoxCA1.Text = "LA.exe SomeProgram.exe";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 20);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Do not need check words list";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(287, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 20);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Need check words list";
             // 
             // SwitcherUI
             // 
@@ -4343,6 +4371,8 @@ namespace FaineSwitcher
             this.grb_LPConfig.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LPTransparency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LPRefreshRate)).EndInit();
+            this.tab_about.ResumeLayout(false);
+            this.tab_about.PerformLayout();
             this.tab_translator.ResumeLayout(false);
             this.tab_translator.PerformLayout();
             this.grb_TrConfs.ResumeLayout(false);
@@ -4361,8 +4391,6 @@ namespace FaineSwitcher
             this.grb_ProxyConfig.PerformLayout();
             this.grb_SwitcherReleaseTitle.ResumeLayout(false);
             this.grb_SwitcherReleaseTitle.PerformLayout();
-            this.tab_about.ResumeLayout(false);
-            this.tab_about.PerformLayout();
             this.tab_Hidden.ResumeLayout(false);
             this.tab_Hidden.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Hnud_TrayHoverMM)).EndInit();
@@ -4373,5 +4401,8 @@ namespace FaineSwitcher
 
 		}
 
-		}
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private TextBoxCA textBoxCA1;
+    }
 }

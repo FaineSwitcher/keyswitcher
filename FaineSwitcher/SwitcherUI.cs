@@ -12,6 +12,7 @@ using System.Reflection;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.Web;
+using static FaineSwitcher.SwitcherUI;
 
 namespace FaineSwitcher
 {
@@ -1421,7 +1422,13 @@ namespace FaineSwitcher
                 Program.MyConfs.Write("Timings", "DelayAfterBackspaces", nud_DelayAfterBackspaces.Value.ToString());
                 Program.MyConfs.Write("Timings", "UseDelayAfterBackspaces", chk_UseDelayAfterBackspaces.Checked.ToString());
                 #region Excluded
-                Program.MyConfs.Write("Timings", "ExcludedPrograms", txt_ExcludedPrograms.Text.Replace(Environment.NewLine, "^cr^lf"));
+                //Program.MyConfs.Write("Timings", "ExcludedPrograms", txt_ExcludedPrograms.Text.Replace(Environment.NewLine, "^cr^lf"));
+                File.WriteAllText("exceptionWords.txt", txt_ExcludedPrograms.Text);
+                KMHook.exceptionWords = new List<string>();
+
+                File.WriteAllText("needSwitchWords.txt", textBoxCA1.Text);
+                KMHook.needSwitch = new List<string>();
+
                 Program.MyConfs.Write("Timings", "ChangeLayoutInExcluded", chk_Change1KeyL.Checked.ToString());
                 Program.MyConfs.Write("Timings", "ConvertSWLinExcl", chk_ConvSWL.Checked.ToString());
                 #endregion
@@ -2011,7 +2018,8 @@ namespace FaineSwitcher
             #region Excluded
             ExcludeCaretLD = Program.MyConfs.ReadBool("Timings", "ExcludeCaretLD");
             UsePaste = chk_CSUsePaste.Checked = Program.MyConfs.ReadBool("Timings", "UsePasteInCS");
-            ExcludedPrograms = txt_ExcludedPrograms.Text = Program.MyConfs.Read("Timings", "ExcludedPrograms").Replace("^cr^lf", Environment.NewLine);
+            ExcludedPrograms = txt_ExcludedPrograms.Text = KMHook.GenerateStringWithNewLines(KMHook.exceptionWords);
+            textBoxCA1.Text = KMHook.GenerateStringWithNewLines(KMHook.needSwitch);
             KMHook.EXCLUDED_HWNDs.Clear();
             KMHook.NOT_EXCLUDED_HWNDs.Clear();
             KMHook.AS_EXCLUDED_HWNDs.Clear();
@@ -5298,6 +5306,8 @@ DEL ""ExtractASD.cmd""";
             lbl_ExcludedPrograms.Text = Program.Lang[Languages.Element.ExcludedPrograms];
             chk_Change1KeyL.Text = Program.Lang[Languages.Element.Change1KeyLayoutInExcluded];
             chk_ConvSWL.Text = Program.Lang[Languages.Element.AllowConvertSWL];
+            label1.Text = Program.Lang[Languages.Element.NotNeedSwitch];
+            label2.Text = Program.Lang[Languages.Element.NeedSwitch];
             #endregion
             #region Snippets
             chk_Snippets.Text = Program.Lang[Languages.Element.SnippetsEnabled];

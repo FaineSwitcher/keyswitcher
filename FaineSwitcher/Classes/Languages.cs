@@ -307,7 +307,9 @@ public class Languages
         TT_LCTRLLALTTempLayout,
         #endregion
         #region Messages
-        MSG_SnippetsError
+        MSG_SnippetsError,
+        NotNeedSwitch,
+        NeedSwitch
         #endregion
     }
     public static Dictionary<Element, string> English = new Dictionary<Element, string>() { 
@@ -417,7 +419,9 @@ public class Languages
 		#region Excluded
 		{ Element.ExcludedPrograms, "Excluded programs:" },
         { Element.Change1KeyLayoutInExcluded, "Change layout by 1 key even in excluded." },
-        { Element.AllowConvertSWL, "Allow convert selection/word/line conversion." }, 
+        { Element.AllowConvertSWL, "Allow convert selection/word/line conversion." },
+        { Element.NeedSwitch, "Words that need to be switched" },
+        { Element.NotNeedSwitch, "Words that do not need to be switched" },
 		#endregion
 		#region Snippets
 		{ Element.SnippetsEnabled, "Enable snippets." },
@@ -743,7 +747,9 @@ Specify layout code 0 to disable this feature." },
 		#region Excluded
         { Element.ExcludedPrograms, "Программи-виключення:" },
         { Element.Change1KeyLayoutInExcluded, "Змінювати розкладку однієї клавіші навіть у виключеннях." },
-        { Element.AllowConvertSWL, "Дозволити конвертування виділення/слова/рядка." }, 
+        { Element.AllowConvertSWL, "Дозволити конвертування виділення/слова/рядка." },
+        { Element.NeedSwitch, "Слова, що потрібно перемикати" },
+        { Element.NotNeedSwitch, "Слова, що не потрібно перемикати" },
 		#endregion
 		#region Snippets
 		{ Element.SnippetsEnabled, "Включить сніпети." },
