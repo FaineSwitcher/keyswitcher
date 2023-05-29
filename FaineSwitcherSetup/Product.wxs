@@ -46,7 +46,7 @@
       <ComponentRef Id="ApplicationShortcut" />
       <ComponentRef Id="ApplicationShortcutDesctop" />
       <ComponentRef Id="FaineSwitch.exe" />
-      <ComponentRef Id="AS_dict.txt" />
+      <ComponentRef Id="MLModel1.zip" />
       <ComponentRef Id="FaineSwitch.exe.config" />
     </Feature>
 
@@ -96,8 +96,8 @@
       <Component Id="FaineSwitch.exe" Guid="bb6891a0-5e51-477f-8f84-d80747cbcc1b">
         <File Id="FaineSwitch.exe" Name="FaineSwitch.exe" Source="$(var.FaineSwitcher_TargetDir)FaineSwitch.exe" />
       </Component>
-      <Component Id="AS_dict.txt" Guid="5c0a3e22-d781-4394-80a9-8e2723486ce8">
-        <File Id="AS_dict.txt" Name="AS_dict.txt" Source="$(var.FaineSwitcher_TargetDir)AS_dict.txt" />
+      <Component Id="MLModel1.zip" Guid="5c0a3e22-d781-4394-80a9-8e2723486ce8">
+        <File Id="MLModel1.zip" Name="MLModel1.zip" Source="$(var.FaineSwitcher_TargetDir)ML/MLModel1.zip" />
       </Component>
     </DirectoryRef>
   </Product>
