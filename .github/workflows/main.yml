@@ -57,8 +57,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{env.DOTNET_ROOT}}/myapp
-        asset_name: myapp
+        asset_path: ${{env.DOTNET_ROOT}}/myapp/myapp.zip
+        asset_name: myapp.zip
         asset_content_type: application/zip
 
    
