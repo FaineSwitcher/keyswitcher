@@ -1,64 +1,64 @@
-# name: Build and Release
+name: Build and Release
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   build-and-release:
-#     runs-on: windows-latest
+jobs:
+  build-and-release:
+    runs-on: windows-latest
 
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-#     - name: Setup MSBuild.exe
-#       uses: microsoft/setup-msbuild@v1.0.2
-#       with:
-#         msbuild-version: 16.0
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        msbuild-version: 16.0
         
-#     - name: Install WiX Toolset v3.11
-#       run: |
-#         New-Item -ItemType Directory -Path "C:\wix311"
-#         Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311.exe" -OutFile "C:\wix311\wix311.exe"
-#         Start-Process -Wait -FilePath "C:\wix311\wix311.exe" -ArgumentList "/install /quiet"
+    - name: Install WiX Toolset v3.11
+      run: |
+        New-Item -ItemType Directory -Path "C:\wix311"
+        Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311.exe" -OutFile "C:\wix311\wix311.exe"
+        Start-Process -Wait -FilePath "C:\wix311\wix311.exe" -ArgumentList "/install /quiet"
 
-#     - name: Restore NuGet packages
-#       run: nuget restore FaineSwitcher/FaineSwitcher.sln
+    - name: Restore NuGet packages
+      run: nuget restore FaineSwitcher/FaineSwitcher.sln
 
-#     - name: Build FaineSwitcher project
-#       run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=FaineSwitcher/bin/Debug_x86_x64
+    - name: Build FaineSwitcher project
+      run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=FaineSwitcher/bin/Debug_x86_x64
   
-#     - name: Build FaineSwitcherSetup project
-#       run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release  /p:OutputPath=${{env.DOTNET_ROOT}}/myapp
+    - name: Build FaineSwitcherSetup project
+      run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release  /p:OutputPath=${{env.DOTNET_ROOT}}/myapp
           
-#     - name: Create Release
-#       id: create_release
-#       uses: actions/create-release@v1
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#       with:
-#         tag_name: v1.0.0
-#         release_name: Release 1.0.0
-#         body: 'Release notes for version 1.0.0.'
-#         draft: false
-#         prerelease: false
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v1.0.0
+        release_name: Release 1.0.0
+        body: 'Release notes for version 1.0.0.'
+        draft: false
+        prerelease: false
         
-#     - name: Upload Artifacts
-#       uses: actions/upload-artifact@v2
-#       with:
-#         name: myapp
-#         path: ${{env.DOTNET_ROOT}}/myapp
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: myapp
+        path: ${{env.DOTNET_ROOT}}/myapp
         
-#     - name: Attach Artifact to Release
-#       uses: actions/upload-release-asset@v1
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#       with:
-#         upload_url: ${{ steps.create_release.outputs.upload_url }}
-#         asset_path: ${{env.DOTNET_ROOT}}/myapp
-#         asset_name: myapp
-#         asset_content_type: application/zip
+    - name: Attach Artifact to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{env.DOTNET_ROOT}}/myapp
+        asset_name: myapp
+        asset_content_type: application/zip
 
    

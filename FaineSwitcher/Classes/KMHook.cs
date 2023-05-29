@@ -1237,29 +1237,25 @@ namespace FaineSwitcher
         private static void GenerateFile(string filePath)
         {
             var words = new[]
-            {
-            "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед",
-            "не", "ні", "тільки", "ледве", "мов", "ти", "на", "не", "ні",
-            "як", "ще", "зі",  "але",
+  {
+    "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "ні", "тільки", "ледве", "мов", "ти", "на", "ні",
+    "як", "ще", "зі", "але",
     "або",
     "аби",
     "ага",
     "але",
     "без",
-    "і",
-    "та",
     "й",
     "але",
-    "а",
     "цей",
     "ці",
     "це",
-    "ми",
     "ти",
     "ви",
     "як",
     "що",
     "ще",
+    "за",
     "щоб",
     "зате",
     "якщо",
@@ -1278,7 +1274,6 @@ namespace FaineSwitcher
     "немов",
     "однак",
     "все ж",
-    "зате",
     "проте",
     "тих",
     "цих",
@@ -1293,8 +1288,8 @@ namespace FaineSwitcher
     "ті",
     "тому",
     "ну",
-    "не"
-            };
+    "не", "ми", "ці", "із", "англ"
+};
 
             using (FileStream fs = File.Create(filePath))
             using (StreamWriter writer = new StreamWriter(fs))
@@ -1337,7 +1332,7 @@ namespace FaineSwitcher
         {
             var words = new[]
             {
-                "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk"
+                "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk", "ot", "sp"
             };
 
             using (FileStream fs = File.Create(filePath))
@@ -1359,7 +1354,7 @@ namespace FaineSwitcher
         {
             var matched = false;
 
-            // Перевірка, чи текст забагато короткий або вже міститься у списку українських слів
+            // Перевірка, чи текст забагато короткий або вже міститься у списку українських 
             //***
             // Checking whether the text is too short or is already in the list of Ukrainian words
             if (snip.Length < 2 || exceptionWords.Contains(snip))

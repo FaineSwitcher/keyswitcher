@@ -146,17 +146,13 @@ namespace FaineSwitcher
 		private System.Windows.Forms.Label lbl_TaskExist;
 		private System.Windows.Forms.Label lbl_LinkExist;
 		private System.Windows.Forms.TabPage tab_autoswitch;
-		private System.Windows.Forms.Button btn_UpdateAutoSwitchDictionary;
 		private System.Windows.Forms.CheckBox chk_AutoSwitchSwitchToGuessLayout;
 		private System.Windows.Forms.CheckBox chk_AutoSwitchSpaceAfter;
-		private FaineSwitcher.SwitcherUI.TextBoxCA txt_AutoSwitchDictionary;
 		private System.Windows.Forms.CheckBox chk_AutoSwitch;
 		private System.Windows.Forms.Label lbl_AutoSwitchDependsOnSnippets;
-		private System.Windows.Forms.Label lbl_AutoSwitchWordsCount;
 		private System.Windows.Forms.Label lbl_SnippetsCount;
 		private System.Windows.Forms.CheckBox chk_GuessKeyCodeFix;
 		private System.Windows.Forms.CheckBox chk_AppDataConfigs;
-		private System.Windows.Forms.CheckBox chk_DownloadASD_InZip;
 		private System.Windows.Forms.ComboBox cbb_SnippetExpandKeys;
 		private System.Windows.Forms.Label lbl_SnippetExpandKey;
 		private System.Windows.Forms.CheckBox chk_LDMessages;
@@ -431,6 +427,9 @@ namespace FaineSwitcher
             this.nud_LangTTMouseRefreshRate = new System.Windows.Forms.NumericUpDown();
             this.lbl_LangTTMouseRefreshRate = new System.Windows.Forms.Label();
             this.tab_excluded = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxCA1 = new FaineSwitcher.SwitcherUI.TextBoxCA();
             this.txt_ExcludedPrograms = new FaineSwitcher.SwitcherUI.TextBoxCA();
             this.lbl_ExcludedPrograms = new System.Windows.Forms.Label();
             this.chk_Change1KeyL = new System.Windows.Forms.CheckBox();
@@ -451,12 +450,8 @@ namespace FaineSwitcher
             this.chk_SnippetsSwitchToGuessLayout = new System.Windows.Forms.CheckBox();
             this.lbl_SnippetsCount = new System.Windows.Forms.Label();
             this.tab_autoswitch = new System.Windows.Forms.TabPage();
-            this.chk_DownloadASD_InZip = new System.Windows.Forms.CheckBox();
-            this.lbl_AutoSwitchWordsCount = new System.Windows.Forms.Label();
             this.chk_AutoSwitchSpaceAfter = new System.Windows.Forms.CheckBox();
-            this.btn_UpdateAutoSwitchDictionary = new System.Windows.Forms.Button();
             this.chk_AutoSwitchSwitchToGuessLayout = new System.Windows.Forms.CheckBox();
-            this.txt_AutoSwitchDictionary = new FaineSwitcher.SwitcherUI.TextBoxCA();
             this.chk_AutoSwitch = new System.Windows.Forms.CheckBox();
             this.lbl_AutoSwitchDependsOnSnippets = new System.Windows.Forms.Label();
             this.tab_hotkeys = new System.Windows.Forms.TabPage();
@@ -639,9 +634,6 @@ namespace FaineSwitcher
             this.btn_OK = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Apply = new System.Windows.Forms.Button();
-            this.textBoxCA1 = new FaineSwitcher.SwitcherUI.TextBoxCA();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tab_functions.SuspendLayout();
             this.tab_persistent.SuspendLayout();
@@ -1903,13 +1895,41 @@ namespace FaineSwitcher
             this.tab_excluded.Text = "Excluded";
             this.tab_excluded.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(269, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 20);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Need check words list";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 20);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Do not need check words list";
+            // 
+            // textBoxCA1
+            // 
+            this.textBoxCA1.Location = new System.Drawing.Point(273, 40);
+            this.textBoxCA1.Multiline = true;
+            this.textBoxCA1.Name = "textBoxCA1";
+            this.textBoxCA1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxCA1.Size = new System.Drawing.Size(283, 222);
+            this.textBoxCA1.TabIndex = 28;
+            this.textBoxCA1.Text = "LA.exe SomeProgram.exe";
+            // 
             // txt_ExcludedPrograms
             // 
-            this.txt_ExcludedPrograms.Location = new System.Drawing.Point(8, 46);
+            this.txt_ExcludedPrograms.Location = new System.Drawing.Point(8, 40);
             this.txt_ExcludedPrograms.Multiline = true;
             this.txt_ExcludedPrograms.Name = "txt_ExcludedPrograms";
             this.txt_ExcludedPrograms.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt_ExcludedPrograms.Size = new System.Drawing.Size(247, 216);
+            this.txt_ExcludedPrograms.Size = new System.Drawing.Size(259, 222);
             this.txt_ExcludedPrograms.TabIndex = 24;
             this.txt_ExcludedPrograms.Text = "LA.exe SomeProgram.exe";
             // 
@@ -2112,12 +2132,8 @@ namespace FaineSwitcher
             // 
             // tab_autoswitch
             // 
-            this.tab_autoswitch.Controls.Add(this.chk_DownloadASD_InZip);
-            this.tab_autoswitch.Controls.Add(this.lbl_AutoSwitchWordsCount);
             this.tab_autoswitch.Controls.Add(this.chk_AutoSwitchSpaceAfter);
-            this.tab_autoswitch.Controls.Add(this.btn_UpdateAutoSwitchDictionary);
             this.tab_autoswitch.Controls.Add(this.chk_AutoSwitchSwitchToGuessLayout);
-            this.tab_autoswitch.Controls.Add(this.txt_AutoSwitchDictionary);
             this.tab_autoswitch.Controls.Add(this.chk_AutoSwitch);
             this.tab_autoswitch.Controls.Add(this.lbl_AutoSwitchDependsOnSnippets);
             this.tab_autoswitch.Location = new System.Drawing.Point(4, 54);
@@ -2127,73 +2143,30 @@ namespace FaineSwitcher
             this.tab_autoswitch.Text = "Auto Switch";
             this.tab_autoswitch.UseVisualStyleBackColor = true;
             // 
-            // chk_DownloadASD_InZip
-            // 
-            this.chk_DownloadASD_InZip.AutoSize = true;
-            this.chk_DownloadASD_InZip.Location = new System.Drawing.Point(200, 44);
-            this.chk_DownloadASD_InZip.Name = "chk_DownloadASD_InZip";
-            this.chk_DownloadASD_InZip.Size = new System.Drawing.Size(264, 24);
-            this.chk_DownloadASD_InZip.TabIndex = 12;
-            this.chk_DownloadASD_InZip.Text = "Download dictionary in zip archive.";
-            this.chk_DownloadASD_InZip.UseVisualStyleBackColor = true;
-            this.chk_DownloadASD_InZip.CheckedChanged += new System.EventHandler(this.Chk_DownloadASD_InZipCheckedChanged);
-            // 
-            // lbl_AutoSwitchWordsCount
-            // 
-            this.lbl_AutoSwitchWordsCount.AutoSize = true;
-            this.lbl_AutoSwitchWordsCount.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_AutoSwitchWordsCount.Location = new System.Drawing.Point(427, 22);
-            this.lbl_AutoSwitchWordsCount.Name = "lbl_AutoSwitchWordsCount";
-            this.lbl_AutoSwitchWordsCount.Size = new System.Drawing.Size(66, 20);
-            this.lbl_AutoSwitchWordsCount.TabIndex = 11;
-            this.lbl_AutoSwitchWordsCount.Text = "Words: 0";
-            // 
             // chk_AutoSwitchSpaceAfter
             // 
             this.chk_AutoSwitchSpaceAfter.AutoSize = true;
-            this.chk_AutoSwitchSpaceAfter.Location = new System.Drawing.Point(275, 3);
+            this.chk_AutoSwitchSpaceAfter.Location = new System.Drawing.Point(20, 57);
             this.chk_AutoSwitchSpaceAfter.Name = "chk_AutoSwitchSpaceAfter";
             this.chk_AutoSwitchSpaceAfter.Size = new System.Drawing.Size(232, 24);
             this.chk_AutoSwitchSpaceAfter.TabIndex = 7;
             this.chk_AutoSwitchSpaceAfter.Text = "Add 1 space after auto-switch.";
             this.chk_AutoSwitchSpaceAfter.UseVisualStyleBackColor = true;
             // 
-            // btn_UpdateAutoSwitchDictionary
-            // 
-            this.btn_UpdateAutoSwitchDictionary.Location = new System.Drawing.Point(8, 41);
-            this.btn_UpdateAutoSwitchDictionary.Name = "btn_UpdateAutoSwitchDictionary";
-            this.btn_UpdateAutoSwitchDictionary.Size = new System.Drawing.Size(186, 23);
-            this.btn_UpdateAutoSwitchDictionary.TabIndex = 9;
-            this.btn_UpdateAutoSwitchDictionary.Text = "Update auto-switch dictionary";
-            this.btn_UpdateAutoSwitchDictionary.UseVisualStyleBackColor = true;
-            this.btn_UpdateAutoSwitchDictionary.Click += new System.EventHandler(this.btn_UpdateAutoSwitchDictionary_Click);
-            // 
             // chk_AutoSwitchSwitchToGuessLayout
             // 
             this.chk_AutoSwitchSwitchToGuessLayout.AutoSize = true;
-            this.chk_AutoSwitchSwitchToGuessLayout.Location = new System.Drawing.Point(8, 21);
+            this.chk_AutoSwitchSwitchToGuessLayout.Location = new System.Drawing.Point(20, 124);
             this.chk_AutoSwitchSwitchToGuessLayout.Name = "chk_AutoSwitchSwitchToGuessLayout";
             this.chk_AutoSwitchSwitchToGuessLayout.Size = new System.Drawing.Size(297, 24);
             this.chk_AutoSwitchSwitchToGuessLayout.TabIndex = 8;
             this.chk_AutoSwitchSwitchToGuessLayout.Text = "Switch to guess layout after auto-switch.";
             this.chk_AutoSwitchSwitchToGuessLayout.UseVisualStyleBackColor = true;
             // 
-            // txt_AutoSwitchDictionary
-            // 
-            this.txt_AutoSwitchDictionary.Location = new System.Drawing.Point(8, 69);
-            this.txt_AutoSwitchDictionary.MaxLength = 0;
-            this.txt_AutoSwitchDictionary.Multiline = true;
-            this.txt_AutoSwitchDictionary.Name = "txt_AutoSwitchDictionary";
-            this.txt_AutoSwitchDictionary.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_AutoSwitchDictionary.Size = new System.Drawing.Size(541, 193);
-            this.txt_AutoSwitchDictionary.TabIndex = 6;
-            this.txt_AutoSwitchDictionary.Text = "EMPTY, need to update.";
-            this.txt_AutoSwitchDictionary.TextChanged += new System.EventHandler(this.Txt_AutoSwitchDictionaryTextChanged);
-            // 
             // chk_AutoSwitch
             // 
             this.chk_AutoSwitch.AutoSize = true;
-            this.chk_AutoSwitch.Location = new System.Drawing.Point(8, 3);
+            this.chk_AutoSwitch.Location = new System.Drawing.Point(20, 90);
             this.chk_AutoSwitch.Name = "chk_AutoSwitch";
             this.chk_AutoSwitch.Size = new System.Drawing.Size(160, 24);
             this.chk_AutoSwitch.TabIndex = 5;
@@ -4265,34 +4238,6 @@ namespace FaineSwitcher
             this.btn_Apply.Text = "Apply";
             this.btn_Apply.UseVisualStyleBackColor = true;
             this.btn_Apply.Click += new System.EventHandler(this.Btn_ApplyClick);
-            // 
-            // textBoxCA1
-            // 
-            this.textBoxCA1.Location = new System.Drawing.Point(287, 46);
-            this.textBoxCA1.Multiline = true;
-            this.textBoxCA1.Name = "textBoxCA1";
-            this.textBoxCA1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCA1.Size = new System.Drawing.Size(262, 212);
-            this.textBoxCA1.TabIndex = 28;
-            this.textBoxCA1.Text = "LA.exe SomeProgram.exe";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 20);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Do not need check words list";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(287, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 20);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Need check words list";
             // 
             // SwitcherUI
             // 
