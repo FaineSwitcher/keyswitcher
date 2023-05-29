@@ -35,7 +35,7 @@ jobs:
           
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v2
+      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
@@ -46,13 +46,13 @@ jobs:
         prerelease: false
         
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v1
       with:
         name: myapp
         path: ${{env.DOTNET_ROOT}}/myapp
         
     - name: Attach Artifact to Release
-      uses: actions/upload-release-asset@v2
+      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
