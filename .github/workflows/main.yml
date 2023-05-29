@@ -35,13 +35,13 @@ jobs:
           
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1
+      uses: actions/create-release@v2
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
-        tag_name: v1.0.0
-        release_name: Release 1.0.0
-        body: 'Release notes for version 1.0.0.'
+        tag_name: v2.0.0
+        release_name: Release 2.0.0
+        body: 'Release notes for version 2.0.0.'
         draft: false
         prerelease: false
         
@@ -52,9 +52,9 @@ jobs:
         path: ${{env.DOTNET_ROOT}}/myapp
         
     - name: Attach Artifact to Release
-      uses: actions/upload-release-asset@v1
+      uses: actions/upload-release-asset@v2
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ${{env.DOTNET_ROOT}}/myapp
