@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define FaineSwitcher_TargetDir=$(var.FaineSwitcher.TargetDir)?>
-  <Product Id="*" Name="Faine Switcher" Language="1033" Version="1.0.0.0" Manufacturer="https://saasjet.com/" UpgradeCode="62cead8a-23fd-4389-98e4-04fb7f61f62d">
+  <Product Id="*" Name="Faine Switcher" Language="1033" Version="2.0.0.0" Manufacturer="https://saasjet.com/" UpgradeCode="62cead8a-23fd-4389-98e4-04fb7f61f62d">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
