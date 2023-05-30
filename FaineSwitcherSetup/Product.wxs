@@ -227,7 +227,7 @@
       <Component Id="System.CodeDom.dll" Guid="350b122e-0e2e-4ac9-aa18-0c761636a768">
         <File Id="System.CodeDom.dll" Name="System.CodeDom.dll" Source="$(var.FaineSwitcher_TargetDir)System.CodeDom.dll" />
       </Component>
-      <Component Id="System.Collections.Immutable.dll" Guid="GUID_eb5b7128-a732-4927-a825-0b6c97fc2158HERE">
+      <Component Id="System.Collections.Immutable.dll" Guid="5b21c701-7c0b-4f74-a859-1176ba212b6e">
         <File Id="System.Collections.Immutable.dll" Name="System.Collections.Immutable.dll" Source="$(var.FaineSwitcher_TargetDir)System.Collections.Immutable.dll" />
       </Component>
       <Component Id="System.Collections.Immutable.xml" Guid="3761f027-db18-4ddf-a64d-16b2c38e8968">
