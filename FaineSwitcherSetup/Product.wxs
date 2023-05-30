@@ -90,10 +90,18 @@
 
     <!-- file registration -->
     <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
-      
+      <!-- <Component Id="FaineSwitch.exe.config" Guid="c06088f7-41d9-4b9d-9b59-8b76da106cdf">
+        <File Id="FaineSwitch.exe.config" Name="FaineSwitch.exe.config" Source="$(var.FaineSwitcher_TargetDir)FaineSwitch.exe.config" />
+      </Component>
+      <Component Id="FaineSwitch.exe" Guid="bb6891a0-5e51-477f-8f84-d80747cbcc1b">
+        <File Id="FaineSwitch.exe" Name="FaineSwitch.exe" Source="$(var.FaineSwitcher_TargetDir)FaineSwitch.exe" />
+      </Component>
+      <Component Id="MLModel1.zip" Guid="5c0a3e22-d781-4394-80a9-8e2723486ce8">
+        <File Id="MLModel1.zip" Name="MLModel1.zip" Source="$(var.FaineSwitcher_TargetDir)ML/MLModel1.zip" />
+      </Component> -->
 
       <Component Id="DebugFiles" Guid="5c0a3e22-d781-4394-80a9-8e2723486ce8">
-        <File Source="$(var.FaineSwitcher_TargetDir)**/*" />
+        <File Source="$(var.FaineSwitcher_TargetDir)*" />
       </Component>
     </DirectoryRef>
   </Product>
