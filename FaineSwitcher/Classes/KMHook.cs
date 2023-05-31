@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MLSwitcher;
 using System.IO;
+using static FaineSwitcher.SwitcherUI;
 
 namespace FaineSwitcher
 {
@@ -1177,26 +1178,6 @@ namespace FaineSwitcher
             return false;
         }
 
-        public static void WriteWordsToFile(List<string> words, string filePath)
-        {
-            try
-            {
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-                    foreach (string word in words)
-                    {
-                        writer.WriteLine(word);
-                    }
-                }
-
-                Console.WriteLine("Words have been written to the file successfully.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred while writing the file: " + ex.Message);
-            }
-        }
-
         public static string GenerateStringWithNewLines(List<string> words)
         {
             StringBuilder sb = new StringBuilder();
@@ -1228,6 +1209,62 @@ namespace FaineSwitcher
                 }
 
                 _exceptionWords = ReadFile(filePath);
+
+                if (!_exceptionWords.Any())
+                {
+                    _exceptionWords = new List<string>() { "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "ні", "тільки", "ледве", "мов", "ти", "на", "ні",
+    "як", "ще", "зі", "але",
+    "або",
+    "аби",
+    "ага",
+    "але",
+    "без",
+    "й",
+    "але",
+    "цей",
+    "ці",
+    "це",
+    "ти",
+    "ви",
+    "як",
+    "що",
+    "ще",
+    "за",
+    "щоб",
+    "зате",
+    "якщо",
+    "якже",
+    "так",
+    "мов",
+    "наче",
+    "бо",
+    "чи",
+    "тобто",
+    "би",
+    "якби",
+    "ба",
+    "як-от",
+    "от-як",
+    "немов",
+    "однак",
+    "все ж",
+    "проте",
+    "тих",
+    "цих",
+    "їх",
+    "нас",
+    "вас",
+    "нам",
+    "вам",
+    "на",
+    "ні",
+    "то",
+    "ті",
+    "тому",
+    "ну",
+    "не", "ми", "ці", "із", "англ" };
+                    File.WriteAllText("exceptionWords.txt", GenerateStringWithNewLines(_exceptionWords));
+                }
 
                 return _exceptionWords;
             }
@@ -1322,6 +1359,12 @@ namespace FaineSwitcher
                 }
 
                 _needSwitch = ReadFile(filePath);
+
+                if (!_needSwitch.Any())
+                {
+                    _needSwitch = new List<string>() { "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk", "ot", "sp" };
+                    File.WriteAllText("needSwitchWords.txt", GenerateStringWithNewLines(_needSwitch));
+                }
 
                 return _needSwitch;
             }
