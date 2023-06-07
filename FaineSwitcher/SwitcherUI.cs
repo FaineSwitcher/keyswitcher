@@ -1421,11 +1421,13 @@ namespace FaineSwitcher
                 Program.MyConfs.Write("Timings", "DelayAfterBackspaces", nud_DelayAfterBackspaces.Value.ToString());
                 Program.MyConfs.Write("Timings", "UseDelayAfterBackspaces", chk_UseDelayAfterBackspaces.Checked.ToString());
                 #region Excluded
-                //Program.MyConfs.Write("Timings", "ExcludedPrograms", txt_ExcludedPrograms.Text.Replace(Environment.NewLine, "^cr^lf"));
-                File.WriteAllText("exceptionWords.txt", txt_ExcludedPrograms.Text);
+                Program.MyConfs.Write("Timings", "exceptionWords", txt_ExcludedPrograms.Text.Replace(Environment.NewLine, "^cr^lf"));
+               // File.WriteAllText("exceptionWords.txt", txt_ExcludedPrograms.Text);
                 KMHook.exceptionWords = new List<string>();
 
-                File.WriteAllText("needSwitchWords.txt", textBoxCA1.Text);
+
+                Program.MyConfs.Write("Timings", "needSwitchWords", textBoxCA1.Text.Replace(Environment.NewLine, "^cr^lf"));
+               // File.WriteAllText("needSwitchWords.txt", textBoxCA1.Text);
                 KMHook.needSwitch = new List<string>();
 
                 Program.MyConfs.Write("Timings", "ChangeLayoutInExcluded", chk_Change1KeyL.Checked.ToString());

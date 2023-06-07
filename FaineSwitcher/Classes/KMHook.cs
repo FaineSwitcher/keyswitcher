@@ -1195,24 +1195,7 @@ namespace FaineSwitcher
         // words are exceptions that do not need to be checked by AI
         static private List<string> _exceptionWords = new List<string>();
 
-        public static List<string> exceptionWords
-        {
-            get
-            {
-                if(_exceptionWords.Any()) return _exceptionWords;
-
-                var filePath = "exceptionWords.txt";
-
-                if (!File.Exists(filePath))
-                {
-                    GenerateFile(filePath);
-                }
-
-                _exceptionWords = ReadFile(filePath);
-
-                if (!_exceptionWords.Any())
-                {
-                    _exceptionWords = new List<string>() { "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "ні", "тільки", "ледве", "мов", "ти", "на", "ні",
+        static private List<string> exceptionWordsBase = new List<string>() { "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "ні", "тільки", "ледве", "мов", "ти", "на", "ні",
     "як", "ще", "зі", "але",
     "або",
     "аби",
@@ -1263,79 +1246,26 @@ namespace FaineSwitcher
     "тому",
     "ну",
     "не", "ми", "ці", "із", "англ" };
-                    File.WriteAllText("exceptionWords.txt", GenerateStringWithNewLines(_exceptionWords));
+
+        public static List<string> exceptionWords
+        {
+            get
+            {
+                if(_exceptionWords.Any()) return _exceptionWords;
+
+                var readConfWords = Program.MyConfs.Read("Timings", "exceptionWords").Replace("^cr^lf", " ") ?? "";
+
+                _exceptionWords = new List<string>(readConfWords.Split(' '));
+
+                if (!_exceptionWords.Any() || !_exceptionWords.Contains("немов"))
+                {
+                    _exceptionWords = exceptionWordsBase;
+                    Program.MyConfs.Write("Timings", "exceptionWords", GenerateStringWithNewLines(_exceptionWords).Replace(Environment.NewLine, "^cr^lf"));
                 }
 
                 return _exceptionWords;
             }
             set { _exceptionWords = value; }
-        }
-
-        private static void GenerateFile(string filePath)
-        {
-            var words = new[]
-  {
-    "та", "і", "а", "але", "бо", "над", "у", "до", "по", "перед", "ні", "тільки", "ледве", "мов", "ти", "на", "ні",
-    "як", "ще", "зі", "але",
-    "або",
-    "аби",
-    "ага",
-    "але",
-    "без",
-    "й",
-    "але",
-    "цей",
-    "ці",
-    "це",
-    "ти",
-    "ви",
-    "як",
-    "що",
-    "ще",
-    "за",
-    "щоб",
-    "зате",
-    "якщо",
-    "якже",
-    "так",
-    "мов",
-    "наче",
-    "бо",
-    "чи",
-    "тобто",
-    "би",
-    "якби",
-    "ба",
-    "як-от",
-    "от-як",
-    "немов",
-    "однак",
-    "все ж",
-    "проте",
-    "тих",
-    "цих",
-    "їх",
-    "нас",
-    "вас",
-    "нам",
-    "вам",
-    "на",
-    "ні",
-    "то",
-    "ті",
-    "тому",
-    "ну",
-    "не", "ми", "ці", "із", "англ"
-};
-
-            using (FileStream fs = File.Create(filePath))
-            using (StreamWriter writer = new StreamWriter(fs))
-            {
-                foreach (var word in words)
-                {
-                    writer.WriteLine(word);
-                }
-            }
         }
 
         // список слів які потрібно переписати навіть якщо MLResul == false
@@ -1344,6 +1274,8 @@ namespace FaineSwitcher
         // list of words to be rewritten even if MLResul == false
         // words for any language may be misspelled here
         static private List<string> _needSwitch = new List<string>();
+        
+        static private List<string> needSwitchBase = new List<string>() { "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk", "ot", "sp" };
 
         public static List<string> needSwitch
         {
@@ -1351,19 +1283,14 @@ namespace FaineSwitcher
             {
                 if (_needSwitch.Any()) return _needSwitch;
 
-                var filePath = "needSwitchWords.txt";
+                var readConfWords = Program.MyConfs.Read("Timings", "needSwitchWords").Replace("^cr^lf", " ") ?? "";
 
-                if (!File.Exists(filePath))
+                _needSwitch = new List<string>(readConfWords.Split(' '));
+
+                if (!_needSwitch.Any() || !_needSwitch.Contains("fyuk"))
                 {
-                    GenerateFileNeedSwitchWords(filePath);
-                }
-
-                _needSwitch = ReadFile(filePath);
-
-                if (!_needSwitch.Any())
-                {
-                    _needSwitch = new List<string>() { "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk", "ot", "sp" };
-                    File.WriteAllText("needSwitchWords.txt", GenerateStringWithNewLines(_needSwitch));
+                    _needSwitch = needSwitchBase;
+                    Program.MyConfs.Write("Timings", "needSwitchWords", GenerateStringWithNewLines(_needSwitch).Replace(Environment.NewLine, "^cr^lf"));
                 }
 
                 return _needSwitch;

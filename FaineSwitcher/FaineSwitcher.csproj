@@ -307,12 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AS_dict.txt" />
-    <Content Include="exceptionWords.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="needSwitchWords.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="FaineSwitch.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

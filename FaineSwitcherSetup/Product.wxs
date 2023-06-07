@@ -89,9 +89,6 @@
       <ComponentRef Id="System.Threading.Tasks.Extensions.xml" />
       <ComponentRef Id="CpuMathNative.dll" />
       <ComponentRef Id="FaineSwitch.application" />
-
-      <ComponentRef Id="exceptionWords.txt" />
-      <ComponentRef Id="needSwitchWords.txt" />
     </Feature>
 
     <!--define path references -->
@@ -271,12 +268,6 @@
       </Component>
       <Component Id="FaineSwitch.application" Guid="0f2a87b7-ca81-43fa-82f8-a03730d7e07c">
         <File Id="FaineSwitch.application" Name="FaineSwitch.application" Source="$(var.FaineSwitcher_TargetDir)FaineSwitch.application" />
-      </Component>
-      <Component Id="exceptionWords.txt" Guid="559f4ba4-a0f5-4ba7-88fe-5a989ff6d737">
-        <File Id="exceptionWords.txt" Name="exceptionWords.txt" Source="$(var.FaineSwitcher_TargetDir)exceptionWords.txt" />
-      </Component>
-      <Component Id="needSwitchWords.txt" Guid="92d5cc20-9c7f-42bc-a283-7d2c3b7152e3">
-        <File Id="needSwitchWords.txt" Name="needSwitchWords.txt" Source="$(var.FaineSwitcher_TargetDir)needSwitchWords.txt" />
       </Component>
     </DirectoryRef>
   </Product>

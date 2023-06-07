@@ -483,7 +483,8 @@ namespace FaineSwitcher
             CheckBool("Timings", "ChangeLayoutInExcluded", "true");
             CheckBool("Timings", "ExcludeCaretLD", "false");
             CheckBool("Timings", "UsePasteInCS", "false");
-            CheckString("Timings", "ExcludedPrograms", "");
+            CheckString("Timings", "exceptionWords", "");
+            CheckString("Timings", "needSwitchWords", "");
             #endregion
             CheckInt("Timings", "SelectedTextGetMoreTriesCount", "5");
             CheckBool("Timings", "SelectedTextGetMoreTries", "false");
