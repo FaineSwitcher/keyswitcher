@@ -645,7 +645,12 @@ Specify layout code 0 to disable this feature." },
         #region Share_The_Settings
         { Element.Share_The_Settings_Export, "Export" },
         { Element.Share_The_Settings_Import, "Import" },
-        { Element.Share_The_Setting_Info, "Info" }
+        { Element.Share_The_Setting_Info, "This page is designed for transferring program settings" +
+            "\n from one user to another." +
+"\nBy pressing the Export key, you will be able to save the program settings" +
+            "\n file in the computer's directory." +
+"\nPressing the Import key will provide the option to read the settings file" +
+            "\n and apply it as the program's configuration." }
         #endregion
 	};
 
@@ -984,7 +989,12 @@ Specify layout code 0 to disable this feature." },
         #region Share_The_Settings
         { Element.Share_The_Settings_Export, "Експорт" },
         { Element.Share_The_Settings_Import, "Імпорт" },
-        { Element.Share_The_Setting_Info, "Інформація" }
+       { Element.Share_The_Setting_Info, "Ця сторінка призначення для передачі налаштувань програми " +
+            "\nвід одного користувача до іншого. " +
+            "\nПри натискання клавіші Експорту буде надана можливість зберегти файл налаштувань " +
+            "\nпрограми в дерикторії на компютері. " +
+            "\nПри натисканні клавіші Імпорту буде надана можливість зчитати файл налаштувань і " +
+            "\nзадіяти його як налаштування для програми. " }
         #endregion
 	};
 
@@ -1320,7 +1330,12 @@ Specify layout code 0 to disable this feature." },
         #region Share_The_Settings
         { Element.Share_The_Settings_Export, "Експорт" },
         { Element.Share_The_Settings_Import, "Імпорт" },
-        { Element.Share_The_Setting_Info, "Інформація" }
+         { Element.Share_The_Setting_Info, "Ця сторінка призначення для передачі налаштувань програми " +
+            "\nвід одного користувача до іншого. " +
+            "\nПри натискання клавіші Експорту буде надана можливість зберегти файл налаштувань " +
+            "\nпрограми в дерикторії на компютері. " +
+            "\nПри натисканні клавіші Імпорту буде надана можливість зчитати файл налаштувань і " +
+            "\nзадіяти його як налаштування для програми. " }
         #endregion
 	};
 }
