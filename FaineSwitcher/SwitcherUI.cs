@@ -13,6 +13,7 @@ using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.Web;
 using static FaineSwitcher.SwitcherUI;
+using static Languages;
 
 namespace FaineSwitcher
 {
@@ -133,6 +134,56 @@ namespace FaineSwitcher
         public static int LDMouseY_Pos_temp, LDCaretY_Pos_temp, LDMouseX_Pos_temp, LDCaretX_Pos_temp,
                Layout1Y_Pos_temp, Layout2Y_Pos_temp, Layout1X_Pos_temp, Layout2X_Pos_temp,
                MCDS_Xpos_temp, MCDS_Ypos_temp, MCDS_TopIndent_temp, MCDS_BottomIndent_temp;
+
+        private void btnImportConf_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "INI Files|*.ini";
+                openFileDialog.Title = "Import INI File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Validate the INI file (you can implement your validation logic here)
+                    if (IsValidIniFile(openFileDialog.FileName))
+                    {
+                        File.Copy(openFileDialog.FileName, Configs.filePath, true);
+                        KMHook.needSwitch = new List<string>();
+                        KMHook.exceptionWords = new List<string>();
+                        LoadConfigs();
+                        MessageBox.Show("Import successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid INI file format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private bool IsValidIniFile(string filePath)
+        {
+            // Implement your logic to validate the INI file
+            // For simplicity, you can check the file extension or perform more advanced checks
+            return Path.GetExtension(filePath).Equals(".ini", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "INI Files|*.ini";
+                saveFileDialog.Title = "Export INI File";
+                saveFileDialog.FileName = "faine_switcher_conf";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(Configs.filePath, saveFileDialog.FileName, true);
+                    MessageBox.Show("Export successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+        }
 
         private void chk_AppDataConfigs_CheckedChanged(object sender, EventArgs e)
         {
@@ -5094,6 +5145,7 @@ DEL /Q /F /A ""%TEMP%\UpdateSwitcher.cmd""";
             tab_sounds.Text = Program.Lang[Languages.Element.tab_Sounds];
             tab_translator.Text = Program.Lang[Languages.Element.tab_Translator];
             tab_sync.Text = Program.Lang[Languages.Element.tab_Sync];
+            tab_share_the_settings.Text = Program.Lang[Languages.Element.tab_Share_The_Settings];
             #endregion
             #region Functions
             lnk_plugin.Text = "ST3 " + Program.Lang[Languages.Element.Plugin];
@@ -5311,6 +5363,11 @@ DEL /Q /F /A ""%TEMP%\UpdateSwitcher.cmd""";
             chk_SndLayoutSwitch2.Text = chk_SndLayoutSwitch.Text = Program.Lang[Languages.Element.SoundOnLayoutSwitching];
             chk_UseCustomSnd2.Text = chk_UseCustomSnd.Text = Program.Lang[Languages.Element.UseCustomSound];
             btn_SelectSnd2.Text = btn_SelectSnd.Text = Program.Lang[Languages.Element.Select];
+            #endregion
+            #region Share_The_Settings
+            btnExport.Text = Program.Lang[Languages.Element.Share_The_Settings_Export];
+            btnImportConf.Text = Program.Lang[Languages.Element.Share_The_Settings_Import];
+            lShareSettingsInfo.Text = Program.Lang[Languages.Element.Share_The_Setting_Info];
             #endregion
             #region Buttons
             btn_Apply.Text = Program.Lang[Languages.Element.ButtonApply];

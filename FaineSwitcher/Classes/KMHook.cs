@@ -1182,7 +1182,7 @@ namespace FaineSwitcher
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (string word in words)
+            foreach (string word in words.Where(s => !string.IsNullOrWhiteSpace(s)).ToList())
             {
                 sb.AppendLine(word);
             }
@@ -1245,7 +1245,7 @@ namespace FaineSwitcher
     "ті",
     "тому",
     "ну",
-    "не", "ми", "ці", "із", "англ" };
+    "не", "їй", "ми", "ці", "із", "англ", "fyi", "апрув", "http", "https" };
 
         public static List<string> exceptionWords
         {
@@ -1262,6 +1262,15 @@ namespace FaineSwitcher
                     _exceptionWords = exceptionWordsBase;
                     Program.MyConfs.Write("Timings", "exceptionWords", GenerateStringWithNewLines(_exceptionWords).Replace(Environment.NewLine, "^cr^lf"));
                 }
+                else
+                {
+                    var fromConfCount = _exceptionWords.Count;
+                    _exceptionWords.AddRange(exceptionWordsBase);
+                    _exceptionWords = _exceptionWords.Distinct().ToList();
+                    
+                    if(fromConfCount != _exceptionWords.Count)
+                        Program.MyConfs.Write("Timings", "exceptionWords", GenerateStringWithNewLines(_exceptionWords).Replace(Environment.NewLine, "^cr^lf"));
+                }
 
                 return _exceptionWords;
             }
@@ -1275,7 +1284,7 @@ namespace FaineSwitcher
         // words for any language may be misspelled here
         static private List<string> _needSwitch = new List<string>();
         
-        static private List<string> needSwitchBase = new List<string>() { "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk", "ot", "sp" };
+        static private List<string> needSwitchBase = new List<string>() { "іффіоуе", "гш", "ps", "vb", "wt", "ye", "fyuk", "ot", "sp", "анш", "]q", "реез", "ше", "fghed" };
 
         public static List<string> needSwitch
         {
@@ -1292,6 +1301,16 @@ namespace FaineSwitcher
                     _needSwitch = needSwitchBase;
                     Program.MyConfs.Write("Timings", "needSwitchWords", GenerateStringWithNewLines(_needSwitch).Replace(Environment.NewLine, "^cr^lf"));
                 }
+                else
+                {
+                    var fromConfCount = _needSwitch.Count;
+                    _needSwitch.AddRange(needSwitchBase);
+                    _needSwitch = _needSwitch.Distinct().ToList();
+
+                    if (fromConfCount != _needSwitch.Count)
+                        Program.MyConfs.Write("Timings", "needSwitchWords", GenerateStringWithNewLines(_needSwitch).Replace(Environment.NewLine, "^cr^lf"));
+                }
+
 
                 return _needSwitch;
             }
@@ -1353,7 +1372,7 @@ namespace FaineSwitcher
                 // Парсинг слова для подальшого визначення мови
                 //***
                 // Word parsing for further language determination
-                corr = ParseWord(snip);
+                corr = ParseWord(snil);
 
                 // Визначення мови (використовується функція WordGuessLayout)
                 //***

@@ -504,6 +504,9 @@ namespace FaineSwitcher
             this.txt_Help = new FaineSwitcher.SwitcherUI.TextBoxCA();
             this.lnk_Site = new System.Windows.Forms.LinkLabel();
             this.lnk_Repository = new System.Windows.Forms.LinkLabel();
+            this.tab_share_the_settings = new System.Windows.Forms.TabPage();
+            this.btnImportConf = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.tab_translator = new System.Windows.Forms.TabPage();
             this.lbl_TrMethod = new System.Windows.Forms.Label();
             this.cbb_TrMethod = new System.Windows.Forms.ComboBox();
@@ -634,6 +637,7 @@ namespace FaineSwitcher
             this.btn_OK = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Apply = new System.Windows.Forms.Button();
+            this.lShareSettingsInfo = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tab_functions.SuspendLayout();
             this.tab_persistent.SuspendLayout();
@@ -673,6 +677,7 @@ namespace FaineSwitcher
             ((System.ComponentModel.ISupportInitialize)(this.nud_LPTransparency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LPRefreshRate)).BeginInit();
             this.tab_about.SuspendLayout();
+            this.tab_share_the_settings.SuspendLayout();
             this.tab_translator.SuspendLayout();
             this.grb_TrConfs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TrTransparency)).BeginInit();
@@ -705,6 +710,7 @@ namespace FaineSwitcher
             this.tabs.Controls.Add(this.tab_sounds);
             this.tabs.Controls.Add(this.tab_LangPanel);
             this.tabs.Controls.Add(this.tab_about);
+            this.tabs.Controls.Add(this.tab_share_the_settings);
             this.tabs.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Multiline = true;
@@ -2765,6 +2771,38 @@ namespace FaineSwitcher
             this.lnk_Repository.Text = "Source code";
             this.lnk_Repository.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lnk_RepositoryLinkClicked);
             // 
+            // tab_share_the_settings
+            // 
+            this.tab_share_the_settings.Controls.Add(this.lShareSettingsInfo);
+            this.tab_share_the_settings.Controls.Add(this.btnImportConf);
+            this.tab_share_the_settings.Controls.Add(this.btnExport);
+            this.tab_share_the_settings.Location = new System.Drawing.Point(4, 54);
+            this.tab_share_the_settings.Name = "tab_share_the_settings";
+            this.tab_share_the_settings.Size = new System.Drawing.Size(559, 258);
+            this.tab_share_the_settings.TabIndex = 13;
+            this.tab_share_the_settings.Text = "Share The Settings";
+            this.tab_share_the_settings.UseVisualStyleBackColor = true;
+            // 
+            // btnImportConf
+            // 
+            this.btnImportConf.Location = new System.Drawing.Point(346, 187);
+            this.btnImportConf.Name = "btnImportConf";
+            this.btnImportConf.Size = new System.Drawing.Size(180, 45);
+            this.btnImportConf.TabIndex = 1;
+            this.btnImportConf.Text = "Import";
+            this.btnImportConf.UseVisualStyleBackColor = true;
+            this.btnImportConf.Click += new System.EventHandler(this.btnImportConf_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(39, 187);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(180, 45);
+            this.btnExport.TabIndex = 0;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // tab_translator
             // 
             this.tab_translator.Controls.Add(this.lbl_TrMethod);
@@ -4239,6 +4277,15 @@ namespace FaineSwitcher
             this.btn_Apply.UseVisualStyleBackColor = true;
             this.btn_Apply.Click += new System.EventHandler(this.Btn_ApplyClick);
             // 
+            // lShareSettingsInfo
+            // 
+            this.lShareSettingsInfo.AutoSize = true;
+            this.lShareSettingsInfo.Location = new System.Drawing.Point(40, 46);
+            this.lShareSettingsInfo.Name = "lShareSettingsInfo";
+            this.lShareSettingsInfo.Size = new System.Drawing.Size(129, 20);
+            this.lShareSettingsInfo.TabIndex = 2;
+            this.lShareSettingsInfo.Text = "lShareSettingsInfo";
+            // 
             // SwitcherUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -4318,6 +4365,8 @@ namespace FaineSwitcher
             ((System.ComponentModel.ISupportInitialize)(this.nud_LPRefreshRate)).EndInit();
             this.tab_about.ResumeLayout(false);
             this.tab_about.PerformLayout();
+            this.tab_share_the_settings.ResumeLayout(false);
+            this.tab_share_the_settings.PerformLayout();
             this.tab_translator.ResumeLayout(false);
             this.tab_translator.PerformLayout();
             this.grb_TrConfs.ResumeLayout(false);
@@ -4349,5 +4398,9 @@ namespace FaineSwitcher
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private TextBoxCA textBoxCA1;
+        private System.Windows.Forms.TabPage tab_share_the_settings;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnImportConf;
+        private System.Windows.Forms.Label lShareSettingsInfo;
     }
 }

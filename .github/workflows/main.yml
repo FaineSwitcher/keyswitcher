@@ -39,9 +39,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
-        tag_name: v2.0.0
-        release_name: Release 2.0.0
-        body: 'Release notes for version 2.0.0.'
+        tag_name: v2.0.1
+        release_name: Release 2.0.1
+        body: 'Release notes for version 2.0.1'
         draft: false
         prerelease: false
         
