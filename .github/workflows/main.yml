@@ -61,9 +61,7 @@ jobs:
         asset_name: FaineSwitcher.msi
         asset_content_type: application/octet-stream
 
-
-
-     - name: Generate Zip file
+    - name: Generate Zip file
       run: |
         Compress-Archive -Path FaineSwitcher/bin/Debug_x86_x64 -DestinationPath FaineSwitcher/bin/Debug_x86_x64.zip
 
