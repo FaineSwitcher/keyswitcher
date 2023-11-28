@@ -30,13 +30,9 @@ jobs:
     - name: Build FaineSwitcher project
       run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=FaineSwitcher/bin/Debug_x86_x64
 
-    - name: Get File List
-      run: |
-        Get-ChildItem -Path FaineSwitcher -Name -Recurse
-
     - name: Generate Zip file
       run: |
-        Compress-Archive -Path FaineSwitcher/FaineSwitcher/bin/Debug_x86_x64 -DestinationPath FaineSwitcher/release.zip
+        Compress-Archive -Path FaineSwitcher/FaineSwitcher/bin/Debug_x86_x64/* -DestinationPath FaineSwitcher/release.zip
   
     - name: Build FaineSwitcherSetup project
       run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release  /p:OutputPath=${{env.DOTNET_ROOT}}/myapp
