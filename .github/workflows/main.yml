@@ -30,13 +30,9 @@ jobs:
     - name: Build FaineSwitcher project
       run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=FaineSwitcher/bin/Debug_x86_x64
 
-    - name: Get Location
-      run: |
-        Get-ChildItem -Name 
-
     - name: Generate Zip file
       run: |
-        Compress-Archive -Path FaineSwitcher/bin/Debug_x86_x64 -DestinationPath FaineSwitcher/bin/Debug_x86_x64.zip
+        Compress-Archive -Path FaineSwitcher/obj/Release -DestinationPath FaineSwitcher/release.zip
   
     - name: Build FaineSwitcherSetup project
       run: msbuild.exe FaineSwitcherSetup/FaineSwitcherSetup.wixproj /p:Configuration=Release  /p:OutputPath=${{env.DOTNET_ROOT}}/myapp
@@ -73,7 +69,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: myapp-zip
-        path: FaineSwitcher/bin/Debug_x86_x64.zip
+        path: FaineSwitcher/release.zip
 
     - name: Attach Zip Artifact to Release
       uses: actions/upload-release-asset@v1
@@ -81,7 +77,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: FaineSwitcher/bin/Debug_x86_x64.zip
+        asset_path: FaineSwitcher/release.zip
         asset_name: FaineSwitcherPortable.zip
         asset_content_type: application/zip
 
