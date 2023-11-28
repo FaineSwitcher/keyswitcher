@@ -30,6 +30,10 @@ jobs:
     - name: Build FaineSwitcher project
       run: msbuild.exe FaineSwitcher/FaineSwitcher.csproj /p:Configuration=Release /p:OutputPath=FaineSwitcher/bin/Debug_x86_x64
 
+    - name: GetLocation
+    - run: |
+        Get-ChildItem -Name 
+         
     - name: Generate Zip file
       run: |
         Compress-Archive -Path FaineSwitcher/bin/Debug_x86_x64 -DestinationPath FaineSwitcher/bin/Debug_x86_x64.zip
