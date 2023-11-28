@@ -165,7 +165,7 @@ namespace FaineSwitcher
         {
             // Implement your logic to validate the INI file
             // For simplicity, you can check the file extension or perform more advanced checks
-            return Path.GetExtension(filePath).Equals(".ini", StringComparison.OrdinalIgnoreCase);
+            return Path.GetExtension(filePath).Equals(".ini", StringComparison.OrdinalIgnoreCase) && INI.ValidateRowConfig(File.ReadAllText(filePath));
         }
 
         private void btnExport_Click(object sender, EventArgs e)
