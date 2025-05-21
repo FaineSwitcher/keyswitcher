@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaineSwitcher", "FaineSwitcher.csproj", "{DD81ABB0-2011-47DE-AA11-7F3AAA1FD445}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaineSwitcher", "FaineSwitcher\FaineSwitcher.csproj", "{DD81ABB0-2011-47DE-AA11-7F3AAA1FD445}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "FaineSwitcherSetup", "..\FaineSwitcherSetup\FaineSwitcherSetup.wixproj", "{57CB4906-B34C-43AA-89C7-8EE389A3E55D}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "FaineSwitcherSetup", "FaineSwitcherSetup\FaineSwitcherSetup.wixproj", "{57CB4906-B34C-43AA-89C7-8EE389A3E55D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

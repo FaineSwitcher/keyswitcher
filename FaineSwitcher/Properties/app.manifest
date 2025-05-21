@@ -4,17 +4,16 @@
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
-        <!-- Параметры манифеста UAC
-          При необходимости изменить уровень управления учетными записями Windows замените 
-          узел requestedExecutionLevel одним из следующих значений.
+        <!-- UAC manifest parameters
+          To change the Windows User Account Control level, replace the
+          requestedExecutionLevel node with one of the following values.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-            Задание узла requestedExecutionLevel отключит виртуализацию файла и реестра.
-            Если виртуализацию файла и реестра нужно использовать для обратной 
-            совместимости, удалите узел requestedExecutionLevel.
+            Setting the requestedExecutionLevel node disables file and registry virtualization.
+            If you need file and registry virtualization for backward compatibility, remove the requestedExecutionLevel node.
         -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -26,17 +25,17 @@
   </trustInfo>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
     <application>
-      <!-- Список версий Windows, для работы с которыми предназначено данное приложение. 
-      Windows автоматически выберет наиболее совместимую среду.-->
-      <!-- Если приложение предназначено для работы с Windows Vista, снимите комментарий со следующего узла supportedOS-->
+      <!-- List of Windows versions this application is intended to work with.
+      Windows will automatically select the most compatible environment. -->
+      <!-- If the application is intended to work with Windows Vista, uncomment the following supportedOS node -->
       <!--<supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}"></supportedOS>-->
-      <!-- Если приложение предназначено для работы с Windows 7, раскомментируйте следующий узел supportedOS-->
+      <!-- If the application is intended to work with Windows 7, uncomment the following supportedOS node -->
       <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>-->
-      <!-- Если приложение предназначено для работы с Windows 8, снимите комментарий со следующего узла supportedOS-->
+      <!-- If the application is intended to work with Windows 8, uncomment the following supportedOS node -->
       <!--<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"></supportedOS>-->
     </application>
   </compatibility>
-  <!-- Включите темы для общих элементов управления и диалоговых окон Windows (Windows XP и более поздние версии) -->
+  <!-- Enable themes for common controls and Windows dialogs (Windows XP and later) -->
   <!-- <dependency>
     <dependentAssembly>
       <assemblyIdentity

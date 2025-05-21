@@ -143,7 +143,7 @@ namespace FaineSwitcher
                                     jkluMSG[ii] = Int32.Parse(File.ReadAllText(umsgID));
                                     break;
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {
                                     max_tries--;
                                     Thread.Sleep(50);

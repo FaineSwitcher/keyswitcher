@@ -98,7 +98,7 @@ namespace FaineSwitcher
                                     Directory.CreateDirectory(args[ind + 1]);
                                     ok = true;
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {
                                     Logging.Log("Can't create directory: " + args[ind + 1]);
                                 }

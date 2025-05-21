@@ -44,7 +44,7 @@ public static class WinAPI
     {
         public RAWINPUTHEADER Header;
         [StructLayout(LayoutKind.Explicit)]
-        public struct data
+        public struct Payload
         {
             [FieldOffset(0)]
             public RAWKEYBOARD Keyboard;
@@ -53,7 +53,7 @@ public static class WinAPI
             [FieldOffset(0)]
             public RAWHID Hid;
         }
-        public data Data;
+        public Payload Data;
     }
     [StructLayout(LayoutKind.Sequential)]
     public struct RAWINPUTHEADER
@@ -144,7 +144,7 @@ public static class WinAPI
         /// </summary>
         public RawMouseFlags Flags;
         [StructLayout(LayoutKind.Explicit)]
-        public struct data
+        public struct Payload
         {
             [FieldOffset(0)]
             public uint Buttons;
@@ -159,7 +159,7 @@ public static class WinAPI
             [FieldOffset(0)]
             public RawMouseButtons ButtonFlags;
         }
-        public data Data;
+        public Payload Data;
         /// <summary>
         /// Raw button data.
         /// </summary>

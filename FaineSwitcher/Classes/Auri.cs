@@ -19,12 +19,12 @@ public class Auri
     }
     int[] indMat(char o, char c, string d, int x)
     {
-        bool closed = false;
         int z = 0, lo = -1, lc = -1, mx = 0;
         for (int i = 0; i != d.Length; i++)
         {
             var v = d[i];
             if (v == o) { z++; lo = i; }
+            bool closed;
             if (v == c) { z--; lc = i; closed = true; } else { closed = false; }
             if (z > mx) mx = z;
             if (mx == x && closed) break;
@@ -92,7 +92,7 @@ public class Auri
             int max_v = 0;
             if (f[0] != -1 || noblock)
             {
-                bool inb = false, inq = false, inqq = false, nextv = false, inbs = false, inbc = false, inbo = false, vals = false;
+                bool inq = false, inqq = false, nextv = false;
                 int z = 0, q = 0, qx = 0, zx = 0, v = 0, vx = 0, vl = -1, sq = -1;
                 for (int i = 0; i <= en; i++)
                 {
@@ -106,10 +106,20 @@ public class Auri
                         }
                     }
                     if (k == '"') { if (inq) { inq = false; inqq = true; } else { inqq = false; inq = true; } }
-                    if (k == '{' && /*!inbs &&*/ !inq) { inb = true; z++; }
-                    if (k == '}' && /*!inbs &&*/ !inq) { inb = false; z--; }
-                    if (k == '[' && /*!inb &&*/ !inq) { inbs = true; q++; inbo = true; /*if (indblock) continue;*/ } else { inbo = false; }
-                    if (k == ']' && /*!inb &&*/ !inq) { if (q == 1) { v = 0; } inbs = false; q--; inbc = true; } else { inbc = false; }
+
+                    if (k == '{' && /*!inbs &&*/ !inq) { z++; }
+                    if (k == '}' && /*!inbs &&*/ !inq) { z--; }
+
+                    bool inbo;
+                    if (k == '[' && /*!inb &&*/ !inq) { q++; inbo = true; /*if (indblock) continue;*/ } else { inbo = false; }
+                    if (k == ']' && /*!inb &&*/ !inq) { if (q == 1) { v = 0; }
+
+                        q--;
+                    }
+                    else {
+                    }
+
+                    bool vals;
                     if (k == ',' && z == 0 && q == 1 && !inq) { vals = true; v++; setmax(ref max_v, v); } else vals = false;
                     if (z > zx) zx = z;
                     if (v > vx) vx = v;

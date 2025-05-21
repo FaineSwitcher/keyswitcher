@@ -2725,7 +2725,7 @@ DEL " + restartSwitcherPath;
                 //				Debug.WriteLine(p[0].Id + " " + force);
                 explorer_pid = p[0].Id;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 fong = true;
             }
@@ -3948,7 +3948,7 @@ DEL " + restartSwitcherPath;
                 piKill.Arguments = "/PID " + Process.GetCurrentProcess().Id + " /F";
                 Process.Start(piKill);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Logging.Log("Taskkill error, try exit normally...", 1);
                 Application.Exit();
@@ -5384,13 +5384,7 @@ DEL /Q /F /A ""%TEMP%\UpdateSwitcher.cmd""";
             Logging.Log("Language changed.");
             SetTooltips();
         }
-        class MTheme
-        {
-            public Color BG;
-            public Color FG;
-            public Color TAB_BORDERS;
-            public Color TAB_FOCUS_BG;
-        }
+
         void ToggleDark(bool yes)
         {
             var BGDARK = Color.FromArgb(51, 54, 58);
