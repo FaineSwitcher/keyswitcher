@@ -20,6 +20,7 @@ public class Languages
         tab_Sounds,
         tab_Translator,
         tab_Sync,
+        tab_Share_The_Settings,
         #endregion
         #region Functions
         AutoStart,
@@ -307,7 +308,14 @@ public class Languages
         TT_LCTRLLALTTempLayout,
         #endregion
         #region Messages
-        MSG_SnippetsError
+        MSG_SnippetsError,
+        NotNeedSwitch,
+        NeedSwitch,
+        #endregion
+        #region Share_The_Settings
+        Share_The_Settings_Export,
+        Share_The_Settings_Import,
+        Share_The_Setting_Info
         #endregion
     }
     public static Dictionary<Element, string> English = new Dictionary<Element, string>() { 
@@ -326,6 +334,7 @@ public class Languages
         { Element.tab_Sounds, "Sounds" },
         { Element.tab_Translator, "Translator" },
         { Element.tab_Sync, "Sync" }, 
+        { Element.tab_Share_The_Settings, "Share The Settings" }, 
 		#endregion
 		#region Functions
 		{ Element.AutoStart, "Start with Windows." },
@@ -417,7 +426,9 @@ public class Languages
 		#region Excluded
 		{ Element.ExcludedPrograms, "Excluded programs:" },
         { Element.Change1KeyLayoutInExcluded, "Change layout by 1 key even in excluded." },
-        { Element.AllowConvertSWL, "Allow convert selection/word/line conversion." }, 
+        { Element.AllowConvertSWL, "Allow convert selection/word/line conversion." },
+        { Element.NeedSwitch, "Words that need to be switched" },
+        { Element.NotNeedSwitch, "Words that do not need to be switched" },
 		#endregion
 		#region Snippets
 		{ Element.SnippetsEnabled, "Enable snippets." },
@@ -629,8 +640,18 @@ You can even specify layout which is not loaded in system, for example: English(
 Specify layout code 0 to disable this feature." },
 		#endregion
 		#region Messages
-		{ Element.MSG_SnippetsError, "Snippets contains error in syntax, check if there are errors, details on snippets syntax you can find on Wiki." }
+		{ Element.MSG_SnippetsError, "Snippets contains error in syntax, check if there are errors, details on snippets syntax you can find on Wiki." },
 		#endregion
+        #region Share_The_Settings
+        { Element.Share_The_Settings_Export, "Export" },
+        { Element.Share_The_Settings_Import, "Import" },
+        { Element.Share_The_Setting_Info, "This page is designed for transferring program settings" +
+            "\n from one user to another." +
+"\nBy pressing the Export key, you will be able to save the program settings" +
+            "\n file in the computer's directory." +
+"\nPressing the Import key will provide the option to read the settings file" +
+            "\n and apply it as the program's configuration." }
+        #endregion
 	};
 
     /// <summary>
@@ -652,6 +673,7 @@ Specify layout code 0 to disable this feature." },
         { Element.tab_Sounds, "Звуки" },
         { Element.tab_Translator, "Перекладач" },
         { Element.tab_Sync, "Синхронізація" },
+        { Element.tab_Share_The_Settings, "Поділіться налаштуваннями" },
 		#endregion
 		#region Functions
 		{ Element.AutoStart, "Запускати з Windows" },
@@ -743,7 +765,9 @@ Specify layout code 0 to disable this feature." },
 		#region Excluded
         { Element.ExcludedPrograms, "Программи-виключення:" },
         { Element.Change1KeyLayoutInExcluded, "Змінювати розкладку однієї клавіші навіть у виключеннях." },
-        { Element.AllowConvertSWL, "Дозволити конвертування виділення/слова/рядка." }, 
+        { Element.AllowConvertSWL, "Дозволити конвертування виділення/слова/рядка." },
+        { Element.NeedSwitch, "Слова, що потрібно перемикати" },
+        { Element.NotNeedSwitch, "Слова, що не потрібно перемикати" },
 		#endregion
 		#region Snippets
 		{ Element.SnippetsEnabled, "Включить сніпети." },
@@ -960,8 +984,18 @@ Specify layout code 0 to disable this feature." },
 Вкажіть код розкладки 0, щоб вимкнути цю функцію." },
 		#endregion
 		#region Messages
-		{ Element.MSG_SnippetsError, "Сніппети містять помилки у синтаксисі, перевірте правильність написання, деталі синтаксису можна знайти на Wiki." }
+		{ Element.MSG_SnippetsError, "Сніппети містять помилки у синтаксисі, перевірте правильність написання, деталі синтаксису можна знайти на Wiki." },
 		#endregion
+        #region Share_The_Settings
+        { Element.Share_The_Settings_Export, "Експорт" },
+        { Element.Share_The_Settings_Import, "Імпорт" },
+       { Element.Share_The_Setting_Info, "Ця сторінка призначення для передачі налаштувань програми " +
+            "\nвід одного користувача до іншого. " +
+            "\nПри натискання клавіші Експорту буде надана можливість зберегти файл налаштувань " +
+            "\nпрограми в дерикторії на компютері. " +
+            "\nПри натисканні клавіші Імпорту буде надана можливість зчитати файл налаштувань і " +
+            "\nзадіяти його як налаштування для програми. " }
+        #endregion
 	};
 
     /// <summary>
@@ -1291,7 +1325,17 @@ Specify layout code 0 to disable this feature." },
 Укажите код раскладки 0, чтобы отключить эту функцию." },
 		#endregion
 		#region Messages
-		{ Element.MSG_SnippetsError, "Сниппеты содержат ошибки в синтаксисе, проверьте правильность написания, детали синтаксиса можете найти на Wiki." }
+		{ Element.MSG_SnippetsError, "Сниппеты содержат ошибки в синтаксисе, проверьте правильность написания, детали синтаксиса можете найти на Wiki." },
 		#endregion
+        #region Share_The_Settings
+        { Element.Share_The_Settings_Export, "Експорт" },
+        { Element.Share_The_Settings_Import, "Імпорт" },
+         { Element.Share_The_Setting_Info, "Ця сторінка призначення для передачі налаштувань програми " +
+            "\nвід одного користувача до іншого. " +
+            "\nПри натискання клавіші Експорту буде надана можливість зберегти файл налаштувань " +
+            "\nпрограми в дерикторії на компютері. " +
+            "\nПри натисканні клавіші Імпорту буде надана можливість зчитати файл налаштувань і " +
+            "\nзадіяти його як налаштування для програми. " }
+        #endregion
 	};
 }

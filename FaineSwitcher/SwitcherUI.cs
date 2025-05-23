@@ -12,6 +12,8 @@ using System.Reflection;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.Web;
+using static FaineSwitcher.SwitcherUI;
+using static Languages;
 
 namespace FaineSwitcher
 {
@@ -132,6 +134,56 @@ namespace FaineSwitcher
         public static int LDMouseY_Pos_temp, LDCaretY_Pos_temp, LDMouseX_Pos_temp, LDCaretX_Pos_temp,
                Layout1Y_Pos_temp, Layout2Y_Pos_temp, Layout1X_Pos_temp, Layout2X_Pos_temp,
                MCDS_Xpos_temp, MCDS_Ypos_temp, MCDS_TopIndent_temp, MCDS_BottomIndent_temp;
+
+        private void btnImportConf_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "INI Files|*.ini";
+                openFileDialog.Title = "Import INI File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Validate the INI file (you can implement your validation logic here)
+                    if (IsValidIniFile(openFileDialog.FileName))
+                    {
+                        File.Copy(openFileDialog.FileName, Configs.filePath, true);
+                        KMHook.needSwitch = new List<string>();
+                        KMHook.exceptionWords = new List<string>();
+                        LoadConfigs();
+                        MessageBox.Show("Import successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid INI file format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private bool IsValidIniFile(string filePath)
+        {
+            // Implement your logic to validate the INI file
+            // For simplicity, you can check the file extension or perform more advanced checks
+            return Path.GetExtension(filePath).Equals(".ini", StringComparison.OrdinalIgnoreCase) && INI.ValidateRowConfig(File.ReadAllText(filePath));
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "INI Files|*.ini";
+                saveFileDialog.Title = "Export INI File";
+                saveFileDialog.FileName = "faine_switcher_conf";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(Configs.filePath, saveFileDialog.FileName, true);
+                    MessageBox.Show("Export successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+        }
 
         private void chk_AppDataConfigs_CheckedChanged(object sender, EventArgs e)
         {
@@ -557,8 +609,7 @@ namespace FaineSwitcher
                         {
                             AutoSwitchDictionaryRaw = File.ReadAllText(AS_dictfile);
                             AutoSwitchDictionaryTooBig = AutoSwitchDictionaryRaw.Length > 710000;
-                            ChangeAutoSwitchDictionaryTextBox();
-                            UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
+                            //UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
                         }
                         KMHook.ReInitSnippets();
                         Debug.WriteLine("Reinit AutoSwitch Dictionary");
@@ -915,7 +966,7 @@ namespace FaineSwitcher
                 Text = Text.Replace(" [" + Program.Lang[Languages.Element.Disabled] + "]", "");
                 Text += " [" + Program.Lang[Languages.Element.Disabled] + "]";
                 icon.trIcon.Text = icon.trIcon.Text.Replace(" [" + Program.Lang[Languages.Element.Disabled] + "]", "");
-                icon.trIcon.Text += " [" + Program.Lang[Languages.Element.Disabled] + "]";
+                //icon.trIcon.Text += " [" + Program.Lang[Languages.Element.Disabled] + "]";
                 icon.trIcon.Icon = Properties.Resources.FaineSwitcher;
                 ENABLED = false;
             }
@@ -1421,7 +1472,15 @@ namespace FaineSwitcher
                 Program.MyConfs.Write("Timings", "DelayAfterBackspaces", nud_DelayAfterBackspaces.Value.ToString());
                 Program.MyConfs.Write("Timings", "UseDelayAfterBackspaces", chk_UseDelayAfterBackspaces.Checked.ToString());
                 #region Excluded
-                Program.MyConfs.Write("Timings", "ExcludedPrograms", txt_ExcludedPrograms.Text.Replace(Environment.NewLine, "^cr^lf"));
+                Program.MyConfs.Write("Timings", "exceptionWords", txt_ExcludedPrograms.Text.Replace(Environment.NewLine, "^cr^lf"));
+               // File.WriteAllText("exceptionWords.txt", txt_ExcludedPrograms.Text);
+                KMHook.exceptionWords = new List<string>();
+
+
+                Program.MyConfs.Write("Timings", "needSwitchWords", textBoxCA1.Text.Replace(Environment.NewLine, "^cr^lf"));
+               // File.WriteAllText("needSwitchWords.txt", textBoxCA1.Text);
+                KMHook.needSwitch = new List<string>();
+
                 Program.MyConfs.Write("Timings", "ChangeLayoutInExcluded", chk_Change1KeyL.Checked.ToString());
                 Program.MyConfs.Write("Timings", "ConvertSWLinExcl", chk_ConvSWL.Checked.ToString());
                 #endregion
@@ -1440,7 +1499,7 @@ namespace FaineSwitcher
                 Program.MyConfs.Write("AutoSwitch", "Enabled", chk_AutoSwitch.Checked.ToString());
                 Program.MyConfs.Write("AutoSwitch", "SpaceAfter", chk_AutoSwitchSpaceAfter.Checked.ToString());
                 Program.MyConfs.Write("AutoSwitch", "SwitchToGuessLayout", chk_AutoSwitchSwitchToGuessLayout.Checked.ToString());
-                Program.MyConfs.Write("AutoSwitch", "DownloadInZip", chk_DownloadASD_InZip.Checked.ToString());
+                //Program.MyConfs.Write("AutoSwitch", "DownloadInZip", chk_DownloadASD_InZip.Checked.ToString());
                 if (AutoSwitchEnabled && !string.IsNullOrEmpty(AutoSwitchDictionaryRaw) && !AutoSwitchDictionaryTooBig)
                     File.WriteAllText(AS_dictfile, AutoSwitchDictionaryRaw, Encoding.UTF8);
                 #endregion
@@ -1614,19 +1673,7 @@ namespace FaineSwitcher
             }
             return rsl;
         }
-        void ChangeAutoSwitchDictionaryTextBox()
-        {
-            if (AutoSwitchDictionaryTooBig)
-            {
-                txt_AutoSwitchDictionary.ReadOnly = true;
-                txt_AutoSwitchDictionary.Text = Program.Lang[Languages.Element.AutoSwitchDictionaryTooBigToDisplay];
-            }
-            else
-            {
-                txt_AutoSwitchDictionary.ReadOnly = false;
-                txt_AutoSwitchDictionary.Text = AutoSwitchDictionaryRaw;
-            }
-        }
+        
         Color GetColor(string color_html)
         {
             Color color = SystemColors.WindowText;
@@ -2011,7 +2058,8 @@ namespace FaineSwitcher
             #region Excluded
             ExcludeCaretLD = Program.MyConfs.ReadBool("Timings", "ExcludeCaretLD");
             UsePaste = chk_CSUsePaste.Checked = Program.MyConfs.ReadBool("Timings", "UsePasteInCS");
-            ExcludedPrograms = txt_ExcludedPrograms.Text = Program.MyConfs.Read("Timings", "ExcludedPrograms").Replace("^cr^lf", Environment.NewLine);
+            ExcludedPrograms = txt_ExcludedPrograms.Text = KMHook.GenerateStringWithNewLines(KMHook.exceptionWords);
+            textBoxCA1.Text = KMHook.GenerateStringWithNewLines(KMHook.needSwitch);
             KMHook.EXCLUDED_HWNDs.Clear();
             KMHook.NOT_EXCLUDED_HWNDs.Clear();
             KMHook.AS_EXCLUDED_HWNDs.Clear();
@@ -2075,23 +2123,23 @@ namespace FaineSwitcher
             AutoSwitchEnabled = chk_AutoSwitch.Checked = Program.MyConfs.ReadBool("AutoSwitch", "Enabled");
             AutoSwitchSpaceAfter = chk_AutoSwitchSpaceAfter.Checked = Program.MyConfs.ReadBool("AutoSwitch", "SpaceAfter");
             AutoSwitchSwitchToGuessLayout = chk_AutoSwitchSwitchToGuessLayout.Checked = Program.MyConfs.ReadBool("AutoSwitch", "SwitchToGuessLayout");
-            Dowload_ASD_InZip = chk_DownloadASD_InZip.Checked = Program.MyConfs.ReadBool("AutoSwitch", "DownloadInZip");
+           // Dowload_ASD_InZip = chk_DownloadASD_InZip.Checked = Program.MyConfs.ReadBool("AutoSwitch", "DownloadInZip");
             check_ASD_size = true;
-            if (AutoSwitchEnabled && SnippetsEnabled)
+            if (AutoSwitchEnabled && SnippetsEnabled && false)
                 if (File.Exists(AS_dictfile) && !AutoSwitchDictionaryTooBig)
                 {
                     AutoSwitchDictionaryRaw = File.ReadAllText(AS_dictfile);
                     AutoSwitchDictionaryTooBig = AutoSwitchDictionaryRaw.Length > 710000;
-                    ChangeAutoSwitchDictionaryTextBox();
-                    UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
+                   
+                   // UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
                 }
                 else if(!File.Exists(AS_dictfile))
                 {
                     AutoSwitchDictionaryRaw = Properties.Resources.AS_dict;
                     File.WriteAllText(AS_dictfile, AutoSwitchDictionaryRaw);
                     AutoSwitchDictionaryTooBig = AutoSwitchDictionaryRaw.Length > 710000;
-                    ChangeAutoSwitchDictionaryTextBox();
-                    UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
+                    
+                   // UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
                 }
 
             SwitcherUIActivated((object)1, new EventArgs());
@@ -2562,7 +2610,7 @@ namespace FaineSwitcher
             // Snippets tab
             lbl_NCR.Enabled = lbl_NCRCount.Enabled = pan_NoConvertRules.Enabled = btn_NCRAdd.Enabled = btn_NCR_Sub.Enabled = lbl_SnippetsCount.Enabled = lbl_SnippetExpandKey.Enabled = cbb_SnippetExpandKeys.Enabled = txt_Snippets.Enabled = chk_SnippetsSwitchToGuessLayout.Enabled = chk_SnippetsSpaceAfter.Enabled = lnk_SnipOpen.Enabled = chk_Snippets.Checked;
             // Auto Switch tab
-            lbl_AutoSwitchWordsCount.Enabled = btn_UpdateAutoSwitchDictionary.Enabled = txt_AutoSwitchDictionary.Enabled = chk_AutoSwitchSwitchToGuessLayout.Enabled = chk_AutoSwitchSpaceAfter.Enabled = chk_DownloadASD_InZip.Enabled = chk_AutoSwitch.Checked;
+           // lbl_AutoSwitchWordsCount.Enabled = btn_UpdateAutoSwitchDictionary.Enabled = txt_AutoSwitchDictionary.Enabled = chk_AutoSwitchSwitchToGuessLayout.Enabled = chk_AutoSwitchSpaceAfter.Enabled = chk_DownloadASD_InZip.Enabled = chk_AutoSwitch.Checked;
             // Persistent Layout tab
             chk_ChangeLayoutOnlyOnce.Enabled = chk_OnlyOnWindowChange.Checked;
             txt_PersistentLayout1Processes.Enabled = chk_PersistentLayout1Active.Checked;
@@ -4875,107 +4923,7 @@ DEL /Q /F /A ""%TEMP%\UpdateSwitcher.cmd""";
             return null;
 
         }
-        void btn_UpdateAutoSwitchDictionary_Click(object sender, EventArgs e)
-        {
-
-            Logging.Log("btn_UpdateAutoSwitchDictionary_Click(): Not Allow");
-
-            return;
-            var resp = "";
-            if (check_ASD_size)
-            {
-                var size = getASD_RemoteSize(Dowload_ASD_InZip);
-                if (size == Program.Lang[Languages.Element.Error])
-                {
-                    btn_UpdateAutoSwitchDictionary.ForeColor = Color.OrangeRed;
-                    btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.Error];
-                    tmr.Tick += (o, oo) =>
-                    {
-                        btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.AutoSwitchUpdateDictionary];
-                        btn_UpdateAutoSwitchDictionary.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
-                        tmr.Stop();
-                    };
-                    tmr.Interval = 350;
-                    tmr.Start();
-                    return;
-                }
-                check_ASD_size = false;
-                var name = "AS_dict.txt";
-                if (Dowload_ASD_InZip)
-                    name = "AS_dict.zip";
-                btn_UpdateAutoSwitchDictionary.Text = name + " " + size + " " + Program.Lang[Languages.Element.Download] + "?";
-                return;
-            }
-            check_ASD_size = true;
-            if (Dowload_ASD_InZip)
-            {
-                var zip = Path.Combine(Path.GetTempPath(), "AS_dict.zip");
-                using (var wc = new WebClient())
-                {
-                    // For proxy
-                    if (!String.IsNullOrEmpty(txt_ProxyServerPort.Text))
-                    {
-                        wc.Proxy = MakeProxy();
-                    }
-                    wc.DownloadFile(new Uri("https://github.com/BladeMight/FaineSwitcher/releases/download/latest-commit/AS_dict.zip"), zip);
-                    var ExtractASD = @"@ECHO OFF
-chcp 65001
-ECHO With CreateObject(""Shell.Application"") > ""unzip.vbs""
-ECHO    .NameSpace(WScript.Arguments(1)).CopyHere .NameSpace(WScript.Arguments(0)).items, 16 >> ""unzip.vbs""
-ECHO End With >> ""unzip.vbs""
-
-CSCRIPT ""unzip.vbs"" """ + zip + @""" """ + Path.GetTempPath() + @"""
-DEL """ + zip + @"""
-DEL ""unzip.vbs""
-DEL ""ExtractASD.cmd""";
-                    Logging.Log("Writing extract script.");
-                    File.WriteAllText(Path.Combine(Path.GetTempPath(), "ExtractASD.cmd"), ExtractASD);
-                    var piExtractASD = new ProcessStartInfo() { FileName = "ExtractASD.cmd", WorkingDirectory = Path.GetTempPath(), WindowStyle = ProcessWindowStyle.Hidden };
-                    Logging.Log("Starting extract script.");
-                    Process.Start(piExtractASD).WaitForExit();
-                    resp = File.ReadAllText(Path.Combine(Path.GetTempPath(), "AS_dict.txt"));
-                    File.Delete(Path.Combine(Path.GetTempPath(), "AS_dict.txt"));
-                }
-            }
-            else
-                resp = getResponce("https://raw.githubusercontent.com/BladeMight/FaineSwitcher/master/AS_dict.txt");
-            btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.Checking];
-            var dict = Regex.Replace(resp, "\r?\n", Environment.NewLine);
-            tmr.Interval = 300;
-            if (dict != null)
-            {
-                btn_UpdateAutoSwitchDictionary.ForeColor = Color.BlueViolet;
-                btn_UpdateAutoSwitchDictionary.Text = "OK";
-                tmr.Tick += (o, oo) =>
-                {
-                    btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.AutoSwitchUpdateDictionary];
-                    btn_UpdateAutoSwitchDictionary.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
-                    tmr.Stop();
-                };
-                tmr.Interval = 350;
-                tmr.Start();
-                AutoSwitchDictionaryRaw = dict;
-                this.txt_AutoSwitchDictionary.Invoke((MethodInvoker)delegate
-                {
-                    ChangeAutoSwitchDictionaryTextBox();
-                    UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
-                });
-                File.WriteAllText(AS_dictfile, dict, Encoding.UTF8);
-            }
-            else
-            {
-                btn_UpdateAutoSwitchDictionary.ForeColor = Color.OrangeRed;
-                btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.Error];
-                tmr.Tick += (o, oo) =>
-                {
-                    btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.AutoSwitchUpdateDictionary];
-                    btn_UpdateAutoSwitchDictionary.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
-                    tmr.Stop();
-                };
-                tmr.Interval = 350;
-                tmr.Start();
-            }
-        }
+        
         static Regex rx = new Regex(@"\\u([a-fA-f0-9]{4})", RegexOptions.Compiled);
         public static string UnescapeUnicode(string x)
         {
@@ -5197,6 +5145,7 @@ DEL ""ExtractASD.cmd""";
             tab_sounds.Text = Program.Lang[Languages.Element.tab_Sounds];
             tab_translator.Text = Program.Lang[Languages.Element.tab_Translator];
             tab_sync.Text = Program.Lang[Languages.Element.tab_Sync];
+            tab_share_the_settings.Text = Program.Lang[Languages.Element.tab_Share_The_Settings];
             #endregion
             #region Functions
             lnk_plugin.Text = "ST3 " + Program.Lang[Languages.Element.Plugin];
@@ -5298,6 +5247,8 @@ DEL ""ExtractASD.cmd""";
             lbl_ExcludedPrograms.Text = Program.Lang[Languages.Element.ExcludedPrograms];
             chk_Change1KeyL.Text = Program.Lang[Languages.Element.Change1KeyLayoutInExcluded];
             chk_ConvSWL.Text = Program.Lang[Languages.Element.AllowConvertSWL];
+            label1.Text = Program.Lang[Languages.Element.NotNeedSwitch];
+            label2.Text = Program.Lang[Languages.Element.NeedSwitch];
             #endregion
             #region Snippets
             chk_Snippets.Text = Program.Lang[Languages.Element.SnippetsEnabled];
@@ -5320,16 +5271,16 @@ DEL ""ExtractASD.cmd""";
             chk_AutoSwitch.Text = Program.Lang[Languages.Element.AutoSwitchEnabled];
             chk_AutoSwitchSpaceAfter.Text = Program.Lang[Languages.Element.AutoSwitchSpaceAfter];
             chk_AutoSwitchSwitchToGuessLayout.Text = Program.Lang[Languages.Element.AutoSwitchSwitchToGuessLayout];
-            btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.AutoSwitchUpdateDictionary];
+           // btn_UpdateAutoSwitchDictionary.Text = Program.Lang[Languages.Element.AutoSwitchUpdateDictionary];
             lbl_AutoSwitchDependsOnSnippets.Text = Program.Lang[Languages.Element.AutoSwitchDependsOnSnippets];
-            if (lbl_AutoSwitchWordsCount.Text.Contains(" "))
-            {
-                var t = lbl_AutoSwitchWordsCount.Text.Split(new[] { ' ' }, 2);
-                lbl_AutoSwitchWordsCount.Text = Program.Lang[Languages.Element.AutoSwitchDictionaryWordsCount] + t[1];
-            }
-            else
-                lbl_AutoSwitchWordsCount.Text = Program.Lang[Languages.Element.AutoSwitchDictionaryWordsCount];
-            chk_DownloadASD_InZip.Text = Program.Lang[Languages.Element.DownloadAutoSwitchDictionaryInZip];
+            //if (lbl_AutoSwitchWordsCount.Text.Contains(" "))
+            //{
+            //    var t = lbl_AutoSwitchWordsCount.Text.Split(new[] { ' ' }, 2);
+            //    lbl_AutoSwitchWordsCount.Text = Program.Lang[Languages.Element.AutoSwitchDictionaryWordsCount] + t[1];
+            //}
+            //else
+            //    lbl_AutoSwitchWordsCount.Text = Program.Lang[Languages.Element.AutoSwitchDictionaryWordsCount];
+            //chk_DownloadASD_InZip.Text = Program.Lang[Languages.Element.DownloadAutoSwitchDictionaryInZip];
             #endregion
             #region Hotkeys
             grb_Hotkey.Text = Program.Lang[Languages.Element.Hotkey];
@@ -5412,6 +5363,11 @@ DEL ""ExtractASD.cmd""";
             chk_SndLayoutSwitch2.Text = chk_SndLayoutSwitch.Text = Program.Lang[Languages.Element.SoundOnLayoutSwitching];
             chk_UseCustomSnd2.Text = chk_UseCustomSnd.Text = Program.Lang[Languages.Element.UseCustomSound];
             btn_SelectSnd2.Text = btn_SelectSnd.Text = Program.Lang[Languages.Element.Select];
+            #endregion
+            #region Share_The_Settings
+            btnExport.Text = Program.Lang[Languages.Element.Share_The_Settings_Export];
+            btnImportConf.Text = Program.Lang[Languages.Element.Share_The_Settings_Import];
+            lShareSettingsInfo.Text = Program.Lang[Languages.Element.Share_The_Setting_Info];
             #endregion
             #region Buttons
             btn_Apply.Text = Program.Lang[Languages.Element.ButtonApply];
@@ -5635,7 +5591,7 @@ DEL ""ExtractASD.cmd""";
             HelpMeUnderstand.SetToolTip(chk_ConvSWL, Program.Lang[Languages.Element.TT_AllowConvertSWL]);
             HelpMeUnderstand.SetToolTip(chk_SnippetsSwitchToGuessLayout, Program.Lang[Languages.Element.TT_SnippetsSwitchToGuessLayout]);
             HelpMeUnderstand.SetToolTip(lbl_SnippetsCount, Program.Lang[Languages.Element.TT_SnippetsCount]);
-            HelpMeUnderstand.SetToolTip(lbl_AutoSwitchWordsCount, Program.Lang[Languages.Element.TT_SnippetsCount]);
+           // HelpMeUnderstand.SetToolTip(lbl_AutoSwitchWordsCount, Program.Lang[Languages.Element.TT_SnippetsCount]);
             HelpMeUnderstand.SetToolTip(chk_GuessKeyCodeFix, Program.Lang[Languages.Element.TT_GuessKeyCodeFix]);
             HelpMeUnderstand.SetToolTip(chk_AppDataConfigs, Program.Lang[Languages.Element.TT_ConfigsInAppData]);
             //HelpMeUnderstand.SetToolTip(lbl_KeysType, Program.Lang[Languages.Element.TT_KeysType]);
@@ -6748,14 +6704,14 @@ DEL ""ExtractASD.cmd""";
             {
                 if (!SnippetsEnabled)
                 {
-                    chk_AutoSwitchSpaceAfter.Visible = chk_AutoSwitch.Visible = chk_AutoSwitchSwitchToGuessLayout.Enabled =
-                        btn_UpdateAutoSwitchDictionary.Enabled = txt_AutoSwitchDictionary.Enabled = chk_DownloadASD_InZip.Enabled = false;
+                    chk_AutoSwitchSpaceAfter.Visible = chk_AutoSwitch.Visible = chk_AutoSwitchSwitchToGuessLayout.Enabled = true;
+                        //btn_UpdateAutoSwitchDictionary.Enabled = txt_AutoSwitchDictionary.Enabled = chk_DownloadASD_InZip.Enabled = false;
                     lbl_AutoSwitchDependsOnSnippets.Visible = true;
                 }
                 else
                 {
-                    chk_AutoSwitchSpaceAfter.Visible = chk_AutoSwitch.Visible = chk_AutoSwitchSwitchToGuessLayout.Enabled =
-                        btn_UpdateAutoSwitchDictionary.Enabled = txt_AutoSwitchDictionary.Enabled = chk_DownloadASD_InZip.Enabled = true;
+                    chk_AutoSwitchSpaceAfter.Visible = chk_AutoSwitch.Visible = chk_AutoSwitchSwitchToGuessLayout.Enabled = true;
+                       // btn_UpdateAutoSwitchDictionary.Enabled = txt_AutoSwitchDictionary.Enabled = chk_DownloadASD_InZip.Enabled = true;
                     lbl_AutoSwitchDependsOnSnippets.Visible = false;
                     ToggleDependentControlsEnabledState();
                 }
@@ -6767,14 +6723,12 @@ DEL ""ExtractASD.cmd""";
         }
         void Txt_AutoSwitchDictionaryTextChanged(object sender, EventArgs e)
         {
-            if (!AutoSwitchDictionaryTooBig && !txt_AutoSwitchDictionary.ReadOnly)
-                AutoSwitchDictionaryRaw = txt_AutoSwitchDictionary.Text;
             if (!as_checking)
             {
                 as_checking = true;
                 tmr.Tick += (_, __) =>
                 {
-                    UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
+                    //UpdateSnippetCountLabel(AutoSwitchDictionaryRaw, lbl_AutoSwitchWordsCount, false);
                     as_checking = false;
                     tmr.Dispose(); tmr = new Timer();
                 };
@@ -6799,7 +6753,7 @@ DEL ""ExtractASD.cmd""";
         }
         void Chk_DownloadASD_InZipCheckedChanged(object sender, EventArgs e)
         {
-            Dowload_ASD_InZip = chk_DownloadASD_InZip.Checked;
+           // Dowload_ASD_InZip = chk_DownloadASD_InZip.Checked;
             check_ASD_size = true;
         }
         void Btn_NCR_AddClick(object sender, EventArgs e)
