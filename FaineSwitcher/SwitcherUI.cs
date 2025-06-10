@@ -3699,7 +3699,7 @@ DEL " + restartSwitcherPath;
   </Settings>
   <Actions Context=""Author"">
     <Exec>
-      <Command>" + "\"" + Assembly.GetExecutingAssembly().Location + "\"" + @"</Command>
+      <Command>" + "\"" + AppContext.BaseDirectory + "\"" + @"</Command>
     </Exec>
   </Actions>
 </Task>";
@@ -3776,7 +3776,7 @@ DEL " + restartSwitcherPath;
             else
             {
                 AutoStartRemove(false);
-                var exelocation = Assembly.GetExecutingAssembly().Location;
+                var exelocation = AppContext.BaseDirectory;
                 var shortcutLocation = Path.Combine(
                                            Environment.GetFolderPath(Environment.SpecialFolder.Startup),
                                            "FaineSwitcher.lnk");
@@ -3790,7 +3790,7 @@ DEL " + restartSwitcherPath;
                     try
                     {
                         lnk.TargetPath = exelocation;
-                        lnk.WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                        lnk.WorkingDirectory = Path.GetDirectoryName(AppContext.BaseDirectory);
                         lnk.IconLocation = exelocation + ", 0";
                         lnk.Description = "FaineSwitcher - Magic layout switcher";
                         lnk.Save();
@@ -3837,7 +3837,7 @@ DEL " + restartSwitcherPath;
                         while (!pif.StandardOutput.EndOfStream)
                         {
                             l = pif.StandardOutput.ReadLine();
-                            if (l.Contains(Assembly.GetExecutingAssembly().Location))
+                            if (l.Contains(AppContext.BaseDirectory))
                             {
                                 Debug.WriteLine("Task path OK! in: " + l);
                                 pif.Dispose();
@@ -3861,7 +3861,7 @@ DEL " + restartSwitcherPath;
                     var slnk = shell.CreateShortcut(lnk);
                     try
                     {
-                        if (slnk.TargetPath == Assembly.GetExecutingAssembly().Location)
+                        if (slnk.TargetPath == AppContext.BaseDirectory)
                             actual = true;
                     }
                     finally

@@ -1,14 +1,14 @@
-![logo](FaineSwitch.ico)
+![logo](FaineSwitcher/FaineSwitcher.ico)
 
-# FaineSwitcher - The magic Layout Switcher.
+# FaineSwitcherer - The magic Layout Switcher.
 
 > This is fork from [Mahou project](https://github.com/BladeMight/Mahou). We disable all network activity that that Mahou has and add Ukraine dictionary for switching from EN to UA and UA to EN keyboard.
 
 ### How it works
-FaineSwitcher works like **You** want, configure it as you wish, by default it switches *not by next layout*, but by **specified in settings** layouts.\
-Even selected text switches just between **selected** layouts, though if you liked cycling through, starting from `v1.0.2.9` there is **Cycle Mode**, in `v2.0.0.0` and above to activate it you just need to disable function `Switch between layouts`. By default FaineSwitch stores configurations in folder where FaineSwitch.exe is, but there is a function that makes FaineSwitch store them in %AppData%.
+FaineSwitcherer works like **You** want, configure it as you wish, by default it switches *not by next layout*, but by **specified in settings** layouts.\
+Even selected text switches just between **selected** layouts, though if you liked cycling through, starting from `v1.0.2.9` there is **Cycle Mode**, in `v2.0.0.0` and above to activate it you just need to disable function `Switch between layouts`. By default FaineSwitcher stores configurations in folder where FaineSwitcher.exe is, but there is a function that makes FaineSwitcher store them in %AppData%.
 
-### FaineSwitcher requires [.NET Framework 4.8 or greater](https://www.microsoft.com/en-US/download/details.aspx?id=17718) to work properly. Beginning from v1.4.3.9 error when running on .NET 4.0 were fixed.
+### FaineSwitcherer requires [.NET Framework 4.8 or greater](https://www.microsoft.com/en-US/download/details.aspx?id=17718) to work properly. Beginning from v1.4.3.9 error when running on .NET 4.0 were fixed.
 
 ### Features
 
@@ -36,12 +36,12 @@ Even selected text switches just between **selected** layouts, though if you lik
 - <kbd>Shift</kbd>+<kbd>F11</kbd> - Convert multiple last words, to select quantity press 1-9(0 = 10) after hotkey on keyboard(not NumPad)..
 - <kbd>Shift</kbd>+<kbd>F9</kbd> - Toggle language panel visibility.
 - <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Win</kbd>+<kbd>Insert</kbd> - To toggle configs windows visibility.
-- <kbd>Shift</kbd>+<kbd>Alt</kbd><kbd>PageUp</kbd> - Restart FaineSwitch.
-- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Win</kbd>+<kbd>F12</kbd> - To exit FaineSwitch.
-- Other hotkeys disabled by default or have description in FaineSwitch.
+- <kbd>Shift</kbd>+<kbd>Alt</kbd><kbd>PageUp</kbd> - Restart FaineSwitcher.
+- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>Win</kbd>+<kbd>F12</kbd> - To exit FaineSwitcher.
+- Other hotkeys disabled by default or have description in FaineSwitcher.
 
 ### License
-FaineSwitch is under [GPL v2+]().
+FaineSwitcher is under [GPL v2+]().
 
 # Contribute
 
@@ -91,14 +91,14 @@ Before getting started, you will need the following:
 
 ## AI work logic
 
-- Model ZIP location: **keyswitcher\FaineSwitcher\ML\MLModel1.zip**;
+- Model ZIP location: **keyswitcher\FaineSwitcherer\ML\MLModel1.zip**;
 - To change model need only replace the old zip file with the new;
 - Call prediction method: `var res = MLModel1.Predict(new MLModel1.ModelInput() { Col0 = word });`
 - Prediction result: `res.PredictedLabel`;
 - **Result == 1** - need rewriting word;
-- All AI logic located in **keyswitcher\FaineSwitcher\Classes\KMHook.cs** file and method `CheckAutoSwitch` row `1190`;
+- All AI logic located in **keyswitcher\FaineSwitcherer\Classes\KMHook.cs** file and method `CheckAutoSwitch` row `1190`;
 - `CheckAutoSwitch` have comments with logic description;
 
 ## Finishing Up 
 
-Congratulations, you have now successfully setup FaineSwitcher project!
+Congratulations, you have now successfully setup FaineSwitcherer project!
