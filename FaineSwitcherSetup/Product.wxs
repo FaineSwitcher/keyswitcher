@@ -1,6 +1,6 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
   xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-    <Package Name="FaineSwitcher" Language="1033" Version="2.0.0.0" Manufacturer="FaineSwitcher" UpgradeCode="62cead8a-23fd-4389-98e4-04fb7f61f62d">
+    <Package Name="FaineSwitcher" Language="1033" Version="$(Version)" Manufacturer="FaineSwitcher" UpgradeCode="62cead8a-23fd-4389-98e4-04fb7f61f62d">
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
