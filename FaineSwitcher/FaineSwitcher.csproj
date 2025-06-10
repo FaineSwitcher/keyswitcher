@@ -3,13 +3,21 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
     <UseWindowsForms>true</UseWindowsForms>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <RootNamespace>FaineSwitch</RootNamespace>
-    <AssemblyName>FaineSwitch</AssemblyName>
+    <RootNamespace>FaineSwitcher</RootNamespace>
+    <AssemblyName>FaineSwitcher</AssemblyName>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <!-- Publishing  -->
+  <PropertyGroup>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
 
   <!-- Assembly Info  -->
@@ -26,47 +34,11 @@
   </PropertyGroup>
 
   <!-- Configuration/Platform Specific Properties -->
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\Release_x86\</OutputPath>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <SignManifests>True</SignManifests>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <OutputPath>bin\Debug_x86\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release_x86_x64\</OutputPath>
-    <SignManifests>True</SignManifests>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <OutputPath>bin\Debug_x86_x64\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\Release_x64\</OutputPath>
-    <SignManifests>True</SignManifests>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <OutputPath>bin\Debug_x64\</OutputPath>
   </PropertyGroup>
 
   <!-- References and Items -->
-  <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Update="System">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Update="System.Drawing">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Net">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Web" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Update="JustUI\JUIButton.cs">
       <SubType>Component</SubType>
@@ -85,11 +57,12 @@
     <None Update="ML\MLModel1.zip">
       <DependentUpon>MLModel1.mbconfig</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AS_dict.txt" />
-    <None Update="FaineSwitch.ico">
+    <None Update="FaineSwitcher.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -103,6 +76,7 @@
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="2.0.1" />
     <PackageReference Include="Microsoft.ML.CpuMath" Version="2.0.1" />
